@@ -1,0 +1,25 @@
+---
+alwaysApply: true
+---
+---
+description: Logic for generating and managing Design Tokens
+globs: "packages/tokens/**"
+---
+# Token Architecture Rules
+
+## Structure (3-Tier)
+1. **Brand Collection:** Raw hex values (e.g., `blue-500: #3b82f6`). No semantic meaning.
+2. **Alias Collection:** Semantic roles (e.g., `primary: {brand.blue-500}`).
+3. **Mapped Collection:** Component-specific tokens (e.g., `button-bg-primary`).
+   - *Must* include explicit `light` and `dark` modes.
+
+## Output Format
+- Tokens must be stored in `tokens.json`.
+- Naming convention: `kebab-case` (e.g., `text-primary-foreground`).
+- Do not use hardcoded hex values in the `mapped` layer; always reference an alias.
+
+## Generation Logic
+- When reading Figma:
+  1. Identify raw scales -> Brand.
+  2. Identify intent -> Alias.
+  3. Identify specific usage -> Mapped.

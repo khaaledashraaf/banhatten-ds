@@ -1,0 +1,31 @@
+---
+description: 
+alwaysApply: true
+---
+
+---
+description: Global technical standards for Banhatten Design System
+globs: "**/*.{ts,tsx,js,jsx,mdx,json}"
+---
+# Banhatten Design System - Project Rules
+
+## Tech Stack
+- **Framework:** React 19+ (Server Components compatible)
+- **Language:** TypeScript (Strict mode)
+- **Styling:** Tailwind CSS v4 (Utility-first) + `class-variance-authority` (CVA)
+- **Icons:** `lucide-react`
+- **Repo Structure:** Turborepo Monorepo
+  - `apps/docs`: Documentation (Next.js)
+  - `packages/ui`: Component Library
+  - `packages/tokens`: Design Tokens (JSON + Config)
+
+## Coding Standards
+- **Components:** Functional components only. Use `forwardRef` where applicable.
+- **Props:** All component props must extend standard HTML attributes (e.g., `React.ButtonHTMLAttributes<HTMLButtonElement>`).
+- **Exports:** Named exports only (e.g., `export const Button...`).
+- **Utils:** Use a `cn(...)` utility for class merging (Tailwind Merge + CLSX).
+- **Accessibility:** Mandatory. All interactive elements must have proper ARIA attributes.
+
+## Tone
+- Concise, technical, and action-oriented.
+- No "Here is the code" fluff—just output the file content.
