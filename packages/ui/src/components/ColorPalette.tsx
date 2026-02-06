@@ -2,33 +2,33 @@ import * as React from "react";
 
 const tokenSamples = [
   {
-    className: "bg-alias-bg-brand",
-    label: "bg-alias-bg-brand",
+    className: "bg-brand",
+    label: "bg-brand",
     textClass: "text-white",
   },
   {
-    className: "bg-alias-bg-danger",
-    label: "bg-alias-bg-danger",
+    className: "bg-danger",
+    label: "bg-danger",
     textClass: "text-white",
   },
   {
-    className: "bg-alias-bg-inactive",
-    label: "bg-alias-bg-inactive",
-    textClass: "text-alias-text-primary",
+    className: "bg-inactive",
+    label: "bg-inactive",
+    textClass: "text-primary",
   },
   {
-    className: "bg-alias-bg-success",
-    label: "bg-alias-bg-success",
+    className: "bg-success",
+    label: "bg-success",
     textClass: "text-white",
   },
   {
-    className: "bg-alias-bg-warning",
-    label: "bg-alias-bg-warning",
+    className: "bg-warning",
+    label: "bg-warning",
     textClass: "text-white",
   },
   {
-    className: "bg-alias-bg-info",
-    label: "bg-alias-bg-info",
+    className: "bg-info",
+    label: "bg-info",
     textClass: "text-white",
   },
 ];
@@ -36,7 +36,7 @@ const tokenSamples = [
 export const ColorPalette: React.FC = () => {
   return (
     <div className="p-8">
-      <h2 className="text-alias-text-primary mb-4 text-xl font-semibold">
+      <h2 className="text-primary mb-4 text-xl font-semibold">
         Token Validation
       </h2>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
@@ -50,21 +50,21 @@ export const ColorPalette: React.FC = () => {
         ))}
       </div>
 
-      <h3 className="text-alias-text-primary mt-8 mb-4 text-lg font-semibold">
+      <h3 className="text-primary mt-8 mb-4 text-lg font-semibold">
         Text Colors
       </h3>
       <div className="space-y-2">
-        <p className="text-alias-text-primary">
-          text-alias-text-primary (dark gray)
+        <p className="text-primary">
+          text-primary (dark gray)
         </p>
-        <p className="text-alias-text-secondary">
-          text-alias-text-secondary (medium gray)
+        <p className="text-secondary">
+          text-secondary (medium gray)
         </p>
-        <p className="text-alias-text-brand">
-          text-alias-text-brand (primary blue)
+        <p className="text-brand">
+          text-brand (primary blue)
         </p>
-        <p className="text-alias-text-danger">
-          text-alias-text-danger (red)
+        <p className="text-danger">
+          text-danger (red)
         </p>
       </div>
     </div>

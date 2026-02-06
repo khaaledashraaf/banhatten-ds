@@ -29,7 +29,36 @@ function resolveAliases(
   return resolved;
 }
 
+/**
+ * Categorizes resolved aliases by their semantic prefix.
+ * Strips the prefix so "bg-brand" becomes usable as `class="bg-brand"`.
+ */
+function categorizeAliases(resolved: TokenObject) {
+  const backgroundColor: TokenObject = {};
+  const textColor: TokenObject = {};
+  const borderColor: TokenObject = {};
+  const colors: TokenObject = {};
+
+  for (const [key, value] of Object.entries(resolved)) {
+    if (key.startsWith("bg-")) {
+      backgroundColor[key.slice(3)] = value;
+    } else if (key.startsWith("text-")) {
+      textColor[key.slice(5)] = value;
+    } else if (key.startsWith("border-")) {
+      borderColor[key.slice(7)] = value;
+    } else if (key.startsWith("icon-")) {
+      // Icons use text color utilities
+      textColor[key] = value;
+    } else {
+      colors[key] = value;
+    }
+  }
+
+  return { backgroundColor, textColor, borderColor, colors };
+}
+
 const resolvedAlias = resolveAliases(tokens.alias, tokens.brand);
+const categorized = categorizeAliases(resolvedAlias);
 
 const config: Config = {
   content: [],
@@ -37,8 +66,13 @@ const config: Config = {
     extend: {
       colors: {
         brand: tokens.brand,
-        alias: resolvedAlias,
+        ...categorized.colors,
       },
+      backgroundColor: categorized.backgroundColor,
+      textColor: categorized.textColor,
+      borderColor: categorized.borderColor,
+      borderRadius: tokens.radius,
+      spacing: tokens.spacing,
     },
   },
 };
