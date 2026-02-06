@@ -35,8 +35,8 @@ const tokenSamples = [
 
 export const ColorPalette: React.FC = () => {
   return (
-    <div className="p-8">
-      <h2 className="text-primary mb-4 text-xl font-semibold">
+    <div className="p-0">
+      <h2 className="text-primary mb-lg text-xl font-semibold">
         Token Validation
       </h2>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
