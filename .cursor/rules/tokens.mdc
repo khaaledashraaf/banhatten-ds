@@ -14,7 +14,7 @@ globs: "packages/tokens/**"
    - *Must* include explicit `light` and `dark` modes.
 
 ## Output Format
-- Tokens must be stored in `tokens.json`.
+- Tokens must be stored in `packages/tokens/src/tokens.json`.
 - Naming convention: `kebab-case` (e.g., `text-primary-foreground`).
 - Do not use hardcoded hex values in the `mapped` layer; always reference an alias.
 
