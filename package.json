@@ -1,8 +1,9 @@
 {
   "name": "banhatten-ds",
   "version": "1.0.0",
+  "private": true,
   "description": "",
-  "main": "index.js",
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/khaaledashraaf/banhatten-ds/issues"
   },
-  "homepage": "https://github.com/khaaledashraaf/banhatten-ds#readme"
+  "homepage": "https://github.com/khaaledashraaf/banhatten-ds#readme",
+  "devDependencies": {
+    "tailwindcss": "^4.1.18"
+  }
 }
