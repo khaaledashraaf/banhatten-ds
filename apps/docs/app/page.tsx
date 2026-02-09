@@ -99,65 +99,301 @@ const brandColorScales = [
       { shade: "50", className: "bg-brand-info-50" },
     ],
   },
+  {
+    name: "Sky",
+    colors: [
+      { shade: "950", className: "bg-brand-sky-950" },
+      { shade: "900", className: "bg-brand-sky-900" },
+      { shade: "800", className: "bg-brand-sky-800" },
+      { shade: "700", className: "bg-brand-sky-700" },
+      { shade: "600", className: "bg-brand-sky-600" },
+      { shade: "500", className: "bg-brand-sky-500" },
+      { shade: "400", className: "bg-brand-sky-400" },
+      { shade: "300", className: "bg-brand-sky-300" },
+      { shade: "200", className: "bg-brand-sky-200" },
+      { shade: "100", className: "bg-brand-sky-100" },
+      { shade: "50", className: "bg-brand-sky-50" },
+    ],
+  },
+  {
+    name: "Teal",
+    colors: [
+      { shade: "950", className: "bg-brand-teal-950" },
+      { shade: "900", className: "bg-brand-teal-900" },
+      { shade: "800", className: "bg-brand-teal-800" },
+      { shade: "700", className: "bg-brand-teal-700" },
+      { shade: "600", className: "bg-brand-teal-600" },
+      { shade: "500", className: "bg-brand-teal-500" },
+      { shade: "400", className: "bg-brand-teal-400" },
+      { shade: "300", className: "bg-brand-teal-300" },
+      { shade: "200", className: "bg-brand-teal-200" },
+      { shade: "100", className: "bg-brand-teal-100" },
+      { shade: "50", className: "bg-brand-teal-50" },
+    ],
+  },
+  {
+    name: "Lime",
+    colors: [
+      { shade: "950", className: "bg-brand-lime-950" },
+      { shade: "900", className: "bg-brand-lime-900" },
+      { shade: "800", className: "bg-brand-lime-800" },
+      { shade: "700", className: "bg-brand-lime-700" },
+      { shade: "600", className: "bg-brand-lime-600" },
+      { shade: "500", className: "bg-brand-lime-500" },
+      { shade: "400", className: "bg-brand-lime-400" },
+      { shade: "300", className: "bg-brand-lime-300" },
+      { shade: "200", className: "bg-brand-lime-200" },
+      { shade: "100", className: "bg-brand-lime-100" },
+      { shade: "50", className: "bg-brand-lime-50" },
+    ],
+  },
+  {
+    name: "Yellow",
+    colors: [
+      { shade: "950", className: "bg-brand-yellow-950" },
+      { shade: "900", className: "bg-brand-yellow-900" },
+      { shade: "800", className: "bg-brand-yellow-800" },
+      { shade: "700", className: "bg-brand-yellow-700" },
+      { shade: "600", className: "bg-brand-yellow-600" },
+      { shade: "500", className: "bg-brand-yellow-500" },
+      { shade: "400", className: "bg-brand-yellow-400" },
+      { shade: "300", className: "bg-brand-yellow-300" },
+      { shade: "200", className: "bg-brand-yellow-200" },
+      { shade: "100", className: "bg-brand-yellow-100" },
+      { shade: "50", className: "bg-brand-yellow-50" },
+    ],
+  },
+  {
+    name: "Indigo",
+    colors: [
+      { shade: "950", className: "bg-brand-indigo-950" },
+      { shade: "900", className: "bg-brand-indigo-900" },
+      { shade: "800", className: "bg-brand-indigo-800" },
+      { shade: "700", className: "bg-brand-indigo-700" },
+      { shade: "600", className: "bg-brand-indigo-600" },
+      { shade: "500", className: "bg-brand-indigo-500" },
+      { shade: "400", className: "bg-brand-indigo-400" },
+      { shade: "300", className: "bg-brand-indigo-300" },
+      { shade: "200", className: "bg-brand-indigo-200" },
+      { shade: "100", className: "bg-brand-indigo-100" },
+      { shade: "50", className: "bg-brand-indigo-50" },
+    ],
+  },
+  {
+    name: "Purple",
+    colors: [
+      { shade: "950", className: "bg-brand-purple-950" },
+      { shade: "900", className: "bg-brand-purple-900" },
+      { shade: "800", className: "bg-brand-purple-800" },
+      { shade: "700", className: "bg-brand-purple-700" },
+      { shade: "600", className: "bg-brand-purple-600" },
+      { shade: "500", className: "bg-brand-purple-500" },
+      { shade: "400", className: "bg-brand-purple-400" },
+      { shade: "300", className: "bg-brand-purple-300" },
+      { shade: "200", className: "bg-brand-purple-200" },
+      { shade: "100", className: "bg-brand-purple-100" },
+      { shade: "50", className: "bg-brand-purple-50" },
+    ],
+  },
+  {
+    name: "Fuchsia",
+    colors: [
+      { shade: "950", className: "bg-brand-fuchsia-950" },
+      { shade: "900", className: "bg-brand-fuchsia-900" },
+      { shade: "800", className: "bg-brand-fuchsia-800" },
+      { shade: "700", className: "bg-brand-fuchsia-700" },
+      { shade: "600", className: "bg-brand-fuchsia-600" },
+      { shade: "500", className: "bg-brand-fuchsia-500" },
+      { shade: "400", className: "bg-brand-fuchsia-400" },
+      { shade: "300", className: "bg-brand-fuchsia-300" },
+      { shade: "200", className: "bg-brand-fuchsia-200" },
+      { shade: "100", className: "bg-brand-fuchsia-100" },
+      { shade: "50", className: "bg-brand-fuchsia-50" },
+    ],
+  },
+  {
+    name: "Pink",
+    colors: [
+      { shade: "950", className: "bg-brand-pink-950" },
+      { shade: "900", className: "bg-brand-pink-900" },
+      { shade: "800", className: "bg-brand-pink-800" },
+      { shade: "700", className: "bg-brand-pink-700" },
+      { shade: "600", className: "bg-brand-pink-600" },
+      { shade: "500", className: "bg-brand-pink-500" },
+      { shade: "400", className: "bg-brand-pink-400" },
+      { shade: "300", className: "bg-brand-pink-300" },
+      { shade: "200", className: "bg-brand-pink-200" },
+      { shade: "100", className: "bg-brand-pink-100" },
+      { shade: "50", className: "bg-brand-pink-50" },
+    ],
+  },
+  {
+    name: "Rose",
+    colors: [
+      { shade: "950", className: "bg-brand-rose-950" },
+      { shade: "900", className: "bg-brand-rose-900" },
+      { shade: "800", className: "bg-brand-rose-800" },
+      { shade: "700", className: "bg-brand-rose-700" },
+      { shade: "600", className: "bg-brand-rose-600" },
+      { shade: "500", className: "bg-brand-rose-500" },
+      { shade: "400", className: "bg-brand-rose-400" },
+      { shade: "300", className: "bg-brand-rose-300" },
+      { shade: "200", className: "bg-brand-rose-200" },
+      { shade: "100", className: "bg-brand-rose-100" },
+      { shade: "50", className: "bg-brand-rose-50" },
+    ],
+  },
 ];
 
 // ============================================================================
 // Alias Background Tokens
 // ============================================================================
 const backgroundTokens = [
+  // Primary backgrounds
   { name: "primary", className: "bg-primary", dark: false },
   { name: "primary-alt", className: "bg-primary-alt", dark: false },
   { name: "primary-inverse", className: "bg-primary-inverse", dark: true },
+  // Secondary backgrounds
   { name: "secondary", className: "bg-secondary", dark: false },
+  { name: "secondary-alt", className: "bg-secondary-alt", dark: false },
+  { name: "secondary-subtle", className: "bg-secondary-subtle", dark: false },
   { name: "secondary-inverse", className: "bg-secondary-inverse", dark: true },
+  // Tertiary & Quarterary
   { name: "tertiary", className: "bg-tertiary", dark: false },
   { name: "quarterary", className: "bg-quarterary", dark: false },
+  // Inactive
   { name: "inactive", className: "bg-inactive", dark: false },
+  { name: "inactive-subtle", className: "bg-inactive-subtle", dark: false },
+  // Special
+  { name: "always-light", className: "bg-always-light", dark: false },
+  { name: "always-dark", className: "bg-always-dark", dark: true },
+  { name: "on-overlay", className: "bg-on-overlay", dark: false },
+  { name: "overlay", className: "bg-overlay", dark: true },
+  // Brand
   { name: "brand", className: "bg-brand", dark: true },
   { name: "brand-hover", className: "bg-brand-hover", dark: true },
   { name: "brand-secondary", className: "bg-brand-secondary", dark: false },
   { name: "brand-tertiary", className: "bg-brand-tertiary", dark: false },
+  { name: "brand-tertiary-hover", className: "bg-brand-tertiary-hover", dark: false },
   { name: "brand-strong", className: "bg-brand-strong", dark: true },
+  // Status - Success
   { name: "success", className: "bg-success", dark: true },
+  { name: "success-secondary", className: "bg-success-secondary", dark: false },
+  { name: "success-tertiary", className: "bg-success-tertiary", dark: false },
+  // Status - Danger
   { name: "danger", className: "bg-danger", dark: true },
+  { name: "danger-secondary", className: "bg-danger-secondary", dark: false },
+  { name: "danger-tertiary", className: "bg-danger-tertiary", dark: false },
+  // Status - Warning
   { name: "warning", className: "bg-warning", dark: true },
+  { name: "warning-secondary", className: "bg-warning-secondary", dark: false },
+  { name: "warning-tertiary", className: "bg-warning-tertiary", dark: false },
+  // Status - Info
   { name: "info", className: "bg-info", dark: true },
+  { name: "info-secondary", className: "bg-info-secondary", dark: false },
+  { name: "info-tertiary", className: "bg-info-tertiary", dark: false },
 ];
 
 // ============================================================================
 // Alias Text Tokens
 // ============================================================================
 const textTokens = [
+  // Primary
   { name: "primary", className: "text-primary" },
   { name: "primary-inverse", className: "text-primary-inverse" },
+  // Secondary
   { name: "secondary", className: "text-secondary" },
+  { name: "secondary-hover", className: "text-secondary-hover" },
+  { name: "secondary-inverse", className: "text-secondary-inverse" },
+  // Tertiary
   { name: "tertiary", className: "text-tertiary" },
+  { name: "tertiary-hover", className: "text-tertiary-hover" },
+  // Inactive & Placeholder
   { name: "inactive", className: "text-inactive" },
+  { name: "inactive-subtle", className: "text-inactive-subtle" },
   { name: "placeholder", className: "text-placeholder" },
+  // On Color
+  { name: "on-color", className: "text-on-color" },
+  { name: "on-color-inverse", className: "text-on-color-inverse" },
+  // Brand
   { name: "brand", className: "text-brand" },
   { name: "brand-strong", className: "text-brand-strong" },
+  // Status
   { name: "success", className: "text-success" },
   { name: "success-strong", className: "text-success-strong" },
   { name: "danger", className: "text-danger" },
   { name: "danger-strong", className: "text-danger-strong" },
   { name: "error", className: "text-error" },
+  { name: "warning-strong", className: "text-warning-strong" },
   { name: "info", className: "text-info" },
+  { name: "info-strong", className: "text-info-strong" },
 ];
 
 // ============================================================================
 // Alias Border Tokens
 // ============================================================================
 const borderTokens = [
+  // Base
   { name: "default", className: "border-default" },
   { name: "secondary", className: "border-secondary" },
   { name: "strong", className: "border-strong" },
+  { name: "subtract", className: "border-subtract" },
+  // Inactive
   { name: "inactive", className: "border-inactive" },
+  { name: "inactive-subtle", className: "border-inactive-subtle" },
+  // Focused
+  { name: "focused", className: "border-focused" },
+  { name: "focused-danger", className: "border-focused-danger" },
+  // Brand
   { name: "brand", className: "border-brand" },
   { name: "brand-secondary", className: "border-brand-secondary" },
+  // Status
   { name: "success", className: "border-success" },
+  { name: "success-secondary", className: "border-success-secondary" },
   { name: "danger", className: "border-danger" },
+  { name: "danger-secondary", className: "border-danger-secondary" },
   { name: "warning", className: "border-warning" },
+  { name: "warning-secondary", className: "border-warning-secondary" },
   { name: "info", className: "border-info" },
+  { name: "info-subtle", className: "border-info-subtle" },
+];
+
+// ============================================================================
+// Alias Icon Tokens
+// ============================================================================
+const iconTokens = [
+  // Primary
+  { name: "primary", className: "text-icon-primary" },
+  { name: "primary-inverse", className: "text-icon-primary-inverse" },
+  // Secondary
+  { name: "secondary", className: "text-icon-secondary" },
+  { name: "secondary-hover", className: "text-icon-secondary-hover" },
+  { name: "secondary-inverse", className: "text-icon-secondary-inverse" },
+  // Tertiary
+  { name: "tertiary", className: "text-icon-tertiary" },
+  { name: "tertiary-hover", className: "text-icon-tertiary-hover" },
+  // Inactive
+  { name: "inactive", className: "text-icon-inactive" },
+  { name: "inactive-subtle", className: "text-icon-inactive-subtle" },
+  // On Color
+  { name: "on-color", className: "text-icon-on-color" },
+  { name: "on-color-inverse", className: "text-icon-on-color-inverse" },
+  // Brand
+  { name: "brand", className: "text-icon-brand" },
+  { name: "brand-secondary", className: "text-icon-brand-secondary" },
+  // Status
+  { name: "success", className: "text-icon-success" },
+  { name: "success-secondary", className: "text-icon-success-secondary" },
+  { name: "success-strong", className: "text-icon-success-strong" },
+  { name: "danger", className: "text-icon-danger" },
+  { name: "danger-secondary", className: "text-icon-danger-secondary" },
+  { name: "danger-strong", className: "text-icon-danger-strong" },
+  { name: "warning", className: "text-icon-warning" },
+  { name: "warning-secondary", className: "text-icon-warning-secondary" },
+  { name: "warning-strong", className: "text-icon-warning-strong" },
+  { name: "info", className: "text-icon-info" },
+  { name: "info-secondary", className: "text-icon-info-secondary" },
+  { name: "info-strong", className: "text-icon-info-strong" },
 ];
 
 // ============================================================================
@@ -316,12 +552,37 @@ export default function Home() {
         title="Border Tokens"
         description="Semantic border colors. Use border-{token} class."
       >
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-5">
           {borderTokens.map((token) => (
             <div
               key={token.name}
               className={`${token.className} flex h-16 items-center justify-center rounded-md border-2 bg-primary`}
             >
+              <span className="text-secondary text-xs font-mono">
+                {token.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Icon Tokens */}
+      <Section
+        title="Icon Tokens"
+        description="Icon colors. Use text-icon-{token} class with Lucide icons."
+      >
+        <div className="bg-secondary grid grid-cols-2 gap-4 rounded-lg p-6 md:grid-cols-4 lg:grid-cols-6">
+          {iconTokens.map((token) => (
+            <div key={token.name} className="flex items-center gap-2">
+              <svg
+                className={`${token.className} size-5`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+              >
+                <circle cx="12" cy="12" r="10" />
+              </svg>
               <span className="text-secondary text-xs font-mono">
                 {token.name}
               </span>

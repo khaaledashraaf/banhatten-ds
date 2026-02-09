@@ -2,10 +2,15 @@
   "name": "@banhatten/ui",
   "version": "0.0.0",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./lib/utils": "./src/lib/utils.ts"
   },
   "dependencies": {
-    "@banhatten/tokens": "*"
+    "@banhatten/tokens": "*",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.563.0",
+    "tailwind-merge": "^3.4.0"
   },
   "peerDependencies": {
     "react": "^19.0.0",
