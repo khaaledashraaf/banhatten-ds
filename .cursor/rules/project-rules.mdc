@@ -13,7 +13,7 @@ globs: "**/*.{ts,tsx,js,jsx,mdx,json}"
 - **Framework:** React 19+ (Server Components compatible)
 - **Language:** TypeScript (Strict mode)
 - **Styling:** Tailwind CSS v4 (Utility-first) + `class-variance-authority` (CVA)
-- **Icons:** `lucide-react`
+- **Icons:** Material Symbols (variable font via `material-symbols` npm package)
 - **Repo Structure:** Turborepo Monorepo
   - `apps/docs`: Documentation (Next.js)
   - `packages/ui`: Component Library

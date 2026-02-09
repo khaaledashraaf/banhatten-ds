@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { BadgeDocumentation } from "./components/badge-documentation";
 import { ButtonDocumentation } from "./components/button-documentation";
+import { IconDocumentation } from "./components/icon-documentation";
 import { TokensDocumentation } from "./components/tokens-documentation";
 
 // ============================================================================
@@ -11,7 +12,10 @@ import { TokensDocumentation } from "./components/tokens-documentation";
 const navigation = [
   {
     title: "Foundation",
-    items: [{ name: "Tokens", href: "tokens" }],
+    items: [
+      { name: "Tokens", href: "tokens" },
+      { name: "Icons", href: "icons" },
+    ],
   },
   {
     title: "Components",
@@ -77,6 +81,10 @@ export default function Home() {
       title: "Design Tokens",
       description: "Complete token documentation for colors, spacing, radius, and more.",
     },
+    icons: {
+      title: "Icons",
+      description: "Material Symbols variable font for scalable, customizable icons.",
+    },
     badge: {
       title: "Badge",
       description: "A small label component for highlighting status or metadata.",
@@ -106,6 +114,7 @@ export default function Home() {
 
           {/* Content */}
           {activeSection === "tokens" && <TokensDocumentation />}
+          {activeSection === "icons" && <IconDocumentation />}
           {activeSection === "badge" && <BadgeDocumentation />}
           {activeSection === "button" && <ButtonDocumentation />}
         </div>
