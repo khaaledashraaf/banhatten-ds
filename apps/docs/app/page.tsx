@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { BadgeDocumentation } from "./components/badge-documentation";
+import { ButtonDocumentation } from "./components/button-documentation";
 import { TokensDocumentation } from "./components/tokens-documentation";
 
 // ============================================================================
@@ -14,7 +15,10 @@ const navigation = [
   },
   {
     title: "Components",
-    items: [{ name: "Badge", href: "badge" }],
+    items: [
+      { name: "Badge", href: "badge" },
+      { name: "Button", href: "button" },
+    ],
   },
 ];
 
@@ -68,11 +72,22 @@ function Sidebar({
 export default function Home() {
   const [activeSection, setActiveSection] = useState("tokens");
 
-  const pageTitle = activeSection === "tokens" ? "Design Tokens" : "Badge";
-  const pageDescription =
-    activeSection === "tokens"
-      ? "Complete token documentation for colors, spacing, radius, and more."
-      : "A small label component for highlighting status or metadata.";
+  const pageMeta: Record<string, { title: string; description: string }> = {
+    tokens: {
+      title: "Design Tokens",
+      description: "Complete token documentation for colors, spacing, radius, and more.",
+    },
+    badge: {
+      title: "Badge",
+      description: "A small label component for highlighting status or metadata.",
+    },
+    button: {
+      title: "Button",
+      description: "Interactive element for triggering actions and navigation.",
+    },
+  };
+
+  const { title: pageTitle, description: pageDescription } = pageMeta[activeSection] || pageMeta.tokens;
 
   return (
     <div className="min-h-screen bg-primary">
@@ -92,6 +107,7 @@ export default function Home() {
           {/* Content */}
           {activeSection === "tokens" && <TokensDocumentation />}
           {activeSection === "badge" && <BadgeDocumentation />}
+          {activeSection === "button" && <ButtonDocumentation />}
         </div>
       </main>
     </div>
