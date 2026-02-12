@@ -5,6 +5,8 @@ import { BadgeDocumentation } from "./components/badge-documentation";
 import { ButtonDocumentation } from "./components/button-documentation";
 import { IconDocumentation } from "./components/icon-documentation";
 import { TokensDocumentation } from "./components/tokens-documentation";
+import { ImplementationPlayground } from "./components/implementation-playground";
+import { EcommerceLanding } from "./components/ecommerce-landing";
 
 // ============================================================================
 // Navigation Data
@@ -22,6 +24,13 @@ const navigation = [
     items: [
       { name: "Badge", href: "badge" },
       { name: "Button", href: "button" },
+    ],
+  },
+  {
+    title: "Examples",
+    items: [
+      { name: "Implementation Playground", href: "playground" },
+      { name: "E-commerce Landing", href: "ecommerce" },
     ],
   },
 ];
@@ -103,21 +112,27 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="md:pl-64">
-        <div className="px-6 py-10 md:px-12 lg:px-16">
-          {/* Header */}
-          <header className="border-default mb-12 border-b pb-8">
-            <h1 className="text-primary text-3xl font-bold tracking-tight md:text-4xl">
-              {pageTitle}
-            </h1>
-            <p className="text-secondary mt-2 text-base">{pageDescription}</p>
-          </header>
+        {activeSection === "playground" ? (
+          <ImplementationPlayground />
+        ) : activeSection === "ecommerce" ? (
+          <EcommerceLanding />
+        ) : (
+          <div className="px-6 py-10 md:px-12 lg:px-16">
+            {/* Header */}
+            <header className="border-default mb-12 border-b pb-8">
+              <h1 className="text-primary text-3xl font-bold tracking-tight md:text-4xl">
+                {pageTitle}
+              </h1>
+              <p className="text-secondary mt-2 text-base">{pageDescription}</p>
+            </header>
 
-          {/* Content */}
-          {activeSection === "tokens" && <TokensDocumentation />}
-          {activeSection === "icons" && <IconDocumentation />}
-          {activeSection === "badge" && <BadgeDocumentation />}
-          {activeSection === "button" && <ButtonDocumentation />}
-        </div>
+            {/* Content */}
+            {activeSection === "tokens" && <TokensDocumentation />}
+            {activeSection === "icons" && <IconDocumentation />}
+            {activeSection === "badge" && <BadgeDocumentation />}
+            {activeSection === "button" && <ButtonDocumentation />}
+          </div>
+        )}
       </main>
     </div>
   );
