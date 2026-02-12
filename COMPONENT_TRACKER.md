@@ -11,8 +11,8 @@
 - [ ] **Avatar** — includes Avatar + Avatar Group
 - [ ] **Alert**
 - [ ] **Accordion**
-- [x] **Badge** — `badge.tsx` · Variants: filled, light, outlined · Colors: brand, neutral, success, warning, danger, info · Sizes: sm, lg
-- [x] **Button** — `button.tsx` · Variants: primary, secondary, tertiary, danger, link, link-brand · Sizes: xs, md, lg, xl, 2xl
+- [x] **Badge** — `badge.tsx` · Variants: filled, light, outlined, with dot, with icon (left/right) · Colors: brand, neutral, success, warning, danger, info · Sizes: sm, lg
+- [x] **Button** — `button.tsx` · Variants: primary, secondary, tertiary, danger, link, link-brand · Sizes: xs, md, lg, xl, 2xl · Supports left/right icons
 - [ ] **Icon Button**
 - [ ] **Close Button**
 - [ ] **Social Buttons**
