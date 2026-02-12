@@ -29,6 +29,33 @@ export function ButtonDocumentation() {
         </div>
       </Section>
 
+      {/* Icons */}
+      <Section
+        title="Icons"
+        description="Buttons can render Material Symbols icons on the left, right, or both sides of the label. Spacing and icon sizes are aligned with the button size ramp."
+      >
+        <div className="flex flex-wrap items-center gap-4">
+          <Button leftIcon="chevron_left">Previous</Button>
+          <Button rightIcon="chevron_right">Next</Button>
+          <Button leftIcon="add" rightIcon="chevron_right" size="lg">
+            Add to cart
+          </Button>
+          <Button
+            leftIcon="favorite"
+            variant="secondary"
+            iconVariant="rounded"
+            iconFilled
+          >
+            Save
+          </Button>
+        </div>
+        <p className="text-tertiary mt-4 text-xs">
+          Icon props expect Material Symbols names (e.g. <code>chevron_right</code>,{" "}
+          <code>add</code>). Sizes map automatically from the button size to the icon size
+          (20px icons for XS–LG, 24px for XL–2XL).
+        </p>
+      </Section>
+
       {/* Sizes */}
       <Section
         title="Sizes"
@@ -90,7 +117,14 @@ export function ButtonDocumentation() {
 <Button variant="secondary">Secondary</Button>
 <Button variant="danger" size="lg">Delete</Button>
 <Button variant="link-brand">Learn more</Button>
-<Button disabled>Disabled</Button>`}</code>
+<Button disabled>Disabled</Button>
+
+// With icons
+<Button leftIcon="add">Create</Button>
+<Button rightIcon="arrow_forward">Continue</Button>
+<Button leftIcon="shopping_cart" rightIcon="chevron_right">
+  Checkout
+</Button>`}</code>
           </pre>
         </div>
       </Section>
@@ -123,6 +157,34 @@ export function ButtonDocumentation() {
               </tr>
               <tr className="border-b border-secondary">
                 <td className="py-3 pr-4 font-mono text-xs">disabled</td>
+                <td className="py-3 pr-4 font-mono text-xs">boolean</td>
+                <td className="py-3 pr-4 font-mono text-xs">false</td>
+              </tr>
+              <tr className="border-b border-secondary">
+                <td className="py-3 pr-4 font-mono text-xs">leftIcon</td>
+                <td className="py-3 pr-4 font-mono text-xs">
+                  string
+                  <span className="text-tertiary"> // Material Symbol name</span>
+                </td>
+                <td className="py-3 pr-4 font-mono text-xs">undefined</td>
+              </tr>
+              <tr className="border-b border-secondary">
+                <td className="py-3 pr-4 font-mono text-xs">rightIcon</td>
+                <td className="py-3 pr-4 font-mono text-xs">
+                  string
+                  <span className="text-tertiary"> // Material Symbol name</span>
+                </td>
+                <td className="py-3 pr-4 font-mono text-xs">undefined</td>
+              </tr>
+              <tr className="border-b border-secondary">
+                <td className="py-3 pr-4 font-mono text-xs">iconVariant</td>
+                <td className="py-3 pr-4 font-mono text-xs">
+                  &quot;outlined&quot; | &quot;rounded&quot; | &quot;sharp&quot;
+                </td>
+                <td className="py-3 pr-4 font-mono text-xs">&quot;outlined&quot;</td>
+              </tr>
+              <tr className="border-b border-secondary">
+                <td className="py-3 pr-4 font-mono text-xs">iconFilled</td>
                 <td className="py-3 pr-4 font-mono text-xs">boolean</td>
                 <td className="py-3 pr-4 font-mono text-xs">false</td>
               </tr>

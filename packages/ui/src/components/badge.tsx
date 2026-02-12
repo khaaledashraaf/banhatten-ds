@@ -1,9 +1,10 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
+import { Icon, type IconProps, type IconSize } from "./icon";
 
 const badgeVariants = cva(
-  "inline-flex items-center justify-center rounded-full font-medium shrink-0",
+  "inline-flex items-center justify-center rounded-full font-medium shrink-0 gap-1",
   {
     variants: {
       variant: {
@@ -129,18 +130,76 @@ const badgeVariants = cva(
   }
 );
 
+/** Maps badge size to appropriate icon size */
+const badgeSizeToIconSize: Record<
+  NonNullable<BadgeProps["size"]>,
+  IconSize
+> = {
+  sm: "xs",
+  lg: "sm",
+};
+
 export interface BadgeProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, "color">,
-    VariantProps<typeof badgeVariants> {}
+    VariantProps<typeof badgeVariants> {
+  /** Material Symbol name for left icon (e.g. "info", "check") */
+  leftIcon?: string;
+  /** Material Symbol name for right icon (e.g. "close", "chevron_right") */
+  rightIcon?: string;
+  /** Icon variant style. Default: "outlined" */
+  iconVariant?: IconProps["variant"];
+  /** Render filled variant of icons */
+  iconFilled?: boolean;
+}
 
 const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ className, variant, color, size, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      color,
+      size = "sm",
+      leftIcon,
+      rightIcon,
+      iconVariant,
+      iconFilled,
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    const iconSize = badgeSizeToIconSize[size ?? "sm"];
+
+    const leftIconElement = leftIcon ? (
+      <Icon
+        name={leftIcon}
+        size={iconSize}
+        variant={iconVariant}
+        filled={iconFilled}
+        aria-hidden
+      />
+    ) : null;
+
+    const rightIconElement = rightIcon ? (
+      <Icon
+        name={rightIcon}
+        size={iconSize}
+        variant={iconVariant}
+        filled={iconFilled}
+        aria-hidden
+      />
+    ) : null;
+
     return (
       <span
         ref={ref}
         className={cn(badgeVariants({ variant, color, size }), className)}
         {...props}
-      />
+      >
+        {leftIconElement}
+        {children}
+        {rightIconElement}
+      </span>
     );
   }
 );

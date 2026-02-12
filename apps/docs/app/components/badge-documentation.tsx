@@ -54,6 +54,39 @@ export function BadgeDocumentation() {
         </div>
       </Section>
 
+      {/* Icons */}
+      <Section
+        title="Icons"
+        description="Badges can render a Material Symbols icon either before or after the label. Spacing and icon sizes follow the badge size ramp."
+      >
+        <div className="flex flex-wrap items-center gap-3">
+          <Badge leftIcon="info" color="info">
+            Info
+          </Badge>
+          <Badge rightIcon="close" variant="light" color="neutral">
+            Dismiss
+          </Badge>
+          <Badge leftIcon="check_circle" variant="filled" color="success" size="lg">
+            Success
+          </Badge>
+          <Badge
+            rightIcon="arrow_forward"
+            variant="outlined"
+            color="brand"
+            size="lg"
+            iconVariant="rounded"
+            iconFilled
+          >
+            Learn more
+          </Badge>
+        </div>
+        <p className="text-tertiary mt-4 text-xs">
+          Icon props expect Material Symbols names (e.g. <code>info</code>, <code>close</code>).
+          Icons are decorative by default and sized at 12px for <code>sm</code> badges and 16px
+          for <code>lg</code> badges.
+        </p>
+      </Section>
+
       {/* Usage */}
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
@@ -62,7 +95,14 @@ export function BadgeDocumentation() {
 
 <Badge>Default</Badge>
 <Badge variant="filled" color="success">Completed</Badge>
-<Badge variant="outlined" color="danger" size="lg">Error</Badge>`}</code>
+<Badge variant="outlined" color="danger" size="lg">Error</Badge>
+
+// With icons
+<Badge leftIcon="info" color="info">Info</Badge>
+<Badge rightIcon="close" variant="light" color="neutral">Dismiss</Badge>
+<Badge leftIcon="check_circle" variant="filled" color="success" size="lg">
+  Success
+</Badge>`}</code>
           </pre>
         </div>
       </Section>
@@ -89,10 +129,38 @@ export function BadgeDocumentation() {
                 <td className="py-3 pr-4 font-mono text-xs">&quot;brand&quot; | &quot;neutral&quot; | &quot;success&quot; | &quot;warning&quot; | &quot;danger&quot; | &quot;info&quot;</td>
                 <td className="py-3 pr-4 font-mono text-xs">&quot;brand&quot;</td>
               </tr>
-              <tr>
+              <tr className="border-b border-secondary">
                 <td className="py-3 pr-4 font-mono text-xs">size</td>
                 <td className="py-3 pr-4 font-mono text-xs">&quot;sm&quot; | &quot;lg&quot;</td>
                 <td className="py-3 pr-4 font-mono text-xs">&quot;sm&quot;</td>
+              </tr>
+              <tr className="border-b border-secondary">
+                <td className="py-3 pr-4 font-mono text-xs">leftIcon</td>
+                <td className="py-3 pr-4 font-mono text-xs">
+                  string
+                  <span className="text-tertiary"> // Material Symbol name</span>
+                </td>
+                <td className="py-3 pr-4 font-mono text-xs">undefined</td>
+              </tr>
+              <tr className="border-b border-secondary">
+                <td className="py-3 pr-4 font-mono text-xs">rightIcon</td>
+                <td className="py-3 pr-4 font-mono text-xs">
+                  string
+                  <span className="text-tertiary"> // Material Symbol name</span>
+                </td>
+                <td className="py-3 pr-4 font-mono text-xs">undefined</td>
+              </tr>
+              <tr className="border-b border-secondary">
+                <td className="py-3 pr-4 font-mono text-xs">iconVariant</td>
+                <td className="py-3 pr-4 font-mono text-xs">
+                  &quot;outlined&quot; | &quot;rounded&quot; | &quot;sharp&quot;
+                </td>
+                <td className="py-3 pr-4 font-mono text-xs">&quot;outlined&quot;</td>
+              </tr>
+              <tr>
+                <td className="py-3 pr-4 font-mono text-xs">iconFilled</td>
+                <td className="py-3 pr-4 font-mono text-xs">boolean</td>
+                <td className="py-3 pr-4 font-mono text-xs">false</td>
               </tr>
             </tbody>
           </table>
