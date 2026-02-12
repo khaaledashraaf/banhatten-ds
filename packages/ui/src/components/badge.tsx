@@ -142,6 +142,8 @@ const badgeSizeToIconSize: Record<
 export interface BadgeProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, "color">,
     VariantProps<typeof badgeVariants> {
+  /** Render a small status dot before the badge content */
+  withDot?: boolean;
   /** Material Symbol name for left icon (e.g. "info", "check") */
   leftIcon?: string;
   /** Material Symbol name for right icon (e.g. "close", "chevron_right") */
@@ -159,6 +161,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       variant,
       color,
       size = "sm",
+      withDot,
       leftIcon,
       rightIcon,
       iconVariant,
@@ -169,6 +172,13 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     ref
   ) => {
     const iconSize = badgeSizeToIconSize[size ?? "sm"];
+
+    const dotElement = withDot ? (
+      <span
+        className="inline-block size-1.5 rounded-full bg-current"
+        aria-hidden="true"
+      />
+    ) : null;
 
     const leftIconElement = leftIcon ? (
       <Icon
@@ -196,6 +206,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         className={cn(badgeVariants({ variant, color, size }), className)}
         {...props}
       >
+        {dotElement}
         {leftIconElement}
         {children}
         {rightIconElement}

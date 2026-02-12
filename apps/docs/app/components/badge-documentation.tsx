@@ -87,6 +87,24 @@ export function BadgeDocumentation() {
         </p>
       </Section>
 
+      {/* Dot variant */}
+      <Section
+        title="Dot"
+        description="A compact status style that adds a small dot before the label, inheriting the badge color."
+      >
+        <div className="flex flex-wrap items-center gap-3">
+          <Badge withDot color="info">
+            Info
+          </Badge>
+          <Badge withDot variant="filled" color="success">
+            Live
+          </Badge>
+          <Badge withDot variant="outlined" color="danger" size="lg">
+            Error
+          </Badge>
+        </div>
+      </Section>
+
       {/* Usage */}
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
@@ -96,6 +114,10 @@ export function BadgeDocumentation() {
 <Badge>Default</Badge>
 <Badge variant="filled" color="success">Completed</Badge>
 <Badge variant="outlined" color="danger" size="lg">Error</Badge>
+
+// With dot
+<Badge withDot color="info">Info</Badge>
+<Badge withDot variant="filled" color="success">Live</Badge>
 
 // With icons
 <Badge leftIcon="info" color="info">Info</Badge>
@@ -133,6 +155,11 @@ export function BadgeDocumentation() {
                 <td className="py-3 pr-4 font-mono text-xs">size</td>
                 <td className="py-3 pr-4 font-mono text-xs">&quot;sm&quot; | &quot;lg&quot;</td>
                 <td className="py-3 pr-4 font-mono text-xs">&quot;sm&quot;</td>
+              </tr>
+              <tr className="border-b border-secondary">
+                <td className="py-3 pr-4 font-mono text-xs">withDot</td>
+                <td className="py-3 pr-4 font-mono text-xs">boolean</td>
+                <td className="py-3 pr-4 font-mono text-xs">false</td>
               </tr>
               <tr className="border-b border-secondary">
                 <td className="py-3 pr-4 font-mono text-xs">leftIcon</td>
