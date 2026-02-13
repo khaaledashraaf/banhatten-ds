@@ -385,6 +385,20 @@ const radiusTokens = [
 ];
 
 // ============================================================================
+// Shadow Tokens
+// ============================================================================
+const shadowTokens = [
+  { name: "xs", className: "shadow-xs" },
+  { name: "sm", className: "shadow-sm" },
+  { name: "md", className: "shadow-md" },
+  { name: "lg", className: "shadow-lg" },
+  { name: "xl", className: "shadow-xl" },
+  { name: "2xl", className: "shadow-2xl" },
+  { name: "flat", className: "shadow-flat" },
+  { name: "inner", className: "shadow-inner" },
+];
+
+// ============================================================================
 // Spacing Tokens
 // ============================================================================
 const spacingTokens = [
@@ -536,6 +550,29 @@ export function TokensDocumentation() {
                 {token.name}
               </span>
               <span className="text-tertiary text-xs">{token.value}</span>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Shadow Tokens */}
+      <Section
+        title="Shadow Tokens"
+        description="Use shadow-{token} class for elevation and depth."
+      >
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+          {shadowTokens.map((token) => (
+            <div key={token.name} className="flex flex-col items-center gap-3">
+              <div
+                className={`${token.className} bg-primary border-default flex h-24 w-full items-center justify-center rounded-md border`}
+              >
+                <span className="text-primary text-xs font-mono font-semibold">
+                  {token.name}
+                </span>
+              </div>
+              <span className="text-tertiary text-xs font-mono">
+                {token.className}
+              </span>
             </div>
           ))}
         </div>

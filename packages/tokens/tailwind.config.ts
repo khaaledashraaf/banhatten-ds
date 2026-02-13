@@ -71,6 +71,7 @@ const config: Config = {
       backgroundColor: categorized.backgroundColor,
       textColor: categorized.textColor,
       borderColor: categorized.borderColor,
+      boxShadow: tokens.shadow,
       borderRadius: tokens.radius,
       spacing: tokens.spacing,
     },
