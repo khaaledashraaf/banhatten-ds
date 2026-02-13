@@ -17,6 +17,7 @@ import { TokensDocumentation } from "./components/tokens-documentation";
 import { ImplementationPlayground } from "./components/implementation-playground";
 import { EcommerceLanding } from "./components/ecommerce-landing";
 import { DashboardExample } from "./components/dashboard-example";
+import { WorkspaceSettingsExample } from "./components/workspace-settings-example";
 
 // ============================================================================
 // Navigation Data
@@ -51,6 +52,7 @@ const navigation = [
       { name: "Implementation Playground", href: "playground" },
       { name: "E-commerce Landing", href: "ecommerce" },
       { name: "Dashboard", href: "dashboard" },
+      { name: "AI Workspace Settings", href: "workspace-settings" },
     ],
   },
 ];
@@ -174,6 +176,8 @@ export default function Home() {
           <EcommerceLanding />
         ) : activeSection === "dashboard" ? (
           <DashboardExample />
+        ) : activeSection === "workspace-settings" ? (
+          <WorkspaceSettingsExample />
         ) : (
           <div className="px-6 py-10 md:px-12 lg:px-16">
             {/* Header */}
