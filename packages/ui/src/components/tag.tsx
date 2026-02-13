@@ -4,7 +4,7 @@ import { cn } from "../lib/utils";
 import { Icon, type IconProps, type IconSize } from "./icon";
 
 const tagVariants = cva(
-  "inline-flex items-center justify-center rounded-sm font-medium shrink-0 gap-1 border transition-colors",
+  "inline-flex items-center justify-center rounded-sm font-regular shrink-0 gap-1 border transition-colors",
   {
     variants: {
       type: {
