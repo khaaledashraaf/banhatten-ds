@@ -11,6 +11,7 @@ import { TextAreaDocumentation } from "./components/textarea-documentation";
 import { CheckboxDocumentation } from "./components/checkbox-documentation";
 import { RadioDocumentation } from "./components/radio-documentation";
 import { TagDocumentation } from "./components/tag-documentation";
+import { ToggleDocumentation } from "./components/toggle-documentation";
 import { TokensDocumentation } from "./components/tokens-documentation";
 import { ImplementationPlayground } from "./components/implementation-playground";
 import { EcommerceLanding } from "./components/ecommerce-landing";
@@ -39,6 +40,7 @@ const navigation = [
       { name: "Checkbox", href: "checkbox" },
       { name: "Radio", href: "radio" },
       { name: "Tag", href: "tag" },
+      { name: "Toggle", href: "toggle" },
     ],
   },
   {
@@ -146,6 +148,10 @@ export default function Home() {
       title: "Tag",
       description: "Compact labels for categorizing, filtering, or marking items. Supports multiple types, states, sizes, and optional close button.",
     },
+    toggle: {
+      title: "Toggle",
+      description: "Switch component for toggling between on/off states. Supports two sizes, optional icons, and optional label with support text.",
+    },
   };
 
   const { title: pageTitle, description: pageDescription } = pageMeta[activeSection] || pageMeta.tokens;
@@ -184,6 +190,7 @@ export default function Home() {
             {activeSection === "checkbox" && <CheckboxDocumentation />}
             {activeSection === "radio" && <RadioDocumentation />}
             {activeSection === "tag" && <TagDocumentation />}
+            {activeSection === "toggle" && <ToggleDocumentation />}
           </div>
         )}
       </main>
