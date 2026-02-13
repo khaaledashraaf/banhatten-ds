@@ -56,6 +56,53 @@ export function ButtonDocumentation() {
         </p>
       </Section>
 
+      {/* Icon-Only Buttons */}
+      <Section
+        title="Icon-Only Buttons"
+        description="Square icon-only buttons are perfect for compact actions like close, menu, or more options. Use the `icon` prop to create icon-only buttons. All variants and sizes are supported."
+      >
+        <div className="space-y-6">
+          <div>
+            <p className="text-primary mb-3 text-sm font-medium">Variants</p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button icon="close" aria-label="Close" />
+              <Button icon="close" variant="secondary" aria-label="Close" />
+              <Button icon="more_vert" variant="tertiary" aria-label="More options" />
+              <Button icon="delete" variant="danger" aria-label="Delete" />
+            </div>
+          </div>
+          <div>
+            <p className="text-primary mb-3 text-sm font-medium">Sizes</p>
+            <div className="flex flex-wrap items-center gap-4">
+              {sizes.map((size) => (
+                <Button
+                  key={size}
+                  icon="settings"
+                  size={size}
+                  aria-label={`Settings ${size}`}
+                />
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="text-primary mb-3 text-sm font-medium">Common Use Cases</p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button icon="close" aria-label="Close dialog" />
+              <Button icon="menu" variant="tertiary" aria-label="Open menu" />
+              <Button icon="more_vert" variant="secondary" aria-label="More options" />
+              <Button icon="favorite" iconFilled aria-label="Add to favorites" />
+              <Button icon="search" variant="tertiary" aria-label="Search" />
+            </div>
+          </div>
+        </div>
+        <p className="text-tertiary mt-4 text-xs">
+          <strong>Accessibility:</strong> Icon-only buttons require an <code>aria-label</code> prop
+          to provide context for screen readers. Icon-only mode is automatically detected when using
+          the <code>icon</code> prop, or when only <code>leftIcon</code> or <code>rightIcon</code>{" "}
+          is provided without children.
+        </p>
+      </Section>
+
       {/* Sizes */}
       <Section
         title="Sizes"
@@ -124,7 +171,12 @@ export function ButtonDocumentation() {
 <Button rightIcon="arrow_forward">Continue</Button>
 <Button leftIcon="shopping_cart" rightIcon="chevron_right">
   Checkout
-</Button>`}</code>
+</Button>
+
+// Icon-only buttons
+<Button icon="close" aria-label="Close" />
+<Button icon="menu" variant="tertiary" aria-label="Menu" />
+<Button icon="more_vert" variant="secondary" size="lg" aria-label="More options" />`}</code>
           </pre>
         </div>
       </Section>
@@ -159,6 +211,14 @@ export function ButtonDocumentation() {
                 <td className="py-3 pr-4 font-mono text-xs">disabled</td>
                 <td className="py-3 pr-4 font-mono text-xs">boolean</td>
                 <td className="py-3 pr-4 font-mono text-xs">false</td>
+              </tr>
+              <tr className="border-b border-secondary">
+                <td className="py-3 pr-4 font-mono text-xs">icon</td>
+                <td className="py-3 pr-4 font-mono text-xs">
+                  string
+                  <span className="text-tertiary"> // Material Symbol name</span>
+                </td>
+                <td className="py-3 pr-4 font-mono text-xs">undefined</td>
               </tr>
               <tr className="border-b border-secondary">
                 <td className="py-3 pr-4 font-mono text-xs">leftIcon</td>
@@ -197,7 +257,9 @@ export function ButtonDocumentation() {
           </table>
         </div>
         <p className="text-tertiary mt-4 text-xs">
-          Button also accepts all standard HTML button attributes (onClick, type, etc.).
+          Button also accepts all standard HTML button attributes (onClick, type, etc.). When using
+          the <code>icon</code> prop for icon-only buttons, an <code>aria-label</code> is required
+          for accessibility.
         </p>
       </Section>
     </div>

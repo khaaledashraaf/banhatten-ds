@@ -12,8 +12,8 @@
 - [ ] **Alert**
 - [ ] **Accordion**
 - [x] **Badge** — `badge.tsx` · Variants: filled, light, outlined, with dot, with icon (left/right) · Colors: brand, neutral, success, warning, danger, info · Sizes: sm, lg
-- [x] **Button** — `button.tsx` · Variants: primary, secondary, tertiary, danger, link, link-brand · Sizes: xs, md, lg, xl, 2xl · Supports left/right icons
-- [ ] **Icon Button**
+- [x] **Button** — `button.tsx` · Variants: primary, secondary, tertiary, danger, link, link-brand · Sizes: xs, md, lg, xl, 2xl · Supports left/right icons · Icon-only mode via `icon` prop (square buttons, all sizes)
+- [x] **Icon Button** — Implemented via `Button` component with `icon` prop · Square icon-only buttons · Variants: primary, secondary, tertiary, danger · Sizes: xs, md, lg, xl, 2xl · Requires `aria-label` for accessibility
 - [ ] **Close Button**
 - [ ] **Social Buttons**
 - [ ] **Button Group**
@@ -84,4 +84,4 @@
 
 ### Progress
 
-**Built:** 7 / 57
+**Built:** 8 / 57

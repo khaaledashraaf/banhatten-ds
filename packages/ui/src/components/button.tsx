@@ -28,6 +28,10 @@ const buttonVariants = cva(
         xl: "h-12 px-2xl gap-1 text-base rounded-sm",
         "2xl": "h-14 px-2xl gap-2 text-base rounded-md",
       },
+      iconOnly: {
+        true: "",
+        false: "",
+      },
     },
     compoundVariants: [
       // Link variants don't need height/padding
@@ -39,10 +43,37 @@ const buttonVariants = cva(
         variant: "link-brand",
         className: "h-auto px-0 py-0 rounded-[6px]",
       },
+      // Icon-only variants: square buttons with no horizontal padding
+      {
+        iconOnly: true,
+        size: "xs",
+        className: "w-9 px-0",
+      },
+      {
+        iconOnly: true,
+        size: "md",
+        className: "w-10 px-0",
+      },
+      {
+        iconOnly: true,
+        size: "lg",
+        className: "w-11 px-0",
+      },
+      {
+        iconOnly: true,
+        size: "xl",
+        className: "w-12 px-0",
+      },
+      {
+        iconOnly: true,
+        size: "2xl",
+        className: "w-14 px-0",
+      },
     ],
     defaultVariants: {
       variant: "primary",
       size: "md",
+      iconOnly: false,
     },
   }
 );
@@ -62,6 +93,8 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   /** Render as child element instead of a `<button>`. Useful for Next.js `<Link>` or `<a>` tags. */
   asChild?: boolean;
+  /** Material Symbol name for icon-only button (e.g. "close", "more_vert"). When provided, renders a square icon-only button. Requires `aria-label` for accessibility. */
+  icon?: string;
   /** Material Symbol name for left icon (e.g. "arrow_back", "add") */
   leftIcon?: string;
   /** Material Symbol name for right icon (e.g. "arrow_forward", "chevron_right") */
@@ -79,6 +112,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant,
       size = "md",
       asChild = false,
+      icon,
       leftIcon,
       rightIcon,
       iconVariant,
@@ -91,7 +125,25 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : "button";
     const iconSize = buttonSizeToIconSize[size ?? "md"];
 
-    const leftIconElement = leftIcon ? (
+    // Determine if this is an icon-only button
+    // Icon-only mode: when `icon` prop is provided, or when only one icon (leftIcon XOR rightIcon) is provided without children
+    const hasChildren = children != null && children !== "";
+    const isIconOnly =
+      !!icon ||
+      ((!!leftIcon && !rightIcon && !hasChildren) ||
+        (!!rightIcon && !leftIcon && !hasChildren));
+
+    const iconElement = icon ? (
+      <Icon
+        name={icon}
+        size={iconSize}
+        variant={iconVariant}
+        filled={iconFilled}
+        aria-hidden
+      />
+    ) : null;
+
+    const leftIconElement = leftIcon && !icon ? (
       <Icon
         name={leftIcon}
         size={iconSize}
@@ -101,7 +153,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       />
     ) : null;
 
-    const rightIconElement = rightIcon ? (
+    const rightIconElement = rightIcon && !icon ? (
       <Icon
         name={rightIcon}
         size={iconSize}
@@ -114,9 +166,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         ref={ref}
-        className={cn(buttonVariants({ variant, size }), className)}
+        className={cn(
+          buttonVariants({ variant, size, iconOnly: isIconOnly }),
+          className
+        )}
         {...props}
       >
+        {iconElement}
         {leftIconElement}
         <Slottable>{children}</Slottable>
         {rightIconElement}
