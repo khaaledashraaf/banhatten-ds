@@ -4,6 +4,7 @@ export { Button, buttonVariants, type ButtonProps } from "./components/button";
 export { Divider, dividerVariants, type DividerProps } from "./components/divider";
 export { Icon, iconVariants, type IconProps, type IconSize } from "./components/icon";
 export { Input, inputVariants, type InputProps, type InputPreset } from "./components/input";
+export { TextArea, textareaVariants, type TextAreaProps } from "./components/textarea";
 export { Checkbox, type CheckboxProps } from "./components/checkbox";
 export { CheckboxCard, type CheckboxCardProps } from "./components/checkbox-card";
 export { Radio, type RadioProps } from "./components/radio";

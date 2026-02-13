@@ -22,7 +22,7 @@
 - [ ] **Menu**
 - [ ] **Dropdown Input**
 - [x] **Text Input** — `input.tsx` · Sizes: sm, md, lg · States: default, focused, error, disabled · Supports label, optional indicator, helperText with icon, errorMessage · Left/right icons (Material Symbols) · Character counter (maxLength) · Focus ring with Figma-matched inset border · Presets: user, email, password (with toggle), date, amount (clearable), description, search (clearable) · shadow-xs
-- [ ] **Text Area**
+- [x] **Text Area** — `textarea.tsx` · States: default, focused, error, disabled · Supports label, optional indicator with info icon, helperText with icon, errorMessage · Character counter (maxLength) · Focus ring with Figma-matched inset border · Multi-line text input with configurable rows · shadow-xs
 - [ ] **Pagination**
 - [ ] **Progress Bar**
 - [x] **Radio** — `radio.tsx` + `radio-card.tsx` · States: unchecked, checked, disabled, hover, focus · Radio with optional label + support text · RadioCard with optional icon, description, leading/trailing position
@@ -84,4 +84,4 @@
 
 ### Progress
 
-**Built:** 8 / 57
+**Built:** 9 / 57

@@ -6,6 +6,7 @@ import { ButtonDocumentation } from "./components/button-documentation";
 import { DividerDocumentation } from "./components/divider-documentation";
 import { IconDocumentation } from "./components/icon-documentation";
 import { InputDocumentation } from "./components/input-documentation";
+import { TextAreaDocumentation } from "./components/textarea-documentation";
 import { CheckboxDocumentation } from "./components/checkbox-documentation";
 import { RadioDocumentation } from "./components/radio-documentation";
 import { TagDocumentation } from "./components/tag-documentation";
@@ -31,6 +32,7 @@ const navigation = [
       { name: "Button", href: "button" },
       { name: "Divider", href: "divider" },
       { name: "Input", href: "input" },
+      { name: "Text Area", href: "textarea" },
       { name: "Checkbox", href: "checkbox" },
       { name: "Radio", href: "radio" },
       { name: "Tag", href: "tag" },
@@ -120,6 +122,10 @@ export default function Home() {
       title: "Input",
       description: "Text input component for collecting user-entered data with labels, validation, and icons.",
     },
+    textarea: {
+      title: "Text Area",
+      description: "Multi-line text input component for collecting longer user-entered data with labels, validation, and helper text.",
+    },
     checkbox: {
       title: "Checkbox",
       description: "Selection control for toggling options on/off, with label, support text, and card variants.",
@@ -163,6 +169,7 @@ export default function Home() {
             {activeSection === "button" && <ButtonDocumentation />}
             {activeSection === "divider" && <DividerDocumentation />}
             {activeSection === "input" && <InputDocumentation />}
+            {activeSection === "textarea" && <TextAreaDocumentation />}
             {activeSection === "checkbox" && <CheckboxDocumentation />}
             {activeSection === "radio" && <RadioDocumentation />}
             {activeSection === "tag" && <TagDocumentation />}
