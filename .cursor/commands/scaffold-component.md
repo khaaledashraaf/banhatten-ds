@@ -16,5 +16,8 @@ Description: Generates a React component from a Figma link using our architectur
     * **Icons**: Use `lucide-react` if icons are present.
 4.  **Verification**:
     * Ensure all colors use `token-based` classes (e.g., `bg-primary`), NEVER hex codes.
+    * Ensure component is exported from packages/ui/src/index.ts
+    * Ensure accessibility attributes are considered
+
 
 This command will be available in chat with /scaffold-component
