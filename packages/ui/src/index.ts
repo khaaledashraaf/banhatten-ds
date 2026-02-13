@@ -12,3 +12,12 @@ export { Radio, type RadioProps } from "./components/radio";
 export { RadioCard, type RadioCardProps } from "./components/radio-card";
 export { Tag, tagVariants, type TagProps } from "./components/tag";
 export { Toggle, toggleVariants, thumbVariants, type ToggleProps } from "./components/toggle";
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+  tooltipContentVariants,
+  type TooltipProps,
+  type TooltipContentProps,
+} from "./components/tooltip";

@@ -12,6 +12,7 @@ import { CheckboxDocumentation } from "./components/checkbox-documentation";
 import { RadioDocumentation } from "./components/radio-documentation";
 import { TagDocumentation } from "./components/tag-documentation";
 import { ToggleDocumentation } from "./components/toggle-documentation";
+import { TooltipDocumentation } from "./components/tooltip-documentation";
 import { TokensDocumentation } from "./components/tokens-documentation";
 import { ImplementationPlayground } from "./components/implementation-playground";
 import { EcommerceLanding } from "./components/ecommerce-landing";
@@ -41,6 +42,7 @@ const navigation = [
       { name: "Radio", href: "radio" },
       { name: "Tag", href: "tag" },
       { name: "Toggle", href: "toggle" },
+      { name: "Tooltip", href: "tooltip" },
     ],
   },
   {
@@ -152,6 +154,10 @@ export default function Home() {
       title: "Toggle",
       description: "Switch component for toggling between on/off states. Supports two sizes, optional icons, and optional label with support text.",
     },
+    tooltip: {
+      title: "Tooltip",
+      description: "Contextual information displayed on hover or focus. Supports two sizes (small single-line, large with title/subtitle), two visual styles (dark and light), and four placement directions (top, bottom, left, right).",
+    },
   };
 
   const { title: pageTitle, description: pageDescription } = pageMeta[activeSection] || pageMeta.tokens;
@@ -191,6 +197,7 @@ export default function Home() {
             {activeSection === "radio" && <RadioDocumentation />}
             {activeSection === "tag" && <TagDocumentation />}
             {activeSection === "toggle" && <ToggleDocumentation />}
+            {activeSection === "tooltip" && <TooltipDocumentation />}
           </div>
         )}
       </main>
