@@ -25,7 +25,7 @@
 - [ ] **Text Area**
 - [ ] **Pagination**
 - [ ] **Progress Bar**
-- [ ] **Radio**
+- [x] **Radio** — `radio.tsx` + `radio-card.tsx` · States: unchecked, checked, disabled, hover, focus · Radio with optional label + support text · RadioCard with optional icon, description, leading/trailing position
 - [ ] **Slider**
 - [ ] **Tag / Chip**
 - [ ] **Tooltip**
@@ -84,4 +84,4 @@
 
 ### Progress
 
-**Built:** 5 / 57
+**Built:** 6 / 57

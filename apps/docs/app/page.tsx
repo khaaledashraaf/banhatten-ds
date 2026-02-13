@@ -7,6 +7,7 @@ import { DividerDocumentation } from "./components/divider-documentation";
 import { IconDocumentation } from "./components/icon-documentation";
 import { InputDocumentation } from "./components/input-documentation";
 import { CheckboxDocumentation } from "./components/checkbox-documentation";
+import { RadioDocumentation } from "./components/radio-documentation";
 import { TokensDocumentation } from "./components/tokens-documentation";
 import { ImplementationPlayground } from "./components/implementation-playground";
 import { EcommerceLanding } from "./components/ecommerce-landing";
@@ -30,6 +31,7 @@ const navigation = [
       { name: "Divider", href: "divider" },
       { name: "Input", href: "input" },
       { name: "Checkbox", href: "checkbox" },
+      { name: "Radio", href: "radio" },
     ],
   },
   {
@@ -120,6 +122,10 @@ export default function Home() {
       title: "Checkbox",
       description: "Selection control for toggling options on/off, with label, support text, and card variants.",
     },
+    radio: {
+      title: "Radio",
+      description: "Selection control for choosing a single option from a group, with label, support text, and card variants.",
+    },
   };
 
   const { title: pageTitle, description: pageDescription } = pageMeta[activeSection] || pageMeta.tokens;
@@ -152,6 +158,7 @@ export default function Home() {
             {activeSection === "divider" && <DividerDocumentation />}
             {activeSection === "input" && <InputDocumentation />}
             {activeSection === "checkbox" && <CheckboxDocumentation />}
+            {activeSection === "radio" && <RadioDocumentation />}
           </div>
         )}
       </main>

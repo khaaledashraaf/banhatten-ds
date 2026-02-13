@@ -6,3 +6,5 @@ export { Icon, iconVariants, type IconProps, type IconSize } from "./components/
 export { Input, inputVariants, type InputProps, type InputPreset } from "./components/input";
 export { Checkbox, type CheckboxProps } from "./components/checkbox";
 export { CheckboxCard, type CheckboxCardProps } from "./components/checkbox-card";
+export { Radio, type RadioProps } from "./components/radio";
+export { RadioCard, type RadioCardProps } from "./components/radio-card";
