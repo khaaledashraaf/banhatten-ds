@@ -13,6 +13,7 @@ import { TagDocumentation } from "./components/tag-documentation";
 import { TokensDocumentation } from "./components/tokens-documentation";
 import { ImplementationPlayground } from "./components/implementation-playground";
 import { EcommerceLanding } from "./components/ecommerce-landing";
+import { DashboardExample } from "./components/dashboard-example";
 
 // ============================================================================
 // Navigation Data
@@ -43,6 +44,7 @@ const navigation = [
     items: [
       { name: "Implementation Playground", href: "playground" },
       { name: "E-commerce Landing", href: "ecommerce" },
+      { name: "Dashboard", href: "dashboard" },
     ],
   },
 ];
@@ -152,6 +154,8 @@ export default function Home() {
           <ImplementationPlayground />
         ) : activeSection === "ecommerce" ? (
           <EcommerceLanding />
+        ) : activeSection === "dashboard" ? (
+          <DashboardExample />
         ) : (
           <div className="px-6 py-10 md:px-12 lg:px-16">
             {/* Header */}

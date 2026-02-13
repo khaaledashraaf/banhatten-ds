@@ -1,6 +1,6 @@
 # Banhatten Design System — Component Tracker
 
-> Auto-generated from Figma file: **Banhaten design system - 2.5 (Copy)**
+> Auto-generated from Figma file: **Banhaten design system - 2.5**
 >
 > Use this checklist to track which components have been implemented in `packages/ui/src/components/`.
 
