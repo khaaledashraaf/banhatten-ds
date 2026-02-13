@@ -17,6 +17,6 @@ Description: Scans the Figma "Brand" and "Alias" frames to generate the tokens.j
     * If a match is found, the alias value MUST be a reference (e.g., `{brand.blue-500}`), NOT a hardcoded hex.
 5.  **Output**:
     * Generate/Overwrite `packages/tokens/src/tokens.json`.
-    * Format: `{ "brand": { ... }, "alias": { ... } }`.a
+    * Format: `{ "brand": { ... }, "alias": { ... }, "shadow": { ... }, "radius": { ... }, "spacing": { ... } }`.
 
 This command will be available in chat with /generate-tokens

@@ -1,25 +1,33 @@
 ---
-alwaysApply: false
----
----
 description: Logic for generating and managing Design Tokens
 globs: "packages/tokens/**"
 ---
 # Token Architecture Rules
 
-## Structure (3-Tier)
-1. **Brand Collection:** Raw hex values (e.g., `blue-500: #3b82f6`). No semantic meaning.
-2. **Alias Collection:** Semantic roles (e.g., `primary: {brand.blue-500}`).
-3. **Mapped Collection:** Component-specific tokens (e.g., `button-bg-primary`).
-   - *Must* include explicit `light` and `dark` modes.
+## Structure
+
+### 1. Brand Collection
+Raw hex values with semantic scale prefixes (e.g., `primary-500: #3b82f6`, `neutral-800: #1f242e`). No semantic meaning beyond the scale.
+
+### 2. Alias Collection
+Semantic roles that reference brand tokens (e.g., `bg-brand: {brand.primary-600}`, `text-primary: {brand.neutral-800}`).
+Component-specific tokens also live here, prefixed with `component-` (e.g., `component-button-brand-bg: {brand.primary-600}`).
+
+### 3. Foundation Collections
+Additional top-level keys for shared design values:
+- **shadow** — Box shadows (e.g., `xs`, `sm`, `md`, `lg`).
+- **radius** — Border radii (e.g., `sm: 8px`, `full: 9999px`).
+- **spacing** — Spacing scale in rem (e.g., `md: 0.75rem`, `lg: 1rem`).
 
 ## Output Format
 - Tokens must be stored in `packages/tokens/src/tokens.json`.
-- Naming convention: `kebab-case` (e.g., `text-primary-foreground`).
-- Do not use hardcoded hex values in the `mapped` layer; always reference an alias.
+- Top-level keys: `brand`, `alias`, `shadow`, `radius`, `spacing`.
+- Naming convention: `kebab-case` (e.g., `text-primary`, `bg-brand-hover`).
+- Do not use hardcoded hex values in the `alias` layer; always reference a brand token.
 
 ## Generation Logic
 - When reading Figma:
   1. Identify raw scales -> Brand.
-  2. Identify intent -> Alias.
-  3. Identify specific usage -> Mapped.
+  2. Identify intent/semantic roles -> Alias.
+  3. Identify component-specific usage -> Alias (with `component-` prefix).
+  4. Identify shadows, radii, and spacing -> Their respective collections.
