@@ -6,6 +6,7 @@ import { ButtonDocumentation } from "./components/button-documentation";
 import { DividerDocumentation } from "./components/divider-documentation";
 import { IconDocumentation } from "./components/icon-documentation";
 import { InputDocumentation } from "./components/input-documentation";
+import { CheckboxDocumentation } from "./components/checkbox-documentation";
 import { TokensDocumentation } from "./components/tokens-documentation";
 import { ImplementationPlayground } from "./components/implementation-playground";
 import { EcommerceLanding } from "./components/ecommerce-landing";
@@ -28,6 +29,7 @@ const navigation = [
       { name: "Button", href: "button" },
       { name: "Divider", href: "divider" },
       { name: "Input", href: "input" },
+      { name: "Checkbox", href: "checkbox" },
     ],
   },
   {
@@ -114,6 +116,10 @@ export default function Home() {
       title: "Input",
       description: "Text input component for collecting user-entered data with labels, validation, and icons.",
     },
+    checkbox: {
+      title: "Checkbox",
+      description: "Selection control for toggling options on/off, with label, support text, and card variants.",
+    },
   };
 
   const { title: pageTitle, description: pageDescription } = pageMeta[activeSection] || pageMeta.tokens;
@@ -145,6 +151,7 @@ export default function Home() {
             {activeSection === "button" && <ButtonDocumentation />}
             {activeSection === "divider" && <DividerDocumentation />}
             {activeSection === "input" && <InputDocumentation />}
+            {activeSection === "checkbox" && <CheckboxDocumentation />}
           </div>
         )}
       </main>

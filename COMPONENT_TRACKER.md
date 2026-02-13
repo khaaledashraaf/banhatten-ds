@@ -17,7 +17,7 @@
 - [ ] **Close Button**
 - [ ] **Social Buttons**
 - [ ] **Button Group**
-- [ ] **Checkbox**
+- [x] **Checkbox** — `checkbox.tsx` + `checkbox-card.tsx` · States: unchecked, checked, indeterminate, disabled, hover, focus · Checkbox with optional label + support text · CheckboxCard with optional icon, description, leading/trailing position
 - [x] **Divider** — `divider.tsx` · Orientation: horizontal, vertical · Variants: solid, dashed
 - [ ] **Menu**
 - [ ] **Dropdown Input**
@@ -84,4 +84,4 @@
 
 ### Progress
 
-**Built:** 4 / 57
+**Built:** 5 / 57
