@@ -18,7 +18,7 @@
 - [ ] **Social Buttons**
 - [ ] **Button Group**
 - [ ] **Checkbox**
-- [ ] **Divider**
+- [x] **Divider** — `divider.tsx` · Orientation: horizontal, vertical · Variants: solid, dashed
 - [ ] **Menu**
 - [ ] **Dropdown Input**
 - [ ] **Text Input**
@@ -84,4 +84,4 @@
 
 ### Progress
 
-**Built:** 2 / 57
+**Built:** 3 / 57

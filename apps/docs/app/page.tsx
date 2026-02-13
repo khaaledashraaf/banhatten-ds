@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { BadgeDocumentation } from "./components/badge-documentation";
 import { ButtonDocumentation } from "./components/button-documentation";
+import { DividerDocumentation } from "./components/divider-documentation";
 import { IconDocumentation } from "./components/icon-documentation";
 import { TokensDocumentation } from "./components/tokens-documentation";
 import { ImplementationPlayground } from "./components/implementation-playground";
@@ -24,6 +25,7 @@ const navigation = [
     items: [
       { name: "Badge", href: "badge" },
       { name: "Button", href: "button" },
+      { name: "Divider", href: "divider" },
     ],
   },
   {
@@ -102,6 +104,10 @@ export default function Home() {
       title: "Button",
       description: "Interactive element for triggering actions and navigation.",
     },
+    divider: {
+      title: "Divider",
+      description: "Visual separator for organizing content into distinct sections.",
+    },
   };
 
   const { title: pageTitle, description: pageDescription } = pageMeta[activeSection] || pageMeta.tokens;
@@ -131,6 +137,7 @@ export default function Home() {
             {activeSection === "icons" && <IconDocumentation />}
             {activeSection === "badge" && <BadgeDocumentation />}
             {activeSection === "button" && <ButtonDocumentation />}
+            {activeSection === "divider" && <DividerDocumentation />}
           </div>
         )}
       </main>
