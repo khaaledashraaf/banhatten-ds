@@ -1,3 +1,7 @@
+"use client";
+
+import * as React from "react";
+import { useState } from "react";
 import { Input } from "@banhatten/ui";
 import { Section } from "./section";
 
@@ -14,6 +18,14 @@ export function InputDocumentation() {
           different contexts and validation needs.
         </p>
       </div>
+
+      {/* Interactive Playground */}
+      <Section
+        title="Interactive Playground"
+        description="Customize the input component below by adjusting the controls. See how different combinations affect the input appearance and behavior."
+      >
+        <InteractiveInputPlayground />
+      </Section>
 
       {/* Basic Usage */}
       <Section
@@ -162,6 +174,37 @@ export function InputDocumentation() {
         </p>
       </Section>
 
+      {/* Presets */}
+      <Section
+        title="Presets"
+        description="Presets provide common input configurations with appropriate icons and behaviors. They automatically set icons, input types, and enable behaviors like password visibility toggle and clear functionality."
+      >
+        <div className="w-[320px] space-y-4">
+          <Input preset="user" label="User" placeholder="username" />
+          <Input preset="email" label="Email Address" placeholder="Your-email@email.com" />
+          <Input preset="password" label="Password" placeholder="Password" />
+          <Input preset="date" label="Date" placeholder="DD/MM/YYYY" />
+          <Input preset="amount" label="Amount" defaultValue="2,000" />
+          <Input preset="description" label="Description" placeholder="Enter description..." />
+          <Input preset="search" label="Search Input" placeholder="Search..." />
+        </div>
+        <p className="text-tertiary mt-4 text-xs">
+          Presets automatically configure icons and behaviors. You can override any preset property by providing explicit props. For example, <code>preset="email"</code> sets <code>leftIcon="email"</code> and <code>type="email"</code>, but you can override with <code>leftIcon="custom"</code> if needed.
+        </p>
+        <div className="bg-secondary rounded-lg mt-4 p-4">
+          <p className="text-primary mb-2 text-sm font-medium">Available Presets:</p>
+          <ul className="text-secondary space-y-1 text-sm list-disc list-inside">
+            <li><code className="text-primary">user</code> - Account circle icon</li>
+            <li><code className="text-primary">email</code> - Email icon with email input type</li>
+            <li><code className="text-primary">password</code> - Lock icon with password toggle (eye icon)</li>
+            <li><code className="text-primary">date</code> - Calendar icon with date input type</li>
+            <li><code className="text-primary">amount</code> - Dollar sign icon with clear button</li>
+            <li><code className="text-primary">description</code> - Description icon, optional label</li>
+            <li><code className="text-primary">search</code> - Search icon with clear button, optional label</li>
+          </ul>
+        </div>
+      </Section>
+
       {/* Character Count */}
       <Section
         title="Character Count"
@@ -296,6 +339,19 @@ export function InputDocumentation() {
   placeholder="Enter text"
   disabled
   leftIcon="lock"
+/>
+
+// Using presets
+<Input preset="email" label="Email" placeholder="your@email.com" />
+<Input preset="password" label="Password" placeholder="Enter password" />
+<Input preset="search" label="Search" placeholder="Search..." />
+
+// Presets can be overridden
+<Input 
+  preset="email" 
+  label="Email" 
+  leftIcon="mail" 
+  placeholder="your@email.com" 
 />`}</code>
           </pre>
         </div>
@@ -388,6 +444,13 @@ export function InputDocumentation() {
                 <td className="py-3 pr-4 font-mono text-xs">boolean</td>
                 <td className="py-3 pr-4 font-mono text-xs">false</td>
               </tr>
+              <tr className="border-b border-secondary">
+                <td className="py-3 pr-4 font-mono text-xs">preset</td>
+                <td className="py-3 pr-4 font-mono text-xs">
+                  &quot;user&quot; | &quot;email&quot; | &quot;password&quot; | &quot;date&quot; | &quot;amount&quot; | &quot;description&quot; | &quot;search&quot;
+                </td>
+                <td className="py-3 pr-4 font-mono text-xs">undefined</td>
+              </tr>
               <tr>
                 <td className="py-3 pr-4 font-mono text-xs">className</td>
                 <td className="py-3 pr-4 font-mono text-xs">string</td>
@@ -401,6 +464,151 @@ export function InputDocumentation() {
           value, onChange, etc.).
         </p>
       </Section>
+    </div>
+  );
+}
+
+function InteractiveInputPlayground() {
+  const [size, setSize] = useState<"sm" | "md" | "lg">("md");
+  const [state, setState] = useState<"placeholder" | "filled" | "focus" | "disabled">("placeholder");
+  const [hasLeftIcon, setHasLeftIcon] = useState(false);
+  const [hasRightIcon, setHasRightIcon] = useState(false);
+  const [hasHelperText, setHasHelperText] = useState(false);
+  const [hasOptional, setHasOptional] = useState(false);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    if (state === "focus" && inputRef.current) {
+      // Small delay to ensure the input is rendered
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+    }
+  }, [state]);
+
+  const inputProps = {
+    ref: inputRef,
+    label: "Email",
+    placeholder: "Enter your email",
+    size,
+    disabled: state === "disabled",
+    optional: hasOptional,
+    leftIcon: hasLeftIcon ? "email" : undefined,
+    rightIcon: hasRightIcon ? "visibility" : undefined,
+    helperText: hasHelperText ? "We'll never share your email with anyone else." : undefined,
+    helperTextIcon: hasHelperText ? "error" : undefined,
+    defaultValue: state === "filled" ? "user@example.com" : undefined,
+  };
+
+  return (
+    <div className="space-y-8">
+      {/* Preview */}
+      <div className="bg-secondary rounded-lg p-6">
+        <div className="w-full max-w-[400px]">
+          <Input {...inputProps} />
+        </div>
+      </div>
+
+      {/* Controls */}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* Size Selection */}
+        <div className="space-y-3">
+          <label className="text-primary block text-sm font-medium">Size</label>
+          <div className="flex gap-3">
+            {(["sm", "md", "lg"] as const).map((s) => (
+              <label key={s} className="flex cursor-pointer items-center gap-2">
+                <input
+                  type="radio"
+                  name="size"
+                  value={s}
+                  checked={size === s}
+                  onChange={(e) => setSize(e.target.value as "sm" | "md" | "lg")}
+                  className="h-4 w-4 cursor-pointer accent-brand"
+                />
+                <span className="text-secondary text-sm capitalize">{s}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* State Selection */}
+        <div className="space-y-3">
+          <label className="text-primary block text-sm font-medium">State</label>
+          <select
+            value={state}
+            onChange={(e) => {
+              setState(e.target.value as typeof state);
+            }}
+            className="bg-component-input-bg border-strong text-primary w-full rounded-sm border px-3 py-2 text-sm focus:border-brand focus:outline-none"
+          >
+            <option value="placeholder">Placeholder</option>
+            <option value="filled">Filled</option>
+            <option value="focus">Focus</option>
+            <option value="disabled">Disabled</option>
+          </select>
+        </div>
+
+        {/* Left Icon Toggle */}
+        <div className="space-y-3">
+          <label className="text-primary flex items-center gap-3 text-sm font-medium">
+            <input
+              type="checkbox"
+              checked={hasLeftIcon}
+              onChange={(e) => setHasLeftIcon(e.target.checked)}
+              className="h-4 w-4 cursor-pointer accent-brand"
+            />
+            <span>Left Icon</span>
+          </label>
+        </div>
+
+        {/* Right Icon Toggle */}
+        <div className="space-y-3">
+          <label className="text-primary flex items-center gap-3 text-sm font-medium">
+            <input
+              type="checkbox"
+              checked={hasRightIcon}
+              onChange={(e) => setHasRightIcon(e.target.checked)}
+              className="h-4 w-4 cursor-pointer accent-brand"
+            />
+            <span>Right Icon</span>
+          </label>
+        </div>
+
+        {/* Helper Text Toggle */}
+        <div className="space-y-3">
+          <label className="text-primary flex items-center gap-3 text-sm font-medium">
+            <input
+              type="checkbox"
+              checked={hasHelperText}
+              onChange={(e) => setHasHelperText(e.target.checked)}
+              className="h-4 w-4 cursor-pointer accent-brand"
+            />
+            <span>Helper Text</span>
+          </label>
+        </div>
+
+        {/* Optional Label Toggle */}
+        <div className="space-y-3">
+          <label className="text-primary flex items-center gap-3 text-sm font-medium">
+            <input
+              type="checkbox"
+              checked={hasOptional}
+              onChange={(e) => setHasOptional(e.target.checked)}
+              className="h-4 w-4 cursor-pointer accent-brand"
+            />
+            <span>Optional Label</span>
+          </label>
+        </div>
+      </div>
+
+      {/* Focus State Note */}
+      {state === "focus" && (
+        <div className="bg-secondary rounded-lg border border-default p-4">
+          <p className="text-secondary text-sm">
+            <strong className="text-primary">Note:</strong> The input above is automatically focused to demonstrate the focus state. Click elsewhere to blur it, or click on it again to refocus.
+          </p>
+        </div>
+      )}
     </div>
   );
 }
