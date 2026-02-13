@@ -8,6 +8,7 @@ import { IconDocumentation } from "./components/icon-documentation";
 import { InputDocumentation } from "./components/input-documentation";
 import { CheckboxDocumentation } from "./components/checkbox-documentation";
 import { RadioDocumentation } from "./components/radio-documentation";
+import { TagDocumentation } from "./components/tag-documentation";
 import { TokensDocumentation } from "./components/tokens-documentation";
 import { ImplementationPlayground } from "./components/implementation-playground";
 import { EcommerceLanding } from "./components/ecommerce-landing";
@@ -32,6 +33,7 @@ const navigation = [
       { name: "Input", href: "input" },
       { name: "Checkbox", href: "checkbox" },
       { name: "Radio", href: "radio" },
+      { name: "Tag", href: "tag" },
     ],
   },
   {
@@ -126,6 +128,10 @@ export default function Home() {
       title: "Radio",
       description: "Selection control for choosing a single option from a group, with label, support text, and card variants.",
     },
+    tag: {
+      title: "Tag",
+      description: "Compact labels for categorizing, filtering, or marking items. Supports multiple types, states, sizes, and optional close button.",
+    },
   };
 
   const { title: pageTitle, description: pageDescription } = pageMeta[activeSection] || pageMeta.tokens;
@@ -159,6 +165,7 @@ export default function Home() {
             {activeSection === "input" && <InputDocumentation />}
             {activeSection === "checkbox" && <CheckboxDocumentation />}
             {activeSection === "radio" && <RadioDocumentation />}
+            {activeSection === "tag" && <TagDocumentation />}
           </div>
         )}
       </main>

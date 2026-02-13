@@ -27,7 +27,7 @@
 - [ ] **Progress Bar**
 - [x] **Radio** — `radio.tsx` + `radio-card.tsx` · States: unchecked, checked, disabled, hover, focus · Radio with optional label + support text · RadioCard with optional icon, description, leading/trailing position
 - [ ] **Slider**
-- [ ] **Tag / Chip**
+- [x] **Tag / Chip** — `tag.tsx` · Types: simple, with-dot, with-icon (left only) · States: default, hover, focus, active, disabled · Sizes: small, large · Optional close button with onClose callback · Border radius: sm (8px) · Unified color system with bg-primary base
 - [ ] **Tooltip**
 - [ ] **Toggle**
 
@@ -84,4 +84,4 @@
 
 ### Progress
 
-**Built:** 6 / 57
+**Built:** 7 / 57

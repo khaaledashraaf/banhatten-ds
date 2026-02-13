@@ -8,3 +8,4 @@ export { Checkbox, type CheckboxProps } from "./components/checkbox";
 export { CheckboxCard, type CheckboxCardProps } from "./components/checkbox-card";
 export { Radio, type RadioProps } from "./components/radio";
 export { RadioCard, type RadioCardProps } from "./components/radio-card";
+export { Tag, tagVariants, type TagProps } from "./components/tag";
