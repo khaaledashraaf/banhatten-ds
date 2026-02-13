@@ -5,6 +5,7 @@ import { BadgeDocumentation } from "./components/badge-documentation";
 import { ButtonDocumentation } from "./components/button-documentation";
 import { DividerDocumentation } from "./components/divider-documentation";
 import { IconDocumentation } from "./components/icon-documentation";
+import { InputDocumentation } from "./components/input-documentation";
 import { TokensDocumentation } from "./components/tokens-documentation";
 import { ImplementationPlayground } from "./components/implementation-playground";
 import { EcommerceLanding } from "./components/ecommerce-landing";
@@ -26,6 +27,7 @@ const navigation = [
       { name: "Badge", href: "badge" },
       { name: "Button", href: "button" },
       { name: "Divider", href: "divider" },
+      { name: "Input", href: "input" },
     ],
   },
   {
@@ -108,6 +110,10 @@ export default function Home() {
       title: "Divider",
       description: "Visual separator for organizing content into distinct sections.",
     },
+    input: {
+      title: "Input",
+      description: "Text input component for collecting user-entered data with labels, validation, and icons.",
+    },
   };
 
   const { title: pageTitle, description: pageDescription } = pageMeta[activeSection] || pageMeta.tokens;
@@ -138,6 +144,7 @@ export default function Home() {
             {activeSection === "badge" && <BadgeDocumentation />}
             {activeSection === "button" && <ButtonDocumentation />}
             {activeSection === "divider" && <DividerDocumentation />}
+            {activeSection === "input" && <InputDocumentation />}
           </div>
         )}
       </main>

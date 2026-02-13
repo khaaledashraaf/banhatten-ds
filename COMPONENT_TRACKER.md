@@ -21,7 +21,7 @@
 - [x] **Divider** — `divider.tsx` · Orientation: horizontal, vertical · Variants: solid, dashed
 - [ ] **Menu**
 - [ ] **Dropdown Input**
-- [ ] **Text Input**
+- [x] **Text Input** — `input.tsx` · Sizes: sm, md, lg · States: default, focused, error, disabled · Supports label, optional indicator, helperText, errorMessage · Left/right icons (20px) · Character counter (maxLength) · Focus ring with Figma-matched inset border · shadow-xs
 - [ ] **Text Area**
 - [ ] **Pagination**
 - [ ] **Progress Bar**
@@ -84,4 +84,4 @@
 
 ### Progress
 
-**Built:** 3 / 57
+**Built:** 4 / 57
