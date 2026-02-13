@@ -1,4 +1,5 @@
 export { ColorPalette } from "./components/ColorPalette";
+export { Alert, alertVariants, type AlertProps, type AlertAction } from "./components/alert";
 export { Badge, badgeVariants, type BadgeProps } from "./components/badge";
 export { Button, buttonVariants, type ButtonProps } from "./components/button";
 export { Divider, dividerVariants, type DividerProps } from "./components/divider";

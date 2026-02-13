@@ -9,7 +9,7 @@
 ## Core Components
 
 - [ ] **Avatar** — includes Avatar + Avatar Group
-- [ ] **Alert**
+- [x] **Alert** — `alert.tsx` · Types: info, success, warning, danger, neutral · Emphasis: low, medium, moderate, high · Expand: false, true (adds description and action buttons) · Preset icons based on type · Optional close button with onClose callback · Action buttons shown when expand=true · Title promotes to font-medium when description is visible · High-emphasis neutral uses light bg with standard text colors (not on-color)
 - [ ] **Accordion**
 - [x] **Badge** — `badge.tsx` · Variants: filled, light, outlined, with dot, with icon (left/right) · Colors: brand, neutral, success, warning, danger, info · Sizes: sm, lg
 - [x] **Button** — `button.tsx` · Variants: primary, secondary, tertiary, danger, link, link-brand · Sizes: xs, md, lg, xl, 2xl · Supports left/right icons · Icon-only mode via `icon` prop (square buttons, all sizes)
@@ -84,4 +84,4 @@
 
 ### Progress
 
-**Built:** 9 / 57
+**Built:** 10 / 57

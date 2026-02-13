@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AlertDocumentation } from "./components/alert-documentation";
 import { BadgeDocumentation } from "./components/badge-documentation";
 import { ButtonDocumentation } from "./components/button-documentation";
 import { DividerDocumentation } from "./components/divider-documentation";
@@ -29,6 +30,7 @@ const navigation = [
   {
     title: "Components",
     items: [
+      { name: "Alert", href: "alert" },
       { name: "Badge", href: "badge" },
       { name: "Button", href: "button" },
       { name: "Divider", href: "divider" },
@@ -108,6 +110,10 @@ export default function Home() {
       title: "Icons",
       description: "Material Symbols variable font for scalable, customizable icons.",
     },
+    alert: {
+      title: "Alert",
+      description: "Contextual feedback messages with multiple types, emphasis levels, and expandable content.",
+    },
     badge: {
       title: "Badge",
       description: "A small label component for highlighting status or metadata.",
@@ -169,6 +175,7 @@ export default function Home() {
             {/* Content */}
             {activeSection === "tokens" && <TokensDocumentation />}
             {activeSection === "icons" && <IconDocumentation />}
+            {activeSection === "alert" && <AlertDocumentation />}
             {activeSection === "badge" && <BadgeDocumentation />}
             {activeSection === "button" && <ButtonDocumentation />}
             {activeSection === "divider" && <DividerDocumentation />}
