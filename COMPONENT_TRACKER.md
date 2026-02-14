@@ -18,7 +18,8 @@
 - [x] **Icon Button** — Implemented via `Button` component with `icon` prop · Square icon-only buttons · Variants: primary, secondary, tertiary, danger · Sizes: xs, md, lg, xl, 2xl · Requires `aria-label` for accessibility
 - [x] **Close Button** — `close-button.tsx` · Variants: ghost, outlined · Sizes: sm (24px), md (32px), lg (40px), xl (48px) · States: default, hover, pressed, disabled · rounded-full, token-only · Default aria-label="Close"; override for context (e.g. "Close alert", "Remove tag")
 - [ ] **Social Buttons**
-- [ ] **Button Group**
+- [x] **Button Group** — `button-group.tsx` · Horizontal container for ButtonGroupItem · rounded-sm, border border-strong, bg-primary · Injects position (first/middle/last/only) into children; items draw border-l border-strong (non-first) · role="group"; optional aria-label · Token-only · forwardRef, div root
+- [x] **Button Group Item** — `button-group-item.tsx` · Sizes: small, medium · Type: textAndIcon, textOnly, iconOnly · States: default, hover, selected (bg-brand-tertiary, text-brand, font-medium), disabled · position (first/middle/last/only) for rounding and left divider · leftIcon, rightIcon, icon (Material Symbols) · selected sets aria-current · No layout shift on select (invisible bold copy) · Token-only · forwardRef · Icon-only requires aria-label
 - [x] **Checkbox** — `checkbox.tsx` + `checkbox-card.tsx` · States: unchecked, checked, indeterminate, disabled, hover, focus · Checkbox with optional label + support text · CheckboxCard with optional icon, description, leading/trailing position
 - [x] **Divider** — `divider.tsx` · Orientation: horizontal, vertical · Variants: solid, dashed
 - [x] **Menu** — `menu.tsx` · Container for one or more MenuGroup · Inserts Divider (my-sm) between groups · Token-only: rounded-sm, bg-primary, py-md px-sm, shadow-sm · forwardRef, div root
@@ -89,4 +90,4 @@
 
 ### Progress
 
-**Built:** 23 / 59
+**Built:** 25 / 59

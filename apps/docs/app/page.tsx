@@ -9,6 +9,7 @@ import { AvatarGroupDocumentation } from "./components/avatar-group-documentatio
 import { AvatarProfileDocumentation } from "./components/avatar-profile-documentation";
 import { BadgeDocumentation } from "./components/badge-documentation";
 import { ButtonDocumentation } from "./components/button-documentation";
+import { ButtonGroupDocumentation } from "./components/button-group-documentation";
 import { CloseButtonDocumentation } from "./components/close-button-documentation";
 import { DividerDocumentation } from "./components/divider-documentation";
 import { FeaturedIconDocumentation } from "./components/featured-icon-documentation";
@@ -52,6 +53,7 @@ const navigation = [
       { name: "Avatar Profile", href: "avatar-profile" },
       { name: "Badge", href: "badge" },
       { name: "Button", href: "button" },
+      { name: "Button Group", href: "button-group" },
       { name: "Close Button", href: "close-button" },
       { name: "Divider", href: "divider" },
       { name: "Featured Icon", href: "featured-icon" },
@@ -167,6 +169,10 @@ export default function Home() {
       title: "Button",
       description: "Interactive element for triggering actions and navigation.",
     },
+    "button-group": {
+      title: "Button Group",
+      description: "Horizontal container that groups related Button Group Items with a shared border, rounded corners, and dividers between items. Use for view toggles, filters, or mutually exclusive choices.",
+    },
     "close-button": {
       title: "Close Button",
       description: "Dedicated dismiss control with close icon and default aria-label for alerts, modals, and tags.",
@@ -265,6 +271,7 @@ export default function Home() {
             {activeSection === "avatar-profile" && <AvatarProfileDocumentation />}
             {activeSection === "badge" && <BadgeDocumentation />}
             {activeSection === "button" && <ButtonDocumentation />}
+            {activeSection === "button-group" && <ButtonGroupDocumentation />}
             {activeSection === "close-button" && <CloseButtonDocumentation />}
             {activeSection === "divider" && <DividerDocumentation />}
             {activeSection === "featured-icon" && <FeaturedIconDocumentation />}

@@ -26,6 +26,16 @@ export {
 export { Badge, badgeVariants, type BadgeProps } from "./components/badge";
 export { Button, buttonVariants, type ButtonProps } from "./components/button";
 export {
+  ButtonGroupItem,
+  buttonGroupItemVariants,
+  type ButtonGroupItemProps,
+} from "./components/button-group-item";
+export {
+  ButtonGroup,
+  buttonGroupVariants,
+  type ButtonGroupProps,
+} from "./components/button-group";
+export {
   CloseButton,
   closeButtonVariants,
   type CloseButtonProps,
