@@ -70,24 +70,8 @@
 - [ ] **File Icon**
 - [ ] **Social Icon**
 
-## Landing Page Blocks
-
-- [ ] **Hero**
-- [ ] **Stats**
-- [ ] **Logos**
-- [ ] **Feature**
-- [ ] **Bento**
-- [ ] **Blog**
-- [ ] **CTA**
-- [ ] **Testimonial**
-- [ ] **Team**
-- [ ] **Pricing**
-- [ ] **Newsletter**
-- [ ] **FAQ**
-- [ ] **Footer**
-
 ---
 
 ### Progress
 
-**Built:** 25 / 59
+**Built:** 25 / 54
