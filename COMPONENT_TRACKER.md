@@ -8,7 +8,9 @@
 
 ## Core Components
 
-- [ ] **Avatar** — includes Avatar + Avatar Group
+- [x] **Avatar** — `avatar.tsx` · Shapes: circle, rounded · Sizes: xs, sm, md, lg, xl, 2xl, 3xl, 4xl · Types: initials (up to 2 chars), icon (person fallback) · Optional username + supportingText beside avatar (text-primary / text-secondary, gap-md) · Token-only · Optional aria-label for role="img" when meaningful
+- [x] **Avatar Group** — `avatar-group.tsx` · Stack of AvatarProfile (not Avatar) · Sizes: 24, 32, 40 px · lastOnTop (true/false) · moreAvatars: "+N" overflow (bg-tertiary, border-subtract) · addMore: dashed circle (border-dashed border-strong, bg-transparent, text-icon-tertiary), filled add Icon · avatars (initials/aria-label), maxVisible · Token-only · role="group", aria-label; Add button aria-label
+- [x] **Avatar Profile** — `avatar-profile.tsx` · Composes Avatar with border (border-subtract), shadow (shadow-sm), no padding between avatar and border · Shapes: circle, rounded · Sizes passed through to Avatar (xs–4xl) · Optional topRight and bottomRight badge slots (ReactNode) · Initials/icon only (no image) · Badge slots aria-hidden; pass aria-label to Avatar when meaningful
 - [x] **Alert** — `alert.tsx` · Types: info, success, warning, danger, neutral · Emphasis: low, medium, moderate, high · Expand: false, true (adds description and action buttons) · Preset icons based on type · Optional close button with onClose callback · Action buttons shown when expand=true · Title promotes to font-medium when description is visible · High-emphasis neutral uses light bg with standard text colors (not on-color)
 - [ ] **Accordion**
 - [x] **Badge** — `badge.tsx` · Variants: filled, light, outlined, with dot, with icon (left/right) · Colors: brand, neutral, success, warning, danger, info · Sizes: sm, lg
@@ -84,4 +86,4 @@
 
 ### Progress
 
-**Built:** 12 / 57
+**Built:** 15 / 59

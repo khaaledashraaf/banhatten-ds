@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { AlertDocumentation } from "./components/alert-documentation";
+import { AvatarDocumentation } from "./components/avatar-documentation";
+import { AvatarGroupDocumentation } from "./components/avatar-group-documentation";
+import { AvatarProfileDocumentation } from "./components/avatar-profile-documentation";
 import { BadgeDocumentation } from "./components/badge-documentation";
 import { ButtonDocumentation } from "./components/button-documentation";
 import { DividerDocumentation } from "./components/divider-documentation";
@@ -34,6 +37,9 @@ const navigation = [
     title: "Components",
     items: [
       { name: "Alert", href: "alert" },
+      { name: "Avatar", href: "avatar" },
+      { name: "Avatar Group", href: "avatar-group" },
+      { name: "Avatar Profile", href: "avatar-profile" },
       { name: "Badge", href: "badge" },
       { name: "Button", href: "button" },
       { name: "Divider", href: "divider" },
@@ -120,6 +126,18 @@ export default function Home() {
       title: "Alert",
       description: "Contextual feedback messages with multiple types, emphasis levels, and expandable content.",
     },
+    avatar: {
+      title: "Avatar",
+      description: "User representation with initials or a fallback person icon. Supports circle and rounded shapes and eight sizes.",
+    },
+    "avatar-group": {
+      title: "Avatar Group",
+      description: "Overlapping row of avatars with optional +N overflow indicator and Add More button. Sizes 24, 32, 40 px.",
+    },
+    "avatar-profile": {
+      title: "Avatar Profile",
+      description: "Avatar with border, shadow, and optional top-right and bottom-right badge slots for edit or status icons.",
+    },
     badge: {
       title: "Badge",
       description: "A small label component for highlighting status or metadata.",
@@ -192,6 +210,9 @@ export default function Home() {
             {activeSection === "tokens" && <TokensDocumentation />}
             {activeSection === "icons" && <IconDocumentation />}
             {activeSection === "alert" && <AlertDocumentation />}
+            {activeSection === "avatar" && <AvatarDocumentation />}
+            {activeSection === "avatar-group" && <AvatarGroupDocumentation />}
+            {activeSection === "avatar-profile" && <AvatarProfileDocumentation />}
             {activeSection === "badge" && <BadgeDocumentation />}
             {activeSection === "button" && <ButtonDocumentation />}
             {activeSection === "divider" && <DividerDocumentation />}

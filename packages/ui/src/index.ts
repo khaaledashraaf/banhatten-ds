@@ -1,5 +1,17 @@
 export { ColorPalette } from "./components/ColorPalette";
 export { Alert, alertVariants, type AlertProps, type AlertAction } from "./components/alert";
+export { Avatar, avatarVariants, type AvatarProps } from "./components/avatar";
+export {
+  AvatarGroup,
+  type AvatarGroupSize,
+  type AvatarGroupProps,
+  type AvatarGroupItem,
+} from "./components/avatar-group";
+export {
+  AvatarProfile,
+  avatarProfileVariants,
+  type AvatarProfileProps,
+} from "./components/avatar-profile";
 export { Badge, badgeVariants, type BadgeProps } from "./components/badge";
 export { Button, buttonVariants, type ButtonProps } from "./components/button";
 export { Divider, dividerVariants, type DividerProps } from "./components/divider";
