@@ -9,6 +9,7 @@ import { BadgeDocumentation } from "./components/badge-documentation";
 import { ButtonDocumentation } from "./components/button-documentation";
 import { CloseButtonDocumentation } from "./components/close-button-documentation";
 import { DividerDocumentation } from "./components/divider-documentation";
+import { ProgressBarDocumentation } from "./components/progress-bar-documentation";
 import { IconDocumentation } from "./components/icon-documentation";
 import { InputDocumentation } from "./components/input-documentation";
 import { TextAreaDocumentation } from "./components/textarea-documentation";
@@ -45,6 +46,7 @@ const navigation = [
       { name: "Button", href: "button" },
       { name: "Close Button", href: "close-button" },
       { name: "Divider", href: "divider" },
+      { name: "Progress Bar", href: "progress-bar" },
       { name: "Input", href: "input" },
       { name: "Text Area", href: "textarea" },
       { name: "Checkbox", href: "checkbox" },
@@ -156,6 +158,10 @@ export default function Home() {
       title: "Divider",
       description: "Visual separator for organizing content into distinct sections.",
     },
+    "progress-bar": {
+      title: "Progress Bar",
+      description: "Visual indicator of task or process completion. Sizes sm/lg, five colors, optional label, value, helper text, and refresh action. Supports indeterminate state.",
+    },
     input: {
       title: "Input",
       description: "Text input component for collecting user-entered data with labels, validation, and icons.",
@@ -223,6 +229,7 @@ export default function Home() {
             {activeSection === "button" && <ButtonDocumentation />}
             {activeSection === "close-button" && <CloseButtonDocumentation />}
             {activeSection === "divider" && <DividerDocumentation />}
+            {activeSection === "progress-bar" && <ProgressBarDocumentation />}
             {activeSection === "input" && <InputDocumentation />}
             {activeSection === "textarea" && <TextAreaDocumentation />}
             {activeSection === "checkbox" && <CheckboxDocumentation />}

@@ -20,6 +20,12 @@ export {
   type CloseButtonProps,
 } from "./components/close-button";
 export { Divider, dividerVariants, type DividerProps } from "./components/divider";
+export {
+  ProgressBar,
+  progressBarTrackVariants,
+  progressBarFillVariants,
+  type ProgressBarProps,
+} from "./components/progress-bar";
 export { Icon, iconVariants, type IconProps, type IconSize } from "./components/icon";
 export { Input, inputVariants, type InputProps, type InputPreset } from "./components/input";
 export { TextArea, textareaVariants, type TextAreaProps } from "./components/textarea";

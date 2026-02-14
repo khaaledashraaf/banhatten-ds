@@ -26,7 +26,7 @@
 - [x] **Text Input** — `input.tsx` · Sizes: sm, md, lg · States: default, focused, error, disabled · Supports label, optional indicator, helperText with icon, errorMessage · Left/right icons (Material Symbols) · Character counter (maxLength) · Focus ring with Figma-matched inset border · Presets: user, email, password (with toggle), date, amount (clearable), description, search (clearable) · shadow-xs
 - [x] **Text Area** — `textarea.tsx` · States: default, focused, error, disabled · Supports label, optional indicator with info icon, helperText with icon, errorMessage · Character counter (maxLength) · Focus ring with Figma-matched inset border · Multi-line text input with configurable rows · shadow-xs
 - [ ] **Pagination**
-- [ ] **Progress Bar**
+- [x] **Progress Bar** — `progress-bar.tsx` · Sizes: sm, lg · Colors: brand, success, danger, info, neutral · value 0–100 (omit for indeterminate) · Optional label, showLabelInfoIcon, helperText, showValue, onRefresh (value + refresh icon) · role="progressbar", aria-valuenow/valuemin/valuemax/valuetext · Token-only
 - [x] **Radio** — `radio.tsx` + `radio-card.tsx` · States: unchecked, checked, disabled, hover, focus · Radio with optional label + support text · RadioCard with optional icon, description, leading/trailing position
 - [ ] **Slider**
 - [x] **Tag / Chip** — `tag.tsx` · Types: simple, with-dot, with-icon (left only) · States: default, hover, focus, active, disabled · Sizes: small, large · Optional close button with onClose callback · Border radius: sm (8px) · Unified color system with bg-primary base
@@ -86,4 +86,4 @@
 
 ### Progress
 
-**Built:** 16 / 59
+**Built:** 17 / 59
