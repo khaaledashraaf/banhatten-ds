@@ -65,7 +65,7 @@
 
 ## Utility / Sub-components
 
-- [ ] **Featured Icon**
+- [x] **Featured Icon** — `featured-icon.tsx` · Variants: circle-light, square-light, circle-pulse (8px border), solid-circle, solid-square · Types: brand, success, danger, warning, neutral · Sizes: sm, md, lg (icon: sm→md, md→lg, lg→xl) · Material Symbol `name` prop, filled only via Icon · Optional `label` for accessibility (role="img", aria-label; else aria-hidden) · Token-only · forwardRef
 - [ ] **File Icon**
 - [ ] **Social Icon**
 
@@ -89,4 +89,4 @@
 
 ### Progress
 
-**Built:** 22 / 59
+**Built:** 23 / 59

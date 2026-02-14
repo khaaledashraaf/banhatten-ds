@@ -32,6 +32,11 @@ export {
 } from "./components/close-button";
 export { Divider, dividerVariants, type DividerProps } from "./components/divider";
 export {
+  FeaturedIcon,
+  featuredIconVariants,
+  type FeaturedIconProps,
+} from "./components/featured-icon";
+export {
   ProgressBar,
   progressBarTrackVariants,
   progressBarFillVariants,

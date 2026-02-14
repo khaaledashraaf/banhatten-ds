@@ -11,6 +11,7 @@ import { BadgeDocumentation } from "./components/badge-documentation";
 import { ButtonDocumentation } from "./components/button-documentation";
 import { CloseButtonDocumentation } from "./components/close-button-documentation";
 import { DividerDocumentation } from "./components/divider-documentation";
+import { FeaturedIconDocumentation } from "./components/featured-icon-documentation";
 import { ProgressBarDocumentation } from "./components/progress-bar-documentation";
 import { IconDocumentation } from "./components/icon-documentation";
 import { InputDocumentation } from "./components/input-documentation";
@@ -53,6 +54,7 @@ const navigation = [
       { name: "Button", href: "button" },
       { name: "Close Button", href: "close-button" },
       { name: "Divider", href: "divider" },
+      { name: "Featured Icon", href: "featured-icon" },
       { name: "Progress Bar", href: "progress-bar" },
       { name: "Input", href: "input" },
       { name: "Menu", href: "menu" },
@@ -173,6 +175,10 @@ export default function Home() {
       title: "Divider",
       description: "Visual separator for organizing content into distinct sections.",
     },
+    "featured-icon": {
+      title: "Featured Icon",
+      description: "Icon in a colored container for emphasis and hierarchy. Variants: circle light, square light, circle pulse, solid circle, solid square. Types: brand, success, danger, warning, info, neutral. Sizes: sm, md, lg. Material Symbol filled only.",
+    },
     "progress-bar": {
       title: "Progress Bar",
       description: "Visual indicator of task or process completion. Sizes sm/lg, five colors, optional label, value, helper text, and refresh action. Supports indeterminate state.",
@@ -261,6 +267,7 @@ export default function Home() {
             {activeSection === "button" && <ButtonDocumentation />}
             {activeSection === "close-button" && <CloseButtonDocumentation />}
             {activeSection === "divider" && <DividerDocumentation />}
+            {activeSection === "featured-icon" && <FeaturedIconDocumentation />}
             {activeSection === "progress-bar" && <ProgressBarDocumentation />}
             {activeSection === "input" && <InputDocumentation />}
             {activeSection === "menu" && <MenuDocumentation />}
