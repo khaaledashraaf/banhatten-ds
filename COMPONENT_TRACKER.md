@@ -21,7 +21,10 @@
 - [ ] **Button Group**
 - [x] **Checkbox** — `checkbox.tsx` + `checkbox-card.tsx` · States: unchecked, checked, indeterminate, disabled, hover, focus · Checkbox with optional label + support text · CheckboxCard with optional icon, description, leading/trailing position
 - [x] **Divider** — `divider.tsx` · Orientation: horizontal, vertical · Variants: solid, dashed
-- [ ] **Menu**
+- [x] **Menu** — `menu.tsx` · Container for one or more MenuGroup · Inserts Divider (my-sm) between groups · Token-only: rounded-sm, bg-primary, py-md px-sm, shadow-sm · forwardRef, div root
+- [x] **Menu Item** — `menu-item.tsx` · Types: default, multiline, callToAction, progress · States: default, hover, disabled, active (bg-brand-tertiary, text-brand, aria-current="page") · Slots: leftIcon, rightIcon, avatar, badge, switch (showSwitch/switchChecked/onSwitchChange), textRight, cta, progress (progressLabel/progressValue) · Token-only · forwardRef, button root, focus-visible ring, aria-disabled
+- [x] **Menu Heading** — `menu-heading.tsx` · Non-interactive section label for menu groups · px-md py-xs, text-sm font-medium text-tertiary · Token-only · forwardRef, div root
+- [x] **Menu Group** — `menu-group.tsx` · One optional MenuHeading (max), one or more MenuItem · Spacing: mb-sm between heading and items (token) · role="group", optional headingId for aria-labelledby · Token-only · forwardRef, div root
 - [ ] **Dropdown Input**
 - [x] **Text Input** — `input.tsx` · Sizes: sm, md, lg · States: default, focused, error, disabled · Supports label, optional indicator, helperText with icon, errorMessage · Left/right icons (Material Symbols) · Character counter (maxLength) · Focus ring with Figma-matched inset border · Presets: user, email, password (with toggle), date, amount (clearable), description, search (clearable) · shadow-xs
 - [x] **Text Area** — `textarea.tsx` · States: default, focused, error, disabled · Supports label, optional indicator with info icon, helperText with icon, errorMessage · Character counter (maxLength) · Focus ring with Figma-matched inset border · Multi-line text input with configurable rows · shadow-xs
@@ -86,4 +89,4 @@
 
 ### Progress
 
-**Built:** 17 / 59
+**Built:** 21 / 59

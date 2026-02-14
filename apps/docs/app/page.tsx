@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Menu, MenuGroup, MenuHeading, MenuItem } from "@banhatten/ui";
 import { AlertDocumentation } from "./components/alert-documentation";
 import { AvatarDocumentation } from "./components/avatar-documentation";
 import { AvatarGroupDocumentation } from "./components/avatar-group-documentation";
@@ -12,6 +13,10 @@ import { DividerDocumentation } from "./components/divider-documentation";
 import { ProgressBarDocumentation } from "./components/progress-bar-documentation";
 import { IconDocumentation } from "./components/icon-documentation";
 import { InputDocumentation } from "./components/input-documentation";
+import { MenuDocumentation } from "./components/menu-documentation";
+import { MenuItemDocumentation } from "./components/menu-item-documentation";
+import { MenuHeadingDocumentation } from "./components/menu-heading-documentation";
+import { MenuGroupDocumentation } from "./components/menu-group-documentation";
 import { TextAreaDocumentation } from "./components/textarea-documentation";
 import { CheckboxDocumentation } from "./components/checkbox-documentation";
 import { RadioDocumentation } from "./components/radio-documentation";
@@ -48,6 +53,10 @@ const navigation = [
       { name: "Divider", href: "divider" },
       { name: "Progress Bar", href: "progress-bar" },
       { name: "Input", href: "input" },
+      { name: "Menu", href: "menu" },
+      { name: "Menu Item", href: "menu-item" },
+      { name: "Menu Heading", href: "menu-heading" },
+      { name: "Menu Group", href: "menu-group" },
       { name: "Text Area", href: "textarea" },
       { name: "Checkbox", href: "checkbox" },
       { name: "Radio", href: "radio" },
@@ -79,33 +88,33 @@ function Sidebar({
 }) {
   return (
     <aside className="fixed left-0 top-0 z-30 hidden h-screen w-64 border-r border-default bg-primary md:block">
-      <div className="flex h-14 items-center border-b border-default px-6">
+      <div className="flex h-14 items-center border-b border-default px-4">
         <span className="text-primary font-semibold">Banhatten DS</span>
       </div>
-      <nav className="h-[calc(100vh-3.5rem)] overflow-y-auto p-4">
-        {navigation.map((group) => (
-          <div key={group.title} className="mb-6">
-            <h4 className="mb-2 px-2 text-xs font-semibold uppercase tracking-wider text-tertiary">
-              {group.title}
-            </h4>
-            <ul className="space-y-1">
+      <nav className="h-[calc(100vh-3.5rem)] overflow-y-auto" aria-label="Documentation">
+        <Menu className="rounded-none border-0 bg-transparent p-0 shadow-none">
+          {navigation.map((group, groupIndex) => (
+            <MenuGroup
+              key={group.title}
+              heading={
+                <MenuHeading>
+                  {group.title}
+                </MenuHeading>
+              }
+              headingId={`sidebar-nav-${groupIndex}`}
+            >
               {group.items.map((item) => (
-                <li key={item.href}>
-                  <button
-                    onClick={() => onNavigate(item.href)}
-                    className={`w-full rounded-md px-2 py-1.5 text-left text-sm transition-colors ${
-                      activeSection === item.href
-                        ? "bg-brand-tertiary text-brand font-medium"
-                        : "text-secondary hover:bg-secondary hover:text-primary"
-                    }`}
-                  >
-                    {item.name}
-                  </button>
-                </li>
+                <MenuItem
+                  key={item.href}
+                  active={activeSection === item.href}
+                  onClick={() => onNavigate(item.href)}
+                >
+                  {item.name}
+                </MenuItem>
               ))}
-            </ul>
-          </div>
-        ))}
+            </MenuGroup>
+          ))}
+        </Menu>
       </nav>
     </aside>
   );
@@ -165,6 +174,22 @@ export default function Home() {
     input: {
       title: "Input",
       description: "Text input component for collecting user-entered data with labels, validation, and icons.",
+    },
+    menu: {
+      title: "Menu",
+      description: "Top-level container for one or more Menu Groups. Token-only panel (rounded-sm, bg-primary, py-md, shadow-sm). Inserts Divider between groups.",
+    },
+    "menu-item": {
+      title: "Menu Item",
+      description: "Base row for building menus. Types: default, multiline, callToAction, progress. Optional slots: icon left/right, avatar, badge, switch, text right, CTA button. Token-only.",
+    },
+    "menu-heading": {
+      title: "Menu Heading",
+      description: "Non-interactive section label for menu groups. Token-only styling (px-md py-xs, text-sm font-medium text-tertiary). Use with aria-labelledby for accessibility.",
+    },
+    "menu-group": {
+      title: "Menu Group",
+      description: "Groups one optional Menu Heading and one or more Menu Items. Token spacing (mb-sm) between heading and items. role=\"group\", optional headingId for aria-labelledby.",
     },
     textarea: {
       title: "Text Area",
@@ -231,6 +256,10 @@ export default function Home() {
             {activeSection === "divider" && <DividerDocumentation />}
             {activeSection === "progress-bar" && <ProgressBarDocumentation />}
             {activeSection === "input" && <InputDocumentation />}
+            {activeSection === "menu" && <MenuDocumentation />}
+            {activeSection === "menu-item" && <MenuItemDocumentation />}
+            {activeSection === "menu-heading" && <MenuHeadingDocumentation />}
+            {activeSection === "menu-group" && <MenuGroupDocumentation />}
             {activeSection === "textarea" && <TextAreaDocumentation />}
             {activeSection === "checkbox" && <CheckboxDocumentation />}
             {activeSection === "radio" && <RadioDocumentation />}

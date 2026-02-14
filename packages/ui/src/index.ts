@@ -27,6 +27,23 @@ export {
   type ProgressBarProps,
 } from "./components/progress-bar";
 export { Icon, iconVariants, type IconProps, type IconSize } from "./components/icon";
+export {
+  MenuItem,
+  menuItemVariants,
+  type MenuItemProps,
+  type MenuItemType,
+} from "./components/menu-item";
+export {
+  MenuHeading,
+  menuHeadingVariants,
+  type MenuHeadingProps,
+} from "./components/menu-heading";
+export {
+  MenuGroup,
+  menuGroupVariants,
+  type MenuGroupProps,
+} from "./components/menu-group";
+export { Menu, menuVariants, type MenuProps } from "./components/menu";
 export { Input, inputVariants, type InputProps, type InputPreset } from "./components/input";
 export { TextArea, textareaVariants, type TextAreaProps } from "./components/textarea";
 export { Checkbox, type CheckboxProps } from "./components/checkbox";
