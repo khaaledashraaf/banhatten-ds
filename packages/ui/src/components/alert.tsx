@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 import { Icon, type IconProps } from "./icon";
 import { Button } from "./button";
+import { CloseButton } from "./close-button";
 
 // ---------------------------------------------------------------------------
 // Variants
@@ -216,21 +217,14 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
               )}
             </div>
 
-            {/* Close button — intentionally does NOT inherit iconVariant/iconFilled */}
             {onClose && (
-              <button
-                type="button"
+              <CloseButton
+                variant="ghost"
+                size="sm"
                 onClick={onClose}
-                className={cn(
-                  "inline-flex items-center justify-center shrink-0 p-0.5 rounded-xs transition-colors",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-1",
-                  "cursor-pointer",
-                  closeButtonColor
-                )}
                 aria-label="Close alert"
-              >
-                <Icon name="close" size={iconSize} aria-hidden />
-              </button>
+                className={closeButtonColor}
+              />
             )}
           </div>
 

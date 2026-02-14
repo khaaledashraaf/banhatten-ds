@@ -7,6 +7,7 @@ import { AvatarGroupDocumentation } from "./components/avatar-group-documentatio
 import { AvatarProfileDocumentation } from "./components/avatar-profile-documentation";
 import { BadgeDocumentation } from "./components/badge-documentation";
 import { ButtonDocumentation } from "./components/button-documentation";
+import { CloseButtonDocumentation } from "./components/close-button-documentation";
 import { DividerDocumentation } from "./components/divider-documentation";
 import { IconDocumentation } from "./components/icon-documentation";
 import { InputDocumentation } from "./components/input-documentation";
@@ -42,6 +43,7 @@ const navigation = [
       { name: "Avatar Profile", href: "avatar-profile" },
       { name: "Badge", href: "badge" },
       { name: "Button", href: "button" },
+      { name: "Close Button", href: "close-button" },
       { name: "Divider", href: "divider" },
       { name: "Input", href: "input" },
       { name: "Text Area", href: "textarea" },
@@ -146,6 +148,10 @@ export default function Home() {
       title: "Button",
       description: "Interactive element for triggering actions and navigation.",
     },
+    "close-button": {
+      title: "Close Button",
+      description: "Dedicated dismiss control with close icon and default aria-label for alerts, modals, and tags.",
+    },
     divider: {
       title: "Divider",
       description: "Visual separator for organizing content into distinct sections.",
@@ -215,6 +221,7 @@ export default function Home() {
             {activeSection === "avatar-profile" && <AvatarProfileDocumentation />}
             {activeSection === "badge" && <BadgeDocumentation />}
             {activeSection === "button" && <ButtonDocumentation />}
+            {activeSection === "close-button" && <CloseButtonDocumentation />}
             {activeSection === "divider" && <DividerDocumentation />}
             {activeSection === "input" && <InputDocumentation />}
             {activeSection === "textarea" && <TextAreaDocumentation />}

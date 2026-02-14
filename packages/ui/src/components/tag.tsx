@@ -1,6 +1,7 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
+import { CloseButton } from "./close-button";
 import { Icon, type IconProps, type IconSize } from "./icon";
 
 const tagVariants = cva(
@@ -136,28 +137,16 @@ const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
     );
 
     const closeButtonElement = close ? (
-      <button
-        type="button"
+      <CloseButton
+        variant="ghost"
+        size="sm"
         onClick={handleCloseClick}
         disabled={isDisabled}
-        className={cn(
-          "inline-flex items-center justify-center shrink-0 p-0.5 rounded-xs transition-colors",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-1",
-          isDisabled
-            ? "cursor-not-allowed opacity-50"
-            : "cursor-pointer hover:bg-quarterary active:bg-tertiary",
-          iconColor
-        )}
         aria-label="Remove tag"
-      >
-        <Icon
-          name="close"
-          size={iconSize}
-          variant={iconVariant}
-          filled={iconFilled}
-          aria-hidden
-        />
-      </button>
+        className={iconColor}
+        iconVariant={iconVariant}
+        iconFilled={iconFilled}
+      />
     ) : null;
 
     return (

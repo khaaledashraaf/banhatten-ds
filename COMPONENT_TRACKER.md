@@ -16,7 +16,7 @@
 - [x] **Badge** — `badge.tsx` · Variants: filled, light, outlined, with dot, with icon (left/right) · Colors: brand, neutral, success, warning, danger, info · Sizes: sm, lg
 - [x] **Button** — `button.tsx` · Variants: primary, secondary, tertiary, danger, link, link-brand · Sizes: xs, md, lg, xl, 2xl · Supports left/right icons · Icon-only mode via `icon` prop (square buttons, all sizes)
 - [x] **Icon Button** — Implemented via `Button` component with `icon` prop · Square icon-only buttons · Variants: primary, secondary, tertiary, danger · Sizes: xs, md, lg, xl, 2xl · Requires `aria-label` for accessibility
-- [ ] **Close Button**
+- [x] **Close Button** — `close-button.tsx` · Variants: ghost, outlined · Sizes: sm (24px), md (32px), lg (40px), xl (48px) · States: default, hover, pressed, disabled · rounded-full, token-only · Default aria-label="Close"; override for context (e.g. "Close alert", "Remove tag")
 - [ ] **Social Buttons**
 - [ ] **Button Group**
 - [x] **Checkbox** — `checkbox.tsx` + `checkbox-card.tsx` · States: unchecked, checked, indeterminate, disabled, hover, focus · Checkbox with optional label + support text · CheckboxCard with optional icon, description, leading/trailing position
@@ -86,4 +86,4 @@
 
 ### Progress
 
-**Built:** 15 / 59
+**Built:** 16 / 59
