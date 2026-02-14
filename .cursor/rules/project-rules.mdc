@@ -21,6 +21,7 @@ alwaysApply: true
 - **Exports:** Named exports only (e.g., `export { Button, buttonVariants }`).
 - **Utils:** Use a `cn(...)` utility for class merging (Tailwind Merge + CLSX).
 - **Accessibility:** Mandatory. All interactive elements must have proper ARIA attributes.
+- Ignore any RTL variants, if any, in figma links shared.
 
 ## Tone
 - Concise, technical, and action-oriented.
