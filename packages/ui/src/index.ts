@@ -1,4 +1,15 @@
 export { ColorPalette } from "./components/ColorPalette";
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  accordionTriggerVariants,
+  type AccordionProps,
+  type AccordionItemProps,
+  type AccordionTriggerProps,
+  type AccordionContentProps,
+} from "./components/accordion";
 export { Alert, alertVariants, type AlertProps, type AlertAction } from "./components/alert";
 export { Avatar, avatarVariants, type AvatarProps } from "./components/avatar";
 export {

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Menu, MenuGroup, MenuHeading, MenuItem } from "@banhatten/ui";
+import { AccordionDocumentation } from "./components/accordion-documentation";
 import { AlertDocumentation } from "./components/alert-documentation";
 import { AvatarDocumentation } from "./components/avatar-documentation";
 import { AvatarGroupDocumentation } from "./components/avatar-group-documentation";
@@ -44,6 +45,7 @@ const navigation = [
     title: "Components",
     items: [
       { name: "Alert", href: "alert" },
+      { name: "Accordion", href: "accordion" },
       { name: "Avatar", href: "avatar" },
       { name: "Avatar Group", href: "avatar-group" },
       { name: "Avatar Profile", href: "avatar-profile" },
@@ -134,6 +136,10 @@ export default function Home() {
     icons: {
       title: "Icons",
       description: "Material Symbols variable font for scalable, customizable icons.",
+    },
+    accordion: {
+      title: "Accordion",
+      description: "Collapsible sections of related content. States: default, hover, disabled. Optional icon left, divider, single or multiple open.",
     },
     alert: {
       title: "Alert",
@@ -247,6 +253,7 @@ export default function Home() {
             {activeSection === "tokens" && <TokensDocumentation />}
             {activeSection === "icons" && <IconDocumentation />}
             {activeSection === "alert" && <AlertDocumentation />}
+            {activeSection === "accordion" && <AccordionDocumentation />}
             {activeSection === "avatar" && <AvatarDocumentation />}
             {activeSection === "avatar-group" && <AvatarGroupDocumentation />}
             {activeSection === "avatar-profile" && <AvatarProfileDocumentation />}

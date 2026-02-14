@@ -12,7 +12,7 @@
 - [x] **Avatar Group** — `avatar-group.tsx` · Stack of AvatarProfile (not Avatar) · Sizes: 24, 32, 40 px · lastOnTop (true/false) · moreAvatars: "+N" overflow (bg-tertiary, border-subtract) · addMore: dashed circle (border-dashed border-strong, bg-transparent, text-icon-tertiary), filled add Icon · avatars (initials/aria-label), maxVisible · Token-only · role="group", aria-label; Add button aria-label
 - [x] **Avatar Profile** — `avatar-profile.tsx` · Composes Avatar with border (border-subtract), shadow (shadow-sm), no padding between avatar and border · Shapes: circle, rounded · Sizes passed through to Avatar (xs–4xl) · Optional topRight and bottomRight badge slots (ReactNode) · Initials/icon only (no image) · Badge slots aria-hidden; pass aria-label to Avatar when meaningful
 - [x] **Alert** — `alert.tsx` · Types: info, success, warning, danger, neutral · Emphasis: low, medium, moderate, high · Expand: false, true (adds description and action buttons) · Preset icons based on type · Optional close button with onClose callback · Action buttons shown when expand=true · Title promotes to font-medium when description is visible · High-emphasis neutral uses light bg with standard text colors (not on-color)
-- [ ] **Accordion**
+- [x] **Accordion** — `accordion.tsx` · States: default, hover, disabled · Expand: shows content on trigger click · Icon Left: optional left icon slot (ReactNode) · Show Divider: optional divider between trigger and content when expanded · type: single | multiple (one or many open) · Accordion, AccordionItem, AccordionTrigger, AccordionContent · Token-only · forwardRef on all parts · Trigger: aria-expanded, aria-controls, aria-disabled · Content: role="region", aria-labelledby
 - [x] **Badge** — `badge.tsx` · Variants: filled, light, outlined, with dot, with icon (left/right) · Colors: brand, neutral, success, warning, danger, info · Sizes: sm, lg
 - [x] **Button** — `button.tsx` · Variants: primary, secondary, tertiary, danger, link, link-brand · Sizes: xs, md, lg, xl, 2xl · Supports left/right icons · Icon-only mode via `icon` prop (square buttons, all sizes)
 - [x] **Icon Button** — Implemented via `Button` component with `icon` prop · Square icon-only buttons · Variants: primary, secondary, tertiary, danger · Sizes: xs, md, lg, xl, 2xl · Requires `aria-label` for accessibility
@@ -89,4 +89,4 @@
 
 ### Progress
 
-**Built:** 21 / 59
+**Built:** 22 / 59
