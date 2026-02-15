@@ -384,9 +384,6 @@ export default function LandingPage() {
           <Tag type="with-dot" state="default" size="small">
             Pink
           </Tag>
-          <Tag type="with-dot" state="active" size="small">
-            Reward
-          </Tag>
         </div>
       </div>
 
