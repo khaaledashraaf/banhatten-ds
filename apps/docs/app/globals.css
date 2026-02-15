@@ -101,6 +101,15 @@
   }
 }
 
+/* Floating cards: base transform from --card-transform so hover transform can transition (inline transform would override class) */
+.floating-card {
+  transform: var(--card-transform);
+  transition: transform 0.15s ease-in-out;
+}
+.floating-card:hover {
+  transform: var(--card-transform) scale(1.02) translateY(-0.125rem);
+}
+
 .landing-gradient-bg {
   --gx: 50%;
   --gy: 50%;

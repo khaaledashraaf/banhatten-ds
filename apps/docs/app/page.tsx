@@ -96,6 +96,13 @@ function cardStyle(key: keyof typeof FLOATING_CARD_POSITIONS): CSSProperties {
   };
 }
 
+/** Like cardStyle but puts transform into --card-transform so class-based hover transform can transition (inline transform would override Tailwind). */
+function floatingCardStyle(key: keyof typeof FLOATING_CARD_POSITIONS): CSSProperties {
+  const s = cardStyle(key);
+  const { transform, ...rest } = s;
+  return { ...rest, "--card-transform": transform } as CSSProperties;
+}
+
 function LoadingScreen({
   exiting,
   gradientColors,
@@ -129,11 +136,17 @@ type StreamAlert = {
   exiting?: boolean;
 };
 
+const FLOATING_CARD_CLASS =
+  "floating-card transition-[box-shadow] duration-500 ease-in-out hover:shadow-lg";
+
 export default function LandingPage() {
   const [ready, setReady] = useState(false);
   const [loaderExiting, setLoaderExiting] = useState(false);
   const [loaderGone, setLoaderGone] = useState(false);
   const [streamAlerts, setStreamAlerts] = useState<StreamAlert[]>([]);
+  const [isFavorited, setFavorited] = useState(false);
+  const [sliderValue, setSliderValue] = useState(75);
+  const [statsCount, setStatsCount] = useState(0);
   const alertIdRef = useRef(0);
   const streamIndexRef = useRef(0);
 
@@ -192,6 +205,20 @@ export default function LandingPage() {
     }, ALERT_EXIT_DURATION_MS);
     return () => clearTimeout(t);
   }, [streamAlerts]);
+
+  useEffect(() => {
+    if (!ready) return;
+    const end = 344;
+    const durationMs = 1200;
+    const start = performance.now();
+    const step = (now: number) => {
+      const t = Math.min((now - start) / durationMs, 1);
+      setStatsCount(Math.round(t * end));
+      if (t < 1) requestAnimationFrame(step);
+    };
+    const id = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(id);
+  }, [ready]);
 
   return (
     <div className="landing-gradient-bg relative min-h-screen overflow-hidden">
@@ -281,11 +308,18 @@ export default function LandingPage() {
       {/* Floating showcase — each card in its own div, positioned closer to center (z-20 = on top, interactive) */}
       {/* Top-left: icon buttons */}
       <div
-        className={`absolute z-20 flex w-auto rounded-lg border border-strong bg-primary px-4 py-4 shadow-md ${ready ? "animate-fade-in" : ""}`}
-        style={{ ...cardStyle("iconButtons"), ...(ready && { animationDelay: `${220 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
+        className={`absolute z-20 flex w-auto rounded-lg border border-strong bg-primary px-4 py-4 shadow-md ${FLOATING_CARD_CLASS} ${ready ? "animate-fade-in" : ""}`}
+        style={{ ...floatingCardStyle("iconButtons"), ...(ready && { animationDelay: `${220 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
       >
         <div className="flex gap-1">
-          <Button variant="secondary" size="md" icon="favorite" aria-label="Favorite" />
+          <Button
+            variant="secondary"
+            size="md"
+            icon="favorite"
+            iconFilled={isFavorited}
+            aria-label={isFavorited ? "Unfavorite" : "Favorite"}
+            onClick={() => setFavorited(!isFavorited)}
+          />
           <Button variant="secondary" size="md" icon="add" aria-label="Add" />
           <Button variant="secondary" size="md" icon="star" aria-label="Star" />
         </div>
@@ -293,8 +327,8 @@ export default function LandingPage() {
 
       {/* Top-left: slider */}
       <div
-        className={`absolute z-20 w-[200px] rounded-lg border border-strong bg-primary px-4 py-4 shadow-md ${ready ? "animate-fade-in" : ""}`}
-        style={{ ...cardStyle("slider"), ...(ready && { animationDelay: `${260 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
+        className={`absolute z-20 w-[200px] rounded-lg border border-strong bg-primary px-4 py-4 shadow-md ${FLOATING_CARD_CLASS} ${ready ? "animate-fade-in" : ""}`}
+        style={{ ...floatingCardStyle("slider"), ...(ready && { animationDelay: `${260 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
       >
         <div className="text-secondary mb-1 flex justify-between text-xs">
           <span>50%</span>
@@ -302,7 +336,8 @@ export default function LandingPage() {
         </div>
         <Slider
           variant="single"
-          defaultValue={75}
+          value={sliderValue}
+          onChange={setSliderValue}
           min={50}
           max={100}
           formatValue={(v) => `${v}%`}
@@ -312,8 +347,8 @@ export default function LandingPage() {
 
       {/* Top-left: avatar group */}
       <div
-        className={`absolute z-20 rounded-lg border border-strong bg-primary px-4 py-4 shadow-md ${ready ? "animate-fade-in" : ""}`}
-        style={{ ...cardStyle("avatarGroupTop"), ...(ready && { animationDelay: `${300 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
+        className={`absolute z-20 rounded-lg border border-strong bg-primary px-4 py-4 shadow-md ${FLOATING_CARD_CLASS} ${ready ? "animate-fade-in" : ""}`}
+        style={{ ...floatingCardStyle("avatarGroupTop"), ...(ready && { animationDelay: `${300 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
       >
         <AvatarGroup
           size="32"
@@ -330,8 +365,8 @@ export default function LandingPage() {
 
       {/* Top-right: badges/tags */}
       <div
-        className={`absolute z-20 w-[220px] rounded-lg border border-strong bg-primary px-4 py-3 shadow-md ${ready ? "animate-fade-in" : ""}`}
-        style={{ ...cardStyle("badges"), ...(ready && { animationDelay: `${240 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
+        className={`absolute z-20 w-[220px] rounded-lg border border-strong bg-primary px-4 py-3 shadow-md ${FLOATING_CARD_CLASS} ${ready ? "animate-fade-in" : ""}`}
+        style={{ ...floatingCardStyle("badges"), ...(ready && { animationDelay: `${240 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
       >
         <div className="flex flex-wrap gap-1">
           <Badge variant="light" color="warning" size="sm">
@@ -357,18 +392,18 @@ export default function LandingPage() {
 
       {/* Top-right: stats card */}
       <div
-        className={`absolute z-20 w-[200px] rounded-lg border border-strong bg-primary px-4 py-3 shadow-md ${ready ? "animate-fade-in" : ""}`}
-        style={{ ...cardStyle("stats"), ...(ready && { animationDelay: `${280 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
+        className={`absolute z-20 w-[200px] rounded-lg border border-strong bg-primary px-4 py-3 shadow-md ${FLOATING_CARD_CLASS} ${ready ? "animate-fade-in" : ""}`}
+        style={{ ...floatingCardStyle("stats"), ...(ready && { animationDelay: `${280 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
       >
         <p className="text-secondary text-xs">Total sessions</p>
-        <p className="text-primary text-2xl font-bold">344</p>
+        <p className="text-primary text-2xl font-bold tabular-nums">{statsCount}</p>
         <p className="text-secondary text-xs">2 visitors right now</p>
         <div className="mt-2 flex items-end gap-1">
           <ProgressBar value={60} size="lg" color="brand" className="min-w-0 flex-1" />
         </div>
       </div>
 
-      {/* Top-center: streaming alerts — fixed slots; new at bottom, older shift up, top fades out */}
+      {/* Top-center: streaming alerts — fixed slots; new at bottom, older shift up, top fades out (no hover lift) */}
       <div
         className={`absolute z-20 w-full max-w-[400px] ${ready ? "animate-fade-in" : ""}`}
         style={{
@@ -417,8 +452,8 @@ export default function LandingPage() {
 
       {/* Bottom-left: upload card */}
       <div
-        className={`absolute z-20 w-[220px] rounded-lg border border-strong bg-primary p-4 shadow-md ${ready ? "animate-fade-in" : ""}`}
-        style={{ ...cardStyle("upload"), ...(ready && { animationDelay: `${340 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
+        className={`absolute z-20 w-[220px] rounded-lg border border-strong bg-primary p-4 shadow-md ${FLOATING_CARD_CLASS} ${ready ? "animate-fade-in" : ""}`}
+        style={{ ...floatingCardStyle("upload"), ...(ready && { animationDelay: `${340 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
       >
         <p className="text-primary text-sm font-medium">Upload file</p>
         <p className="text-secondary text-xs">Upload from your computer.</p>
@@ -439,16 +474,16 @@ export default function LandingPage() {
 
       {/* Bottom-center: toggle */}
       <div
-        className={`absolute z-20 w-[280px] rounded-lg border border-strong bg-primary px-4 py-3 shadow-md ${ready ? "animate-fade-in" : ""}`}
-        style={{ ...cardStyle("toggle"), ...(ready && { animationDelay: `${380 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
+        className={`absolute z-20 w-[280px] rounded-lg border border-strong bg-primary px-4 py-3 shadow-md ${FLOATING_CARD_CLASS} ${ready ? "animate-fade-in" : ""}`}
+        style={{ ...floatingCardStyle("toggle"), ...(ready && { animationDelay: `${380 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
       >
         <Toggle defaultChecked label="Label" size="md" />
       </div>
 
       {/* Bottom-center: file type icons */}
       <div
-        className={`absolute z-20 rounded-lg border border-strong bg-primary px-4 py-3 shadow-md ${ready ? "animate-fade-in" : ""}`}
-        style={{ ...cardStyle("fileIcons"), ...(ready && { animationDelay: `${320 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
+        className={`absolute z-20 rounded-lg border border-strong bg-primary px-4 py-3 shadow-md ${FLOATING_CARD_CLASS} ${ready ? "animate-fade-in" : ""}`}
+        style={{ ...floatingCardStyle("fileIcons"), ...(ready && { animationDelay: `${320 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
       >
         <div className="flex justify-center gap-2">
           <FeaturedIcon variant="square-light" type="danger" size="md" name="picture_as_pdf" />
@@ -460,8 +495,8 @@ export default function LandingPage() {
 
       {/* Bottom-center: avatars + icons */}
       <div
-        className={`absolute z-20 rounded-lg border border-strong bg-primary px-4 py-3 shadow-md ${ready ? "animate-fade-in" : ""}`}
-        style={{ ...cardStyle("avatarsIcons"), ...(ready && { animationDelay: `${420 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
+        className={`absolute z-20 rounded-lg border border-strong bg-primary px-4 py-3 shadow-md ${FLOATING_CARD_CLASS} ${ready ? "animate-fade-in" : ""}`}
+        style={{ ...floatingCardStyle("avatarsIcons"), ...(ready && { animationDelay: `${420 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
       >
         <div className="flex items-center gap-2">
           <AvatarGroup
@@ -479,8 +514,8 @@ export default function LandingPage() {
 
       {/* Bottom-center: credit card input */}
       <div
-        className={`absolute z-20 w-[280px] rounded-lg border border-strong bg-primary p-3 shadow-md ${ready ? "animate-fade-in" : ""}`}
-        style={{ ...cardStyle("creditCardInput"), ...(ready && { animationDelay: `${460 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
+        className={`absolute z-20 w-[280px] rounded-lg border border-strong bg-primary p-3 shadow-md ${FLOATING_CARD_CLASS} ${ready ? "animate-fade-in" : ""}`}
+        style={{ ...floatingCardStyle("creditCardInput"), ...(ready && { animationDelay: `${460 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
       >
         <Input
           leftIcon="credit_card"
@@ -492,8 +527,8 @@ export default function LandingPage() {
 
       {/* Bottom-right: profile card */}
       <div
-        className={`absolute z-20 w-[200px] rounded-lg border border-strong bg-primary p-4 shadow-md ${ready ? "animate-fade-in" : ""}`}
-        style={{ ...cardStyle("profile"), ...(ready && { animationDelay: `${500 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
+        className={`absolute z-20 w-[200px] rounded-lg border border-strong bg-primary p-4 shadow-md ${FLOATING_CARD_CLASS} ${ready ? "animate-fade-in" : ""}`}
+        style={{ ...floatingCardStyle("profile"), ...(ready && { animationDelay: `${500 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
       >
         <div className="flex flex-col items-center text-center">
           <AvatarProfile
