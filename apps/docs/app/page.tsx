@@ -167,16 +167,24 @@ export default function LandingPage() {
         >
           Welcome to the official documentation of<br />Banhaten Design System
         </h1>
-        <Button
-          asChild
-          variant="primary"
-          size="lg"
-          className={`mt-8 ${ready ? "animate-fade-in" : ""}`}
-          style={ready ? { animationDelay: `${160 + ENTRANCE_BASE_DELAY_MS}ms` } : undefined}
-          rightIcon="arrow_forward"
-        >
-          <Link href="/docs">Open Documentation</Link>
-        </Button>
+        <div className={`mt-8 flex flex-col items-center gap-3 ${ready ? "animate-fade-in" : ""}`} style={ready ? { animationDelay: `${160 + ENTRANCE_BASE_DELAY_MS}ms` } : undefined}>
+          <Button asChild variant="primary" size="lg" rightIcon="arrow_forward">
+            <Link href="/docs">Open Documentation</Link>
+          </Button>
+          <Button
+            asChild
+            variant="link-brand"
+            size="xs"
+          >
+            <a
+              href="https://github.com/khaaledashraaf/banhatten-ds"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Go to Github Repo
+            </a>
+          </Button>
+        </div>
       </section>
 
       {/* Floating showcase — each card in its own div, positioned closer to center (z-20 = on top, interactive) */}

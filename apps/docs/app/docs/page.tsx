@@ -121,15 +121,18 @@ function DocsSidebarNav({
           defaultExpanded={true}
           submenu={
             <>
-              {group.items.map((item) => (
-                <SidebarSubmenuItem
-                  key={item.href}
-                  active={activeSection === item.href}
-                  onClick={() => onNavigate(item.href)}
-                >
-                  {item.name}
-                </SidebarSubmenuItem>
-              ))}
+              {(group.title === "Getting Started"
+                ? group.items
+                : [...group.items].sort((a, b) => a.name.localeCompare(b.name))
+              ).map((item) => (
+                  <SidebarSubmenuItem
+                    key={item.href}
+                    active={activeSection === item.href}
+                    onClick={() => onNavigate(item.href)}
+                  >
+                    {item.name}
+                  </SidebarSubmenuItem>
+                ))}
             </>
           }
         >
@@ -157,15 +160,17 @@ function DocsSidebarFooter({
         defaultExpanded={false}
         submenu={
           <>
-            {examplesGroup.items.map((item) => (
-              <SidebarSubmenuItem
-                key={item.href}
-                active={activeSection === item.href}
-                onClick={() => onNavigate(item.href)}
-              >
-                {item.name}
-              </SidebarSubmenuItem>
-            ))}
+            {[...examplesGroup.items]
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((item) => (
+                <SidebarSubmenuItem
+                  key={item.href}
+                  active={activeSection === item.href}
+                  onClick={() => onNavigate(item.href)}
+                >
+                  {item.name}
+                </SidebarSubmenuItem>
+              ))}
           </>
         }
       >
