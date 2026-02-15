@@ -48,3 +48,47 @@
 ::view-transition-new(root) {
   animation: page-fade-in 0.05s ease-out forwards;
 }
+
+/* Landing page: seamless drifting gradient (position interpolated via custom properties) */
+@property --gx {
+  syntax: "<percentage>";
+  initial-value: 50%;
+  inherits: false;
+}
+@property --gy {
+  syntax: "<percentage>";
+  initial-value: 50%;
+  inherits: false;
+}
+
+@keyframes gradient-drift {
+  0%,
+  100% {
+    --gx: 50%;
+    --gy: 50%;
+  }
+  25% {
+    --gx: 72%;
+    --gy: 32%;
+  }
+  50% {
+    --gx: 50%;
+    --gy: 72%;
+  }
+  75% {
+    --gx: 28%;
+    --gy: 50%;
+  }
+}
+
+.landing-gradient-bg {
+  --gx: 50%;
+  --gy: 50%;
+  background: radial-gradient(
+    ellipse 90% 90% at var(--gx) var(--gy),
+    #ffffff 0%,
+    #eff6ff 50%,
+    #dbeafe 100%
+  );
+  animation: gradient-drift 10s ease-in-out infinite;
+}

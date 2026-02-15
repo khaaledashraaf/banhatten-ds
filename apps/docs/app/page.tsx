@@ -138,12 +138,7 @@ export default function LandingPage() {
   }, [loaderExiting]);
 
   return (
-    <div
-      className="relative min-h-screen overflow-hidden"
-      style={{
-        background: `radial-gradient(ellipse 90% 90% at 50% 50%, ${gradientColors.center} 0%, ${gradientColors.mid} 50%, ${gradientColors.edge} 100%)`,
-      }}
-    >
+    <div className="landing-gradient-bg relative min-h-screen overflow-hidden">
       {!loaderGone && (
         <LoadingScreen
           exiting={loaderExiting}
