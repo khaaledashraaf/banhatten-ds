@@ -40,7 +40,7 @@
 ## Product Components
 
 - [ ] **Top Bar Navigation**
-- [ ] **Sidebar Navigation**
+- [x] **Sidebar Navigation** — `sidebar.tsx`, `sidebar-menu-item.tsx`, `sidebar-submenu-item.tsx`, `sidebar-account-card.tsx` · Sidebar: header (logo slot), content (scrollable), footer · State: collapsed (icon-only) / expanded · SidebarContext provides collapsed; useSidebarContext() in children · Token-only: px-md py-md (header), px-sm py-md (content), px-sm py-md pt-lg border-t border-secondary (footer), rounded-sm, shadow-sm, bg-primary · forwardRef on all · SidebarMenuItem: disabled, active, collapsed variants; leftIcon, submenu (SidebarSubmenuItem children), expand/collapse chevron; aria-current, aria-expanded, aria-controls · SidebarSubmenuItem: disabled, active; indented (pl-xl); no icon · SidebarAccountCard: Avatar (text variant), rightIcon, selected, collapsed (avatar-only); token padding · All exported in index.ts
 - [ ] **Tabs**
 - [ ] **Modal**
 - [ ] **Content Divider**
@@ -75,4 +75,4 @@
 
 ### Progress
 
-**Built:** 27 / 55
+**Built:** 28 / 55

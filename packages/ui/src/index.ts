@@ -70,6 +70,29 @@ export {
   type MenuGroupProps,
 } from "./components/menu-group";
 export { Menu, menuVariants, type MenuProps } from "./components/menu";
+export {
+  SidebarMenuItem,
+  sidebarMenuItemVariants,
+  type SidebarMenuItemProps,
+} from "./components/sidebar-menu-item";
+export {
+  SidebarSubmenuItem,
+  sidebarSubmenuItemVariants,
+  type SidebarSubmenuItemProps,
+} from "./components/sidebar-submenu-item";
+export {
+  SidebarAccountCard,
+  sidebarAccountCardVariants,
+  type SidebarAccountCardProps,
+} from "./components/sidebar-account-card";
+export {
+  Sidebar,
+  sidebarVariants,
+  SidebarContext,
+  useSidebarContext,
+  type SidebarContextValue,
+  type SidebarProps,
+} from "./components/sidebar";
 export { Input, inputVariants, type InputProps, type InputPreset } from "./components/input";
 export { TextArea, textareaVariants, type TextAreaProps } from "./components/textarea";
 export { Checkbox, type CheckboxProps } from "./components/checkbox";

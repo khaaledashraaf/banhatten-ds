@@ -20,6 +20,7 @@ import { IconDocumentation } from "./components/icon-documentation";
 import { InputDocumentation } from "./components/input-documentation";
 import { MenuDocumentation } from "./components/menu-documentation";
 import { MenuItemDocumentation } from "./components/menu-item-documentation";
+import { SidebarDocumentation } from "./components/sidebar-documentation";
 import { MenuHeadingDocumentation } from "./components/menu-heading-documentation";
 import { MenuGroupDocumentation } from "./components/menu-group-documentation";
 import { TextAreaDocumentation } from "./components/textarea-documentation";
@@ -68,6 +69,7 @@ const navigation = [
       { name: "Menu Item", href: "menu-item" },
       { name: "Menu Heading", href: "menu-heading" },
       { name: "Menu Group", href: "menu-group" },
+      { name: "Sidebar", href: "sidebar" },
       { name: "Text Area", href: "textarea" },
       { name: "Checkbox", href: "checkbox" },
       { name: "Radio", href: "radio" },
@@ -223,6 +225,10 @@ export default function Home() {
       title: "Menu Group",
       description: "Groups one optional Menu Heading and one or more Menu Items. Token spacing (mb-sm) between heading and items. role=\"group\", optional headingId for aria-labelledby.",
     },
+    sidebar: {
+      title: "Sidebar",
+      description: "Side navigation with header (logo + collapse toggle), scrollable content, and footer. SidebarMenuItem, SidebarSubmenuItem, and SidebarAccountCard receive collapsed state via context for icon-only layout.",
+    },
     textarea: {
       title: "Text Area",
       description: "Multi-line text input component for collecting longer user-entered data with labels, validation, and helper text.",
@@ -299,6 +305,7 @@ export default function Home() {
             {activeSection === "menu-item" && <MenuItemDocumentation />}
             {activeSection === "menu-heading" && <MenuHeadingDocumentation />}
             {activeSection === "menu-group" && <MenuGroupDocumentation />}
+            {activeSection === "sidebar" && <SidebarDocumentation />}
             {activeSection === "textarea" && <TextAreaDocumentation />}
             {activeSection === "checkbox" && <CheckboxDocumentation />}
             {activeSection === "radio" && <RadioDocumentation />}
