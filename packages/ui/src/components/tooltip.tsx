@@ -34,7 +34,7 @@ import { cn } from "../lib/utils";
 /* ── CVA ── */
 
 const tooltipContentVariants = cva(
-  "rounded-sm text-xs leading-5 max-w-[var(--radix-tooltip-content-available-width)] z-50",
+  "rounded-sm text-xs leading-5 max-w-[var(--radix-tooltip-content-available-width)] z-50 transition-opacity duration-150 ease-out data-[state=closed]:opacity-0 data-[state=open]:opacity-100",
   {
     variants: {
       size: {
@@ -43,7 +43,7 @@ const tooltipContentVariants = cva(
       },
       variant: {
         dark: "bg-always-dark text-on-color",
-        light: "bg-primary text-primary shadow-sm",
+        light: "bg-primary text-primary shadow-lg border border-default",
       },
     },
     defaultVariants: {
@@ -76,6 +76,8 @@ export interface TooltipContentProps
   title?: string;
   /** Subtitle text (size="large") */
   subtitle?: string;
+  /** When false, the arrow/pointer is not rendered. Default: true */
+  showArrow?: boolean;
 }
 
 const TooltipContent = React.forwardRef<
@@ -92,6 +94,7 @@ const TooltipContent = React.forwardRef<
       children,
       side = "bottom",
       sideOffset = 8,
+      showArrow = true,
       ...props
     },
     ref
@@ -123,11 +126,13 @@ const TooltipContent = React.forwardRef<
           ) : (
             children
           )}
-          <TooltipPrimitive.Arrow
-            className={arrowClassMap[resolvedVariant]}
-            width={12}
-            height={6}
-          />
+          {showArrow && (
+            <TooltipPrimitive.Arrow
+              className={arrowClassMap[resolvedVariant]}
+              width={12}
+              height={6}
+            />
+          )}
         </TooltipPrimitive.Content>
       </TooltipPrimitive.Portal>
     );
@@ -166,6 +171,10 @@ export interface TooltipProps
   sideOffset?: number;
   /** Delay in ms before showing. Default from provider. */
   delayDuration?: number;
+  /** When false, the arrow/pointer is not rendered. Default: true */
+  showArrow?: boolean;
+  /** Additional class name applied to the tooltip content. */
+  contentClassName?: string;
 }
 
 function Tooltip({
@@ -177,7 +186,9 @@ function Tooltip({
   variant = "dark",
   side = "bottom",
   sideOffset = 8,
-  delayDuration,
+  delayDuration = 200,
+  showArrow = true,
+  contentClassName,
   ...rootProps
 }: TooltipProps) {
   return (
@@ -192,6 +203,8 @@ function Tooltip({
         sideOffset={sideOffset}
         title={title}
         subtitle={subtitle}
+        showArrow={showArrow}
+        className={contentClassName}
       >
         {content}
       </TooltipContent>

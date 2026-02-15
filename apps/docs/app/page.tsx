@@ -14,6 +14,8 @@ import { CloseButtonDocumentation } from "./components/close-button-documentatio
 import { DividerDocumentation } from "./components/divider-documentation";
 import { FeaturedIconDocumentation } from "./components/featured-icon-documentation";
 import { ProgressBarDocumentation } from "./components/progress-bar-documentation";
+import { SliderDocumentation } from "./components/slider-documentation";
+import { SliderHandleDocumentation } from "./components/slider-handle-documentation";
 import { IconDocumentation } from "./components/icon-documentation";
 import { InputDocumentation } from "./components/input-documentation";
 import { MenuDocumentation } from "./components/menu-documentation";
@@ -59,6 +61,8 @@ const navigation = [
       { name: "Divider", href: "divider" },
       { name: "Featured Icon", href: "featured-icon" },
       { name: "Progress Bar", href: "progress-bar" },
+      { name: "Slider", href: "slider" },
+      { name: "Slider Handle", href: "slider-handle" },
       { name: "Input", href: "input" },
       { name: "Menu", href: "menu" },
       { name: "Menu Item", href: "menu-item" },
@@ -191,6 +195,14 @@ export default function Home() {
       title: "Progress Bar",
       description: "Visual indicator of task or process completion. Sizes sm/lg, five colors, optional label, value, helper text, and refresh action. Supports indeterminate state.",
     },
+    slider: {
+      title: "Slider",
+      description: "Single-node slider for selecting a value from a continuous range. Progress bar (large) as track, draggable handle, optional value on handle (tooltip or label), label and helper text, custom formatValue.",
+    },
+    "slider-handle": {
+      title: "Slider Handle",
+      description: "Draggable circle for Slider. States: default, hover, active. Sizes: sm, md, lg. Optional value as tooltip or label, above or below. Use state prop for static display.",
+    },
     input: {
       title: "Input",
       description: "Text input component for collecting user-entered data with labels, validation, and icons.",
@@ -280,6 +292,8 @@ export default function Home() {
             {activeSection === "divider" && <DividerDocumentation />}
             {activeSection === "featured-icon" && <FeaturedIconDocumentation />}
             {activeSection === "progress-bar" && <ProgressBarDocumentation />}
+            {activeSection === "slider" && <SliderDocumentation />}
+            {activeSection === "slider-handle" && <SliderHandleDocumentation />}
             {activeSection === "input" && <InputDocumentation />}
             {activeSection === "menu" && <MenuDocumentation />}
             {activeSection === "menu-item" && <MenuItemDocumentation />}

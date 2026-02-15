@@ -32,7 +32,7 @@
 - [ ] **Pagination**
 - [x] **Progress Bar** — `progress-bar.tsx` · Sizes: sm, lg · Colors: brand, success, danger, info, neutral · value 0–100 (omit for indeterminate) · Optional label, showLabelInfoIcon, helperText, showValue, onRefresh (value + refresh icon) · role="progressbar", aria-valuenow/valuemin/valuemax/valuetext · Token-only
 - [x] **Radio** — `radio.tsx` + `radio-card.tsx` · States: unchecked, checked, disabled, hover, focus · Radio with optional label + support text · RadioCard with optional icon, description, leading/trailing position
-- [ ] **Slider**
+- [x] **Slider** — `slider.tsx` · Variant: single (one handle) | double (two handles, range) · Single: value/defaultValue number, onChange(value) · Double: value/defaultValue [start, end], onChange([start, end]) · Progress Bar (size lg, color brand) as track; fill 0→value (single) or start→end (double) · Optional formatValue, label, showLabelInfoIcon, helperText, value on handle (tooltip/label, above/below) · Hidden range input(s) for keyboard; handle drag + track click (double) · role="group", aria-valuenow/min/max/valuetext · Token-only · forwardRef
 - [x] **Tag / Chip** — `tag.tsx` · Types: simple, with-dot, with-icon (left only) · States: default, hover, focus, active, disabled · Sizes: small, large · Optional close button with onClose callback · Border radius: sm (8px) · Unified color system with bg-primary base
 - [x] **Tooltip** — `tooltip.tsx` · Sizes: small (single line), large (title + subtitle) · Styles: dark, light (bg/text) · Position: bottom center · TooltipProvider, TooltipTrigger, TooltipContent · Radix-based; role="tooltip", aria-describedby on trigger
 - [x] **Toggle** — `toggle.tsx` · Sizes: sm, md · States: default, hover, pressed (focus), disabled · Active: on/off (checked) · Optional label and support text with togglePosition leading/trailing · With icon: check when on, close when off (Material Symbols on thumb) · role="switch", focus ring, token-only styling
@@ -67,6 +67,7 @@
 ## Utility / Sub-components
 
 - [x] **Featured Icon** — `featured-icon.tsx` · Variants: circle-light, square-light, circle-pulse (8px border), solid-circle, solid-square · Types: brand, success, danger, warning, neutral · Sizes: sm, md, lg (icon: sm→md, md→lg, lg→xl) · Material Symbol `name` prop, filled only via Icon · Optional `label` for accessibility (role="img", aria-label; else aria-hidden) · Token-only · forwardRef
+- [x] **Slider Handle** — `slider-handle.tsx` · Fixed 24×24px (size-2xl) · Circle states: default, hover, active (border-brand, bg-primary → bg-brand-tertiary → bg-brand-secondary) · Optional value: tooltip (Tooltip component, above/below) or simple label (text-sm text-primary, 8px above/below, absolute) · state prop for forced visual (docs) · role="img", aria-label when no label, aria-hidden when label present · Token-only · forwardRef
 - [ ] **File Icon**
 - [ ] **Social Icon**
 
@@ -74,4 +75,4 @@
 
 ### Progress
 
-**Built:** 25 / 54
+**Built:** 27 / 55

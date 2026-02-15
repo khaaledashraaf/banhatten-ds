@@ -79,6 +79,18 @@ export { RadioCard, type RadioCardProps } from "./components/radio-card";
 export { Tag, tagVariants, type TagProps } from "./components/tag";
 export { Toggle, toggleVariants, thumbVariants, type ToggleProps } from "./components/toggle";
 export {
+  SliderHandle,
+  sliderHandleCircleVariants,
+  type SliderHandleProps,
+} from "./components/slider-handle";
+export {
+  Slider,
+  type SliderProps,
+  type SliderVariant,
+  type SliderSingleProps,
+  type SliderDoubleProps,
+} from "./components/slider";
+export {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
