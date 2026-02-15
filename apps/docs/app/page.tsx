@@ -18,6 +18,8 @@ import {
   Tag,
   Toggle,
 } from "@banhatten/ui";
+import { OrdersDashboardExample } from "./components/orders-dashboard-example";
+import { StripeDashboardExample } from "./components/stripe-dashboard-example";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -221,19 +223,20 @@ export default function LandingPage() {
   }, [ready]);
 
   return (
-    <div className="landing-gradient-bg relative min-h-screen overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-primary">
       {!loaderGone && (
         <LoadingScreen
           exiting={loaderExiting}
           gradientColors={gradientColors}
         />
       )}
+      {/* Viewport-sized wrapper: gradient above the fold, floating card % relative to viewport only */}
       <div
-        className="contents"
+        className="landing-hero-gradient relative h-screen"
         style={{ visibility: ready ? "visible" : "hidden" }}
       >
         {/* Central hero — z-10 so peeking cards (z-20) stay on top and clickable */}
-      <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-16">
+      <section className="relative z-10 flex h-full min-h-0 flex-col items-center justify-center px-6 py-16">
         <div className={`mb-6 flex items-center justify-center gap-2 ${ready ? "animate-fade-in" : ""}`} style={ready ? { animationDelay: `${ENTRANCE_BASE_DELAY_MS}ms` } : undefined}>
           <img
             src={`${basePath}/logo-full.svg`}
@@ -541,6 +544,20 @@ export default function LandingPage() {
         </div>
       </div>
       </div>
+
+      {/* Stripe-style dashboard example in a frame below landing content */}
+      <section className="relative z-10 px-6 py-12 md:px-12">
+        <div className="overflow-hidden rounded-xl border border-strong bg-primary">
+          <StripeDashboardExample />
+        </div>
+      </section>
+
+      {/* Orders dashboard example (Figma design-system match) */}
+      <section className="relative z-10 px-6 py-12 md:px-12">
+        <div className="overflow-hidden rounded-xl border border-strong bg-primary">
+          <OrdersDashboardExample />
+        </div>
+      </section>
     </div>
   );
 }
