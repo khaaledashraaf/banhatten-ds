@@ -5,6 +5,7 @@ const basePath = isGitHubPages ? "/banhatten-ds" : "";
 
 const nextConfig: NextConfig = {
   transpilePackages: ["@banhatten/ui", "@banhatten/tokens"],
+  devIndicators: false,
   ...(isGitHubPages && {
     output: "export",
     basePath,
