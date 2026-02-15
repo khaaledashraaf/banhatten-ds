@@ -1,6 +1,6 @@
 "use client";
 
-import { type CSSProperties, useEffect, useState } from "react";
+import { type CSSProperties, useEffect, useRef, useState } from "react";
 import { Link } from "next-view-transitions";
 import {
   Alert,
@@ -22,6 +22,21 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 /** Delay before entrance animations start (after loading screen has vanished). */
 const ENTRANCE_BASE_DELAY_MS = 400;
+
+const ALERT_STREAM_INTERVAL_MS = 4000;
+const ALERT_STREAM_MAX_VISIBLE = 2;
+const ALERT_EXIT_DURATION_MS = 300;
+/** Height of one alert slot for stack positioning. */
+const ALERT_SLOT_HEIGHT_PX = 70;
+/** Gap between alerts (matches token spacing.sm / gap-sm: 0.5rem). */
+const ALERT_GAP_SM_PX = 8;
+
+const ALERT_STREAM_MESSAGES: Array<{ type: "success" | "info" | "warning"; title: string; description: string }> = [
+  { type: "success", title: "Created Successfully", description: "Your post is up and can be seen in the homepage." },
+  { type: "info", title: "Update Available", description: "A new version of the app is ready to install." },
+  { type: "success", title: "Saved", description: "Your changes have been saved." },
+  { type: "warning", title: "Almost there", description: "Complete your profile to unlock all features." },
+];
 
 /** Token hex values for the landing gradient (white center → light blue edges) */
 const gradientColors = {
@@ -105,10 +120,21 @@ function LoadingScreen({
   );
 }
 
+type StreamAlert = {
+  id: number;
+  type: "success" | "info" | "warning";
+  title: string;
+  description: string;
+  exiting?: boolean;
+};
+
 export default function LandingPage() {
   const [ready, setReady] = useState(false);
   const [loaderExiting, setLoaderExiting] = useState(false);
   const [loaderGone, setLoaderGone] = useState(false);
+  const [streamAlerts, setStreamAlerts] = useState<StreamAlert[]>([]);
+  const alertIdRef = useRef(0);
+  const streamIndexRef = useRef(0);
 
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
@@ -136,6 +162,35 @@ export default function LandingPage() {
     const t = setTimeout(() => setLoaderGone(true), 300);
     return () => clearTimeout(t);
   }, [loaderExiting]);
+
+  useEffect(() => {
+    if (!ready) return;
+    const tick = () => {
+      const msg = ALERT_STREAM_MESSAGES[streamIndexRef.current % ALERT_STREAM_MESSAGES.length];
+      streamIndexRef.current += 1;
+      const id = alertIdRef.current++;
+      setStreamAlerts((prev) => {
+        const next = [...prev, { ...msg, id }];
+        if (next.length > ALERT_STREAM_MAX_VISIBLE) {
+          const toExit = next[0];
+          return next.map((a) => (a.id === toExit.id ? { ...a, exiting: true } : a));
+        }
+        return next;
+      });
+    };
+    const id = setInterval(tick, ALERT_STREAM_INTERVAL_MS);
+    return () => clearInterval(id);
+  }, [ready]);
+
+  useEffect(() => {
+    if (streamAlerts.length === 0) return;
+    const exiting = streamAlerts.find((a) => a.exiting);
+    if (!exiting) return;
+    const t = setTimeout(() => {
+      setStreamAlerts((prev) => prev.filter((a) => a.id !== exiting.id));
+    }, ALERT_EXIT_DURATION_MS);
+    return () => clearTimeout(t);
+  }, [streamAlerts]);
 
   return (
     <div className="landing-gradient-bg relative min-h-screen overflow-hidden">
@@ -284,18 +339,51 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Top-right: success alert */}
+      {/* Top-center: streaming alerts — fixed slots; new at bottom, older shift up, top fades out */}
       <div
-        className={`absolute z-20 w-auto rounded-lg shadow-md ${ready ? "animate-fade-in" : ""}`}
-        style={{ ...cardStyle("alertTop"), ...(ready && { animationDelay: `${200 + ENTRANCE_BASE_DELAY_MS}ms` }) }}
+        className={`absolute z-20 w-full max-w-[400px] ${ready ? "animate-fade-in" : ""}`}
+        style={{
+          ...cardStyle("alertTop"),
+          height: ALERT_SLOT_HEIGHT_PX * 2 + ALERT_GAP_SM_PX,
+          ...(ready && { animationDelay: `${200 + ENTRANCE_BASE_DELAY_MS}ms` }),
+        }}
+        aria-live="polite"
+        aria-atomic="false"
       >
-        <Alert
-          type="success"
-          emphasis="medium"
-          expand
-          title="Created Successfully"
-          description="Your post is up and can be seen in the homepage."
-        />
+        {streamAlerts.map((item, index) => {
+          const n = streamAlerts.length;
+          const slot = ALERT_SLOT_HEIGHT_PX;
+          const gap = ALERT_GAP_SM_PX;
+          const step = slot + gap;
+          let topPx: number;
+          let opacity = 1;
+          if (item.exiting) {
+            topPx = -step;
+            opacity = 0;
+          } else if (n === 1) {
+            topPx = step;
+          } else if (n === 2) {
+            topPx = index === 0 ? 0 : step;
+          } else {
+            topPx = index === 0 ? -step : index === 1 ? 0 : step;
+          }
+          const isNewest = index === n - 1 && !item.exiting;
+          return (
+            <div
+              key={item.id}
+              className={`absolute left-0 right-0 rounded-lg ${item.exiting ? "alert-slot-exit" : "alert-slot-item"} ${isNewest ? "animate-alert-slot-in" : ""}`}
+              style={{ top: topPx, opacity }}
+            >
+              <Alert
+                type={item.type}
+                emphasis="medium"
+                expand
+                title={item.title}
+                description={item.description}
+              />
+            </div>
+          );
+        })}
       </div>
 
       {/* Bottom-left: upload card */}

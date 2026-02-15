@@ -17,6 +17,26 @@
   animation: fade-in 0.5s ease-out both;
 }
 
+@keyframes alert-slot-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-alert-slot-in {
+  animation: alert-slot-in 0.3s ease-out both;
+}
+.alert-slot-exit {
+  transition: top 0.3s ease-out, opacity 0.3s ease-out;
+}
+.alert-slot-item {
+  transition: top 0.3s ease-out;
+}
+
 .loading-screen {
   transition: opacity 0.25s ease-out;
 }
