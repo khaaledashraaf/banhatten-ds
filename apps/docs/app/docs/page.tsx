@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { useState } from "react";
 import { Sidebar, SidebarAccountCard, SidebarMenuItem, SidebarSubmenuItem } from "@banhatten/ui";
 import { AccordionDocumentation } from "../components/accordion-documentation";
@@ -338,6 +338,7 @@ export default function DocsPage() {
 
       {/* Main Content */}
       <main className="md:pl-64">
+        <div key={activeSection} className="animate-fade-in">
         {activeSection === "playground" ? (
           <ImplementationPlayground />
         ) : activeSection === "ecommerce" ? (
@@ -391,6 +392,7 @@ export default function DocsPage() {
             {activeSection === "tooltip" && <TooltipDocumentation />}
           </div>
         )}
+        </div>
       </main>
     </div>
   );

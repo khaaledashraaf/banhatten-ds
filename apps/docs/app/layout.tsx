@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ViewTransitions } from "next-view-transitions";
 import "./globals.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -19,7 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ViewTransitions>{children}</ViewTransitions>
+      </body>
     </html>
   );
 }

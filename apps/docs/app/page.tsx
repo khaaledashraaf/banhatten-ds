@@ -1,7 +1,7 @@
 "use client";
 
 import { type CSSProperties, useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import {
   Alert,
   AvatarGroup,
@@ -170,7 +170,7 @@ export default function LandingPage() {
           className={`text-primary text-center text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl ${ready ? "animate-fade-in" : ""}`}
           style={ready ? { animationDelay: `${80 + ENTRANCE_BASE_DELAY_MS}ms` } : undefined}
         >
-          Welcome to the official documentation of<br />Banhatten Design System
+          Welcome to the official documentation of<br />Banhaten Design System
         </h1>
         <Button
           asChild
