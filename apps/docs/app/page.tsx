@@ -30,6 +30,8 @@ import { TagDocumentation } from "./components/tag-documentation";
 import { ToggleDocumentation } from "./components/toggle-documentation";
 import { TooltipDocumentation } from "./components/tooltip-documentation";
 import { TokensDocumentation } from "./components/tokens-documentation";
+import { IntroductionDocumentation } from "./components/introduction-documentation";
+import { HowToUseDocumentation } from "./components/how-to-use-documentation";
 import { ImplementationPlayground } from "./components/implementation-playground";
 import { EcommerceLanding } from "./components/ecommerce-landing";
 import { DashboardExample } from "./components/dashboard-example";
@@ -40,6 +42,13 @@ import { SampleProfilePage } from "./components/sample-profile-page";
 // Navigation Data
 // ============================================================================
 const navigation = [
+  {
+    title: "Getting Started",
+    items: [
+      { name: "Introduction", href: "introduction" },
+      { name: "How to Use", href: "how-to-use" },
+    ],
+  },
   {
     title: "Foundation",
     items: [
@@ -90,8 +99,8 @@ const navigation = [
   },
 ];
 
-const mainNavigation = navigation.slice(0, 2);
-const examplesGroup = navigation[2];
+const mainNavigation = navigation.slice(0, 3);
+const examplesGroup = navigation[3];
 
 // ============================================================================
 // Docs sidebar nav (Foundation + Components)
@@ -175,9 +184,17 @@ function DocsSidebarFooter({
 // Main Page Component
 // ============================================================================
 export default function Home() {
-  const [activeSection, setActiveSection] = useState("tokens");
+  const [activeSection, setActiveSection] = useState("introduction");
 
   const pageMeta: Record<string, { title: string; description: string }> = {
+    introduction: {
+      title: "Introduction",
+      description: "Overview of the Banhatten Design System: packages, tech stack, and what you get.",
+    },
+    "how-to-use": {
+      title: "How to Use",
+      description: "Installation, Tailwind setup, Material Symbols, and usage guide for @banhatten/ui and @banhatten/tokens.",
+    },
     tokens: {
       title: "Design Tokens",
       description: "Complete token documentation for colors, spacing, radius, and more.",
@@ -292,7 +309,7 @@ export default function Home() {
     },
   };
 
-  const { title: pageTitle, description: pageDescription } = pageMeta[activeSection] || pageMeta.tokens;
+  const { title: pageTitle, description: pageDescription } = pageMeta[activeSection] || pageMeta.introduction;
 
   return (
     <div className="min-h-screen bg-primary">
@@ -339,6 +356,8 @@ export default function Home() {
             </header>
 
             {/* Content */}
+            {activeSection === "introduction" && <IntroductionDocumentation />}
+            {activeSection === "how-to-use" && <HowToUseDocumentation />}
             {activeSection === "tokens" && <TokensDocumentation />}
             {activeSection === "icons" && <IconDocumentation />}
             {activeSection === "alert" && <AlertDocumentation />}
