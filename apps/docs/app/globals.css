@@ -45,6 +45,6 @@
 ::view-transition-old(root) {
   animation: page-fade-out 0.05s ease-linear forwards;
 }
-/* ::view-transition-new(root) {
-  animation: page-fade-in 0.1s ease-out forwards;
-} */
+::view-transition-new(root) {
+  animation: page-fade-in 0.05s ease-out forwards;
+}
