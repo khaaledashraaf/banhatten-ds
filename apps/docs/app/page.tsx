@@ -51,7 +51,7 @@ const FLOATING_CARD_POSITIONS: Record<
   avatarGroupTop: { left: "5%", top: "35%", translateX: "0", translateY: "0", rotation: -2 },
   badges: { left: "90%", top: "5%", translateX: "-100%", translateY: "0", rotation: 5 },
   stats: { left: "90%", top: "20%", translateX: "-100%", translateY: "0", rotation: 8 },
-  alertTop: { left: "50%", top: "5%", translateX: "-50%", translateY: "0", rotation: 0 },
+  alertTop: { left: "50%", top: "10%", translateX: "-50%", translateY: "0", rotation: 0 },
   upload: { left: "5%", top: "50%", translateX: "0", translateY: "0", rotation: 2 },
   fileIcons: { left: "95%", top: "40%", translateX: "-100%", translateY: "0", rotation: -2 },
   toggle: { left: "35%", bottom: "15%", translateX: "-50%", translateY: "0", rotation: 0, width: "fit-content" },
@@ -203,7 +203,7 @@ export default function LandingPage() {
 
       {/* Top-right: success alert */}
       <div
-        className="absolute z-20 w-[240px] rounded-lg shadow-md"
+        className="absolute z-20 w-auto rounded-lg shadow-md"
         style={cardStyle("alertTop")}
       >
         <Alert
