@@ -101,9 +101,35 @@ Use token-derived Tailwind classes in your app for consistent theming.
 
 ---
 
+## Deploying the docs
+
+### Option A: GitHub Pages (free, on GitHub)
+
+1. In your repo: **Settings → Pages → Build and deployment**
+2. Under **Source**, choose **GitHub Actions**.
+3. Push to `main` (or run the workflow manually: **Actions → Deploy docs to GitHub Pages → Run workflow**).
+
+Docs will be available at:
+
+**`https://<username>.github.io/banhatten-ds/`**
+
+Replace `<username>` with your GitHub username (e.g. `khaaledashraaf`).
+
+The workflow (`.github/workflows/deploy-docs.yml`) builds the docs as a static export and deploys the `apps/docs/out` folder. If your default branch is not `main`, edit the `on.push.branches` in that file.
+
+### Option B: Vercel (one-click from GitHub)
+
+1. Go to [vercel.com](https://vercel.com) and sign in with GitHub.
+2. **Add New Project** → import `banhatten-ds`.
+3. Set **Root Directory** to `apps/docs`. (If workspace dependencies are missing, set root to the repo and **Build Command** to `npm run build --workspace=docs` with **Install Command** `npm ci`.)
+4. Deploy. You get a URL like `banhatten-ds.vercel.app` and previews for each push.
+
+---
+
 ## Links
 
 - **Docs (local):** Run `npm run dev --workspace=docs` and open the dev server URL.
+- **Docs (live):** After deployment, use the GitHub Pages or Vercel URL above.
 - **Issues:** [GitHub Issues](https://github.com/khaaledashraaf/banhatten-ds/issues)
 - **Repo:** [github.com/khaaledashraaf/banhatten-ds](https://github.com/khaaledashraaf/banhatten-ds)
 
