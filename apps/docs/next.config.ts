@@ -1,14 +1,18 @@
 import type { NextConfig } from "next";
 
 const isGitHubPages = process.env.GITHUB_PAGES === "1";
+const basePath = isGitHubPages ? "/banhatten-ds" : "";
 
 const nextConfig: NextConfig = {
   transpilePackages: ["@banhatten/ui", "@banhatten/tokens"],
   ...(isGitHubPages && {
     output: "export",
-    basePath: "/banhatten-ds",
-    assetPrefix: "/banhatten-ds/",
+    basePath,
+    assetPrefix: `${basePath}/`,
   }),
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 };
 
 export default nextConfig;

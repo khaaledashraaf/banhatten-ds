@@ -300,7 +300,7 @@ export default function Home() {
         <Sidebar
           header={
             <img
-              src="/logo-full.svg"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo-full.svg`}
               alt="Banhatten DS"
               className="h-8 w-auto max-w-full object-contain"
             />
