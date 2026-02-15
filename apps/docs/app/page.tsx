@@ -31,6 +31,7 @@ import { ImplementationPlayground } from "./components/implementation-playground
 import { EcommerceLanding } from "./components/ecommerce-landing";
 import { DashboardExample } from "./components/dashboard-example";
 import { WorkspaceSettingsExample } from "./components/workspace-settings-example";
+import { SampleProfilePage } from "./components/sample-profile-page";
 
 // ============================================================================
 // Navigation Data
@@ -78,6 +79,7 @@ const navigation = [
       { name: "E-commerce Landing", href: "ecommerce" },
       { name: "Dashboard", href: "dashboard" },
       { name: "AI Workspace Settings", href: "workspace-settings" },
+      { name: "Sample Profile Page", href: "sample-profile" },
     ],
   },
 ];
@@ -251,6 +253,8 @@ export default function Home() {
           <DashboardExample />
         ) : activeSection === "workspace-settings" ? (
           <WorkspaceSettingsExample />
+        ) : activeSection === "sample-profile" ? (
+          <SampleProfilePage />
         ) : (
           <div className="px-6 py-10 md:px-12 lg:px-16">
             {/* Header */}
