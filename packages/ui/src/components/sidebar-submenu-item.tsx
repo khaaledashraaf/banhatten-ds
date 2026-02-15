@@ -9,16 +9,16 @@ import { cn } from "../lib/utils";
  */
 
 const sidebarSubmenuItemVariants = cva(
-  "flex w-full items-center rounded-sm pl-xl pr-md py-sm text-left text-sm font-medium leading-5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2",
+  "flex w-full items-center rounded-sm pl-xl pr-md py-sm text-secondary text-left text-sm font-regular leading-5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2",
   {
     variants: {
       disabled: {
         true:
           "cursor-default opacity-50 pointer-events-none [&_*]:pointer-events-none",
-        false: "cursor-pointer hover:bg-tertiary",
+        false: "group cursor-pointer hover:bg-tertiary",
       },
       active: {
-        true: "bg-brand-tertiary text-brand",
+        true: "bg-brand-tertiary text-brand font-medium",
         false: "",
       },
     },
@@ -62,7 +62,8 @@ const SidebarSubmenuItem = React.forwardRef<
         <span
           className={cn(
             "min-w-0 truncate",
-            disabled ? "text-inactive" : active ? "text-brand" : "text-primary"
+            disabled ? "text-inactive" : "group-hover:text-primary",
+            !disabled && (active ? "text-brand" : "text-secondary")
           )}
         >
           {children}

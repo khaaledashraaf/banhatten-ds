@@ -12,7 +12,7 @@ import { useSidebarContext } from "./sidebar";
  */
 
 const sidebarAccountCardVariants = cva(
-  "flex w-full items-center gap-md rounded-sm px-md py-sm min-w-0",
+  "flex w-full items-center gap-md rounded-sm px-md py-md min-w-0",
   {
     variants: {
       selected: {

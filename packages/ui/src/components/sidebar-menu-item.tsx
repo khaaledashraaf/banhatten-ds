@@ -22,7 +22,7 @@ const sidebarMenuItemVariants = cva(
         false: "cursor-pointer hover:bg-tertiary",
       },
       active: {
-        true: "border-l-2 border-brand bg-brand-tertiary text-brand",
+        true: "bg-brand-tertiary text-brand",
         false: "",
       },
       collapsed: {
@@ -50,8 +50,8 @@ export interface SidebarMenuItemProps
   collapsed?: boolean;
   /** Label (e.g. "Dashboard"). Omitted visually when collapsed; use aria-label when collapsed for accessibility. */
   children?: React.ReactNode;
-  /** Material Symbol name for left icon (e.g. "dashboard"). */
-  leftIcon: string;
+  /** Material Symbol name for left icon (e.g. "dashboard"). When omitted, no icon is shown. */
+  leftIcon?: string;
   /** SidebarSubmenuItem children. When present, a chevron is shown and the item expands/collapses vertically. */
   submenu?: React.ReactNode;
   /** Controlled expanded state for submenu. */
@@ -137,22 +137,24 @@ const SidebarMenuItem = React.forwardRef<
         onClick={handleClick}
         {...props}
       >
-        <Icon
-          name={leftIcon}
-          size="sm"
-          className={
-            disabled
-              ? "text-icon-inactive-subtle"
-              : active
-                ? "text-icon-brand"
-                : "text-icon-secondary"
-          }
-          aria-hidden
-        />
+        {leftIcon != null && (
+          <Icon
+            name={leftIcon}
+            size="sm"
+            className={
+              disabled
+                ? "text-icon-inactive-subtle"
+                : active
+                  ? "text-icon-brand"
+                  : "text-icon-secondary"
+            }
+            aria-hidden
+          />
+        )}
         {!collapsedResolved && children != null && (
           <span
             className={cn(
-              "min-w-0 truncate text-sm font-medium leading-5",
+              "min-w-0 flex-1 truncate text-sm font-medium leading-5",
               disabled ? "text-inactive" : active ? "text-brand" : "text-primary"
             )}
           >

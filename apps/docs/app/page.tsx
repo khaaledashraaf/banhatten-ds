@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, MenuGroup, MenuHeading, MenuItem } from "@banhatten/ui";
+import { Sidebar, SidebarAccountCard, SidebarMenuItem, SidebarSubmenuItem } from "@banhatten/ui";
 import { AccordionDocumentation } from "./components/accordion-documentation";
 import { AlertDocumentation } from "./components/alert-documentation";
 import { AvatarDocumentation } from "./components/avatar-documentation";
@@ -90,10 +90,13 @@ const navigation = [
   },
 ];
 
+const mainNavigation = navigation.slice(0, 2);
+const examplesGroup = navigation[2];
+
 // ============================================================================
-// Sidebar Component
+// Docs sidebar nav (Foundation + Components)
 // ============================================================================
-function Sidebar({
+function DocsSidebarNav({
   activeSection,
   onNavigate,
 }: {
@@ -101,36 +104,70 @@ function Sidebar({
   onNavigate: (section: string) => void;
 }) {
   return (
-    <aside className="fixed left-0 top-0 z-30 hidden h-screen w-64 border-r border-default bg-primary md:block">
-      <div className="flex h-14 items-center border-b border-default px-4">
-        <span className="text-primary font-semibold">Banhatten DS</span>
-      </div>
-      <nav className="h-[calc(100vh-3.5rem)] overflow-y-auto" aria-label="Documentation">
-        <Menu className="rounded-none border-0 bg-transparent p-0 shadow-none">
-          {navigation.map((group, groupIndex) => (
-            <MenuGroup
-              key={group.title}
-              heading={
-                <MenuHeading>
-                  {group.title}
-                </MenuHeading>
-              }
-              headingId={`sidebar-nav-${groupIndex}`}
-            >
+    <nav className="flex flex-col gap-sm" aria-label="Documentation">
+      {mainNavigation.map((group) => (
+        <SidebarMenuItem
+          key={group.title}
+          defaultExpanded={true}
+          submenu={
+            <>
               {group.items.map((item) => (
-                <MenuItem
+                <SidebarSubmenuItem
                   key={item.href}
                   active={activeSection === item.href}
                   onClick={() => onNavigate(item.href)}
                 >
                   {item.name}
-                </MenuItem>
+                </SidebarSubmenuItem>
               ))}
-            </MenuGroup>
-          ))}
-        </Menu>
-      </nav>
-    </aside>
+            </>
+          }
+        >
+          {group.title}
+        </SidebarMenuItem>
+      ))}
+    </nav>
+  );
+}
+
+// ============================================================================
+// Sidebar footer: Examples + Account card
+// ============================================================================
+function DocsSidebarFooter({
+  activeSection,
+  onNavigate,
+}: {
+  activeSection: string;
+  onNavigate: (section: string) => void;
+}) {
+  return (
+    <>
+      <SidebarMenuItem
+        key={examplesGroup.title}
+        defaultExpanded={false}
+        submenu={
+          <>
+            {examplesGroup.items.map((item) => (
+              <SidebarSubmenuItem
+                key={item.href}
+                active={activeSection === item.href}
+                onClick={() => onNavigate(item.href)}
+              >
+                {item.name}
+              </SidebarSubmenuItem>
+            ))}
+          </>
+        }
+      >
+        {examplesGroup.title}
+      </SidebarMenuItem>
+      <SidebarAccountCard
+        username="Khaled Ashraf"
+        supportingText="kelmalih@noon.com"
+        initials="KA"
+        aria-label="Khaled Ashraf"
+      />
+    </>
   );
 }
 
@@ -259,7 +296,25 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-primary">
-      <Sidebar activeSection={activeSection} onNavigate={setActiveSection} />
+      <div className="fixed left-0 top-0 z-30 hidden h-screen md:block">
+        <Sidebar
+          header={
+            <img
+              src="/logo-full.svg"
+              alt="Banhatten DS"
+              className="h-8 w-auto max-w-full object-contain"
+            />
+          }
+          footer={
+            <DocsSidebarFooter
+              activeSection={activeSection}
+              onNavigate={setActiveSection}
+            />
+          }
+        >
+          <DocsSidebarNav activeSection={activeSection} onNavigate={setActiveSection} />
+        </Sidebar>
+      </div>
 
       {/* Main Content */}
       <main className="md:pl-64">
