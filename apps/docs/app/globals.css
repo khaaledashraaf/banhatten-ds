@@ -3,3 +3,24 @@
 @import "material-symbols/sharp.css";
 @import "tailwindcss";
 @config "../tailwind.config.ts";
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out both;
+}
+
+.loading-screen {
+  transition: opacity 0.25s ease-out;
+}
+.loading-screen.loading-screen--exiting {
+  opacity: 0;
+  pointer-events: none;
+}
