@@ -54,7 +54,7 @@ export function OrdersDashboardExample() {
 
   return (
     <TooltipProvider delayDuration={200}>
-      <div className="flex min-h-screen flex-col bg-secondary">
+      <div className="flex max-h-screen flex-col bg-secondary">
         {/* Top nav */}
         <header className="flex shrink-0 items-center gap-6 border-b border-default bg-primary px-6 py-4">
           <div className="flex size-9 items-center justify-center rounded-md bg-quarterary text-icon-primary">
@@ -216,8 +216,8 @@ export function OrdersDashboardExample() {
           </div>
 
           {/* Right sidebar — Order details */}
-          <aside className="hidden w-[360px] shrink-0 flex-col gap-0 rounded-lg border border-default bg-primary shadow-xs lg:flex">
-            <div className="border-b border-default px-5 py-4">
+          <aside className="hidden w-[360px] shrink-0 flex-col gap-0 rounded-lg border border-default bg-primary shadow-xs lg:flex overflow-x-hidden h-auto">
+            <div className="border-b border-default px-5 py-4 bg-tertiary">
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <h3 className="text-primary font-semibold">Order ID: Oe31b70H</h3>
@@ -227,14 +227,7 @@ export function OrdersDashboardExample() {
                   <Button variant="primary" size="xs" leftIcon="local_shipping">
                     Track Order
                   </Button>
-                  <Tooltip content="More options" side="left">
-                    <Button
-                      variant="tertiary"
-                      icon="more_vert"
-                      size="xs"
-                      aria-label="Order options"
-                    />
-                  </Tooltip>
+                  <Button variant="secondary" size="xs" icon="more_vert"></Button>
                 </div>
               </div>
             </div>
@@ -248,7 +241,8 @@ export function OrdersDashboardExample() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-3 space-y-1 border-t border-default pt-3 text-sm">
+              <Divider orientation="horizontal" className="mt-3" />
+              <div className="mt-3 space-y-1 text-sm">
                 <div className="flex justify-between text-secondary">
                   <span>Subtotal</span>
                   <span>$250.00</span>
@@ -266,7 +260,8 @@ export function OrdersDashboardExample() {
                   <span>$250.00</span>
                 </div>
               </div>
-              <div className="mt-6 grid grid-cols-2 gap-4">
+              <Divider orientation="horizontal" className="mt-3" />
+              <div className="mt-3 grid grid-cols-2 gap-4">
                 <div>
                   <h4 className="text-primary text-sm font-semibold">Shipping information</h4>
                   <p className="text-secondary mt-1 text-sm">
@@ -280,7 +275,8 @@ export function OrdersDashboardExample() {
                   <p className="text-secondary mt-1 text-sm">Same as shipping address</p>
                 </div>
               </div>
-              <div className="mt-6">
+              <Divider orientation="horizontal" className="mt-3" />
+              <div className="mt-3">
                 <h4 className="text-primary text-sm font-semibold">Customer information</h4>
                 <dl className="mt-2 space-y-1 text-sm">
                   <div className="flex justify-between">
@@ -297,7 +293,8 @@ export function OrdersDashboardExample() {
                   </div>
                 </dl>
               </div>
-              <div className="mt-6">
+              <Divider orientation="horizontal" className="mt-3" />
+              <div className="mt-3">
                 <h4 className="text-primary text-sm font-semibold">Payment information</h4>
                 <div className="mt-2 flex items-center gap-2 text-sm text-primary">
                   <Icon name="credit_card" size="sm" aria-hidden />
