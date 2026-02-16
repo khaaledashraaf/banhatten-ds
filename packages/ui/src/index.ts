@@ -24,6 +24,23 @@ export {
   type AvatarProfileProps,
 } from "./components/avatar-profile";
 export { Badge, badgeVariants, type BadgeProps } from "./components/badge";
+export {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbListItem,
+  BreadcrumbSeparator,
+  breadcrumbListVariants,
+  breadcrumbSeparatorVariants,
+  type BreadcrumbProps,
+  type BreadcrumbListProps,
+  type BreadcrumbListItemProps,
+  type BreadcrumbSeparatorProps,
+} from "./components/breadcrumb";
+export {
+  BreadcrumbItem,
+  breadcrumbItemVariants,
+  type BreadcrumbItemProps,
+} from "./components/breadcrumb-item";
 export { Button, buttonVariants, type ButtonProps } from "./components/button";
 export {
   ButtonGroupItem,

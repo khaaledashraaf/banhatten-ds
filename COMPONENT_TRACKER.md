@@ -46,7 +46,7 @@
 - [ ] **Content Divider**
 - [ ] **Tables**
 - [ ] **Banner**
-- [ ] **Breadcrumbs**
+- [x] **Breadcrumbs** — `breadcrumb.tsx` · Breadcrumb (nav), BreadcrumbList (ol), BreadcrumbListItem (li), BreadcrumbSeparator · Container style: default, withBackground (border-default, bg-secondary, rounded-sm, px-md py-sm) · Separator: slash, chevron (Icon chevron_right) · Composes BreadcrumbItem as children · Token-only · forwardRef on all · aria-label="Breadcrumb", separators role="presentation" aria-hidden
 - [ ] **Chat**
 - [ ] **Section Header**
 - [ ] **Notification**
@@ -66,6 +66,7 @@
 
 ## Utility / Sub-components
 
+- [x] **Breadcrumb Item** — `breadcrumb-item.tsx` · Variants: iconText, iconOnly, overflow · States: default, hover, active, disabled · Optional icon (Material Symbol); overflow uses more_horiz · href → &lt;a&gt;, else &lt;span&gt; with aria-current or aria-disabled · focus-visible ring, sr-only label for iconOnly/overflow when children provided · Token-only · forwardRef
 - [x] **Featured Icon** — `featured-icon.tsx` · Variants: circle-light, square-light, circle-pulse (8px border), solid-circle, solid-square · Types: brand, success, danger, warning, neutral · Sizes: sm, md, lg (icon: sm→md, md→lg, lg→xl) · Material Symbol `name` prop, filled only via Icon · Optional `label` for accessibility (role="img", aria-label; else aria-hidden) · Token-only · forwardRef
 - [x] **Slider Handle** — `slider-handle.tsx` · Fixed 24×24px (size-2xl) · Circle states: default, hover, active (border-brand, bg-primary → bg-brand-tertiary → bg-brand-secondary) · Optional value: tooltip (Tooltip component, above/below) or simple label (text-sm text-primary, 8px above/below, absolute) · state prop for forced visual (docs) · role="img", aria-label when no label, aria-hidden when label present · Token-only · forwardRef
 - [ ] **File Icon**
@@ -75,4 +76,4 @@
 
 ### Progress
 
-**Built:** 28 / 55
+**Built:** 30 / 55

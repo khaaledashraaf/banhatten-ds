@@ -10,6 +10,7 @@ import { AvatarGroupDocumentation } from "../components/avatar-group-documentati
 import { AvatarProfileDocumentation } from "../components/avatar-profile-documentation";
 import { BadgeDocumentation } from "../components/badge-documentation";
 import { ButtonDocumentation } from "../components/button-documentation";
+import { BreadcrumbDocumentation } from "../components/breadcrumb-documentation";
 import { ButtonGroupDocumentation } from "../components/button-group-documentation";
 import { CloseButtonDocumentation } from "../components/close-button-documentation";
 import { DividerDocumentation } from "../components/divider-documentation";
@@ -66,6 +67,7 @@ const navigation = [
       { name: "Avatar Group", href: "avatar-group" },
       { name: "Avatar Profile", href: "avatar-profile" },
       { name: "Badge", href: "badge" },
+      { name: "Breadcrumb", href: "breadcrumb" },
       { name: "Button", href: "button" },
       { name: "Button Group", href: "button-group" },
       { name: "Close Button", href: "close-button" },
@@ -241,6 +243,10 @@ export default function DocsPage() {
       title: "Button Group",
       description: "Horizontal container that groups related Button Group Items with a shared border, rounded corners, and dividers between items. Use for view toggles, filters, or mutually exclusive choices.",
     },
+    breadcrumb: {
+      title: "Breadcrumb",
+      description: "Navigation component that shows page location and hierarchy. Composes BreadcrumbList (container style: default or withBackground), BreadcrumbListItem, BreadcrumbItem (iconText, iconOnly, overflow), and BreadcrumbSeparator (slash or chevron).",
+    },
     "close-button": {
       title: "Close Button",
       description: "Dedicated dismiss control with close icon and default aria-label for alerts, modals, and tags.",
@@ -376,6 +382,7 @@ export default function DocsPage() {
             {activeSection === "avatar-profile" && <AvatarProfileDocumentation />}
             {activeSection === "badge" && <BadgeDocumentation />}
             {activeSection === "button" && <ButtonDocumentation />}
+            {activeSection === "breadcrumb" && <BreadcrumbDocumentation />}
             {activeSection === "button-group" && <ButtonGroupDocumentation />}
             {activeSection === "close-button" && <CloseButtonDocumentation />}
             {activeSection === "divider" && <DividerDocumentation />}
