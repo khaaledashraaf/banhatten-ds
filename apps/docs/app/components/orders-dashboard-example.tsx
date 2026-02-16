@@ -67,7 +67,7 @@ export function OrdersDashboardExample() {
                 href="#"
                 className={`px-3 py-2 text-sm font-medium transition-colors rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 ${
                   item.active
-                    ? "text-brand border-b-2 border-brand pb-[calc(0.5rem-2px)]"
+                    ? "text-primary"
                     : "text-secondary hover:text-primary"
                 }`}
               >
