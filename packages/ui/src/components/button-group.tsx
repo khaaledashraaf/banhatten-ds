@@ -6,11 +6,15 @@ const buttonGroupVariants = cva(
   "inline-flex flex-row items-stretch rounded-sm border border-strong bg-primary overflow-hidden"
 );
 
+export type ButtonGroupSize = "small" | "medium";
+
 export interface ButtonGroupProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof buttonGroupVariants> {
   /** ButtonGroupItem components. */
   children: React.ReactNode;
+  /** Size of the group. Passed to each ButtonGroupItem so all items share the same size. Default: "medium". */
+  size?: ButtonGroupSize;
 }
 
 function getPosition(index: number, total: number): "first" | "middle" | "last" | "only" {
@@ -21,7 +25,7 @@ function getPosition(index: number, total: number): "first" | "middle" | "last" 
 }
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
-  ({ className, children, ...props }, ref) => {
+  ({ className, size = "medium", children, ...props }, ref) => {
     const items = React.Children.toArray(children).filter(Boolean);
     const total = items.length;
 
@@ -34,10 +38,20 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
       >
         {items.map((child, index) => {
           const position = getPosition(index, total);
+          const childProps = React.isValidElement(child)
+            ? (child.props as { size?: ButtonGroupSize })
+            : {};
+          const injectedProps = {
+            position,
+            ...(childProps.size === undefined ? { size } : {}),
+          };
           return React.isValidElement(child) && typeof child.type !== "string"
             ? React.cloneElement(
-                child as React.ReactElement<{ position?: "first" | "middle" | "last" | "only" }>,
-                { position }
+                child as React.ReactElement<{
+                  position?: "first" | "middle" | "last" | "only";
+                  size?: ButtonGroupSize;
+                }>,
+                injectedProps
               )
             : child;
         })}

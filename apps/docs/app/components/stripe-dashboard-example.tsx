@@ -69,10 +69,11 @@ export function StripeDashboardExample() {
 
   return (
     <TooltipProvider delayDuration={200}>
-      <div className="flex min-h-screen bg-secondary">
+      <div className="flex min-h-screen bg-primary">
         {/* Sidebar — in flow so it stays inside the section frame */}
         <div className="hidden shrink-0 md:block md:w-64">
           <Sidebar
+          className="shadow-none border-r border-default rounded-none"
             header={
               <div className="flex flex-col gap-sm">
                 <SidebarAccountCard
@@ -200,7 +201,7 @@ export function StripeDashboardExample() {
 
             {/* Sales / Payouts tabs + table */}
             <section>
-              <ButtonGroup className="mb-4 inline-flex">
+              <ButtonGroup className="mb-4 inline-flex" size="small">
                 <ButtonGroupItem
                   selected={activeTab === "sales"}
                   onClick={() => setActiveTab("sales")}

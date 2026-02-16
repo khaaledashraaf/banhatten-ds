@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Avatar,
   Badge,
@@ -15,6 +15,10 @@ import {
   Divider,
   Icon,
   Input,
+  Menu,
+  MenuGroup,
+  MenuHeading,
+  MenuItem,
   ProgressBar,
   Tooltip,
   TooltipProvider,
@@ -56,6 +60,18 @@ const orderDetailsItems = [
 export function OrdersDashboardExample() {
   const [search, setSearch] = useState("");
   const [period, setPeriod] = useState<"week" | "month" | "year">("week");
+  const [filterMenuOpen, setFilterMenuOpen] = useState(false);
+  const filterMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!filterMenuOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (filterMenuRef.current?.contains(e.target as Node)) return;
+      setFilterMenuOpen(false);
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [filterMenuOpen]);
 
   return (
     <TooltipProvider delayDuration={200}>
@@ -117,113 +133,151 @@ export function OrdersDashboardExample() {
               </BreadcrumbListItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <div className="flex min-w-0 flex-1 gap-6">
+          <div className="flex min-w-0 flex-1 gap-md">
           {/* Left column */}
           <div className="min-w-0 flex-1 space-y-6">
             {/* Your orders card + summary cards */}
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
               <div className="rounded-lg border border-default bg-primary p-5 shadow-xs lg:col-span-1">
-                <h2 className="text-primary text-lg font-semibold">Your orders</h2>
+                <h2 className="text-primary text-md font-medium">Your orders</h2>
                 <p className="text-secondary mt-1 text-sm">
                   Introducing Our Dynamic Orders Dashboard for Seamless Management and Insightful Analysis.
                 </p>
-                <Button variant="primary" size="md" leftIcon="add" className="mt-4">
+                <Button variant="primary" size="xs" leftIcon="add" className="mt-4">
                   Create new order
                 </Button>
               </div>
               {summaryCards.map((card, i) => (
                 <div
                   key={i}
-                  className="rounded-lg border border-default bg-primary p-5 shadow-xs"
+                  className="flex flex-col rounded-lg border border-default bg-primary p-5 shadow-xs"
                 >
                   <p className="text-secondary text-sm">{card.label}</p>
-                  <p className="text-primary mt-1 text-2xl font-bold">{card.value}</p>
+                  <p className="text-primary mt-1 text-3xl font-semibold">{card.value}</p>
                   <p className="text-brand mt-1 text-sm">{card.change}</p>
-                  <div className="mt-3">
-                    <ProgressBar value={card.progress} size="sm" color="brand" aria-label={`Progress ${card.progress}%`} />
+                  <div className="mt-auto pt-md">
+                    <ProgressBar value={card.progress} size="lg" color="brand" aria-label={`Progress ${card.progress}%`} />
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Period tabs + Filter / Export */}
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <ButtonGroup className="inline-flex">
-                <ButtonGroupItem
-                  selected={period === "week"}
-                  onClick={() => setPeriod("week")}
-                >
-                  Week
-                </ButtonGroupItem>
-                <ButtonGroupItem
-                  selected={period === "month"}
-                  onClick={() => setPeriod("month")}
-                >
-                  Month
-                </ButtonGroupItem>
-                <ButtonGroupItem
-                  selected={period === "year"}
-                  onClick={() => setPeriod("year")}
-                >
-                  Year
-                </ButtonGroupItem>
-              </ButtonGroup>
-              <div className="flex gap-2">
-                <Button variant="secondary" size="md" leftIcon="filter_list">
-                  Filter
-                </Button>
-                <Button variant="secondary" size="md" leftIcon="upload">
-                  Export
-                </Button>
-              </div>
-            </div>
-
-            {/* Orders table */}
-            <div className="overflow-hidden rounded-lg border border-default bg-primary shadow-xs">
-              <div className="bg-primary px-lg pt-4 pb-4">
-                <h3 className="text-primary text-lg font-semibold">Orders</h3>
-                <p className="text-secondary mt-0.5 text-sm">Recent orders for your store</p>
-              </div>
-              <div className="overflow-x-auto px-lg">
-                <table
-                  aria-label="Orders"
-                  className="w-full min-w-[600px] border-collapse"
-                >
-                  <thead>
-                    <tr className="border-b border-default bg-secondary text-xs font-semibold uppercase tracking-wider text-tertiary">
-                      <th className="min-w-[140px] px-4 py-3 text-left font-semibold">Customer</th>
-                      <th className="w-20 px-4 py-3 text-left font-semibold">Type</th>
-                      <th className="w-[100px] px-4 py-3 text-left font-semibold">Status</th>
-                      <th className="w-[100px] px-4 py-3 text-left font-semibold">Date</th>
-                      <th className="w-[90px] px-4 py-3 text-left font-semibold">Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {ordersTableRows.map((row, i) => (
-                      <tr
-                        key={i}
-                        className="border-b border-default text-sm text-primary hover:bg-secondary"
+            {/* Period tabs + Filter / Export + Orders table — column, token gap */}
+            <div className="flex flex-col gap-lg">
+              <div className="flex flex-col gap-md sm:flex-row sm:items-center sm:justify-between">
+                <ButtonGroup className="inline-flex" size="small">
+                  <ButtonGroupItem
+                    selected={period === "week"}
+                    onClick={() => setPeriod("week")}
+                  >
+                    Week
+                  </ButtonGroupItem>
+                  <ButtonGroupItem
+                    selected={period === "month"}
+                    onClick={() => setPeriod("month")}
+                  >
+                    Month
+                  </ButtonGroupItem>
+                  <ButtonGroupItem
+                    selected={period === "year"}
+                    onClick={() => setPeriod("year")}
+                  >
+                    Year
+                  </ButtonGroupItem>
+                </ButtonGroup>
+                <div className="flex gap-sm">
+                  <div ref={filterMenuRef} className="relative">
+                    <Button
+                      variant="secondary"
+                      size="xs"
+                      leftIcon="filter_list"
+                      onClick={() => setFilterMenuOpen((o) => !o)}
+                      aria-expanded={filterMenuOpen}
+                      aria-haspopup="true"
+                      aria-controls="orders-filter-menu"
+                    >
+                      Filter
+                    </Button>
+                    {filterMenuOpen && (
+                      <Menu
+                        id="orders-filter-menu"
+                        role="menu"
+                        aria-label="Filter options"
+                        className="absolute left-0 top-full z-10 mt-xs min-w-[200px]"
                       >
-                        <td className="min-w-0 px-4 py-3">
-                          <p className="font-medium text-primary truncate">{row.customer}</p>
-                          <p className="text-secondary text-xs truncate">{row.email}</p>
-                        </td>
-                        <td className="text-secondary px-4 py-3">{row.type}</td>
-                        <td className="px-4 py-3">
-                          <Badge
-                            variant="light"
-                            color={row.status === "Fulfilled" ? "neutral" : "danger"}
-                            size="sm"
-                          >
-                            {row.status}
-                          </Badge>
-                        </td>
-                        <td className="text-secondary px-4 py-3">{row.date}</td>
-                        <td className="px-4 py-3">{row.amount}</td>
+                        <MenuGroup
+                          heading={<MenuHeading>Filter by</MenuHeading>}
+                          headingId="orders-filter-heading"
+                        >
+                          <MenuItem onClick={() => setFilterMenuOpen(false)}>
+                            Status
+                          </MenuItem>
+                          <MenuItem onClick={() => setFilterMenuOpen(false)}>
+                            Date
+                          </MenuItem>
+                          <MenuItem onClick={() => setFilterMenuOpen(false)}>
+                            Customer
+                          </MenuItem>
+                          <MenuItem onClick={() => setFilterMenuOpen(false)}>
+                            Amount
+                          </MenuItem>
+                        </MenuGroup>
+                      </Menu>
+                    )}
+                  </div>
+                  <Button variant="secondary" size="xs" leftIcon="upload">
+                    Export
+                  </Button>
+                </div>
+              </div>
+
+              {/* Orders table */}
+              <div className="overflow-hidden rounded-lg border border-default bg-primary shadow-xs">
+                <div className="bg-primary px-lg pt-4 pb-4">
+                  <h3 className="text-primary text-lg font-semibold">Orders</h3>
+                  <p className="text-secondary mt-0.5 text-sm">Recent orders for your store</p>
+                </div>
+                <div className="overflow-x-auto px-lg">
+                  <table
+                    aria-label="Orders"
+                    className="w-full min-w-[600px] border-collapse"
+                  >
+                    <thead>
+                      <tr className="border-b border-default bg-secondary text-xs font-semibold uppercase tracking-wider text-tertiary">
+                        <th className="w-[100px] px-4 py-3 text-left font-semibold">Customer</th>
+                        <th className="w-20 px-4 py-3 text-left font-semibold">Type</th>
+                        <th className="w-[100px] px-4 py-3 text-left font-semibold">Status</th>
+                        <th className="w-[100px] px-4 py-3 text-left font-semibold">Date</th>
+                        <th className="w-[90px] px-4 py-3 text-left font-semibold">Amount</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {ordersTableRows.map((row, i) => (
+                        <tr
+                          key={i}
+                          className="border-b border-default text-sm text-primary hover:bg-secondary"
+                        >
+                          <td className="min-w-0 px-4 py-3">
+                            <p className="font-medium text-primary truncate">{row.customer}</p>
+                            <p className="text-secondary text-xs truncate">{row.email}</p>
+                          </td>
+                          <td className="text-secondary px-4 py-3">{row.type}</td>
+                          <td className="px-4 py-3">
+                            <Badge
+                              variant="light"
+                              color={row.status === "Fulfilled" ? "neutral" : "danger"}
+                              size="sm"
+                            >
+                              {row.status}
+                            </Badge>
+                          </td>
+                          <td className="text-secondary px-4 py-3">{row.date}</td>
+                          <td className="px-4 py-3">{row.amount}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>

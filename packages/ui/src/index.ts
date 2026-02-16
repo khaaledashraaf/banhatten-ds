@@ -51,6 +51,7 @@ export {
   ButtonGroup,
   buttonGroupVariants,
   type ButtonGroupProps,
+  type ButtonGroupSize,
 } from "./components/button-group";
 export {
   CloseButton,
