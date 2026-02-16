@@ -114,7 +114,7 @@ export function Example() {
 | **Product** | Content Divider | — Planned |
 | **Product** | Tables | — Planned |
 | **Product** | Banner | — Planned |
-| **Product** | Breadcrumbs | — Planned |
+| **Product** | Breadcrumbs | ✅ Built |
 | **Product** | Chat | — Planned |
 | **Product** | Section Header | — Planned |
 | **Product** | Notification | — Planned |
@@ -131,6 +131,7 @@ export function Example() {
 | **Product** | Command Bar | — Planned |
 | **Product** | Date Picker | — Planned |
 | **Product** | Player | — Planned |
+| **Utility** | Breadcrumb Item | ✅ Built |
 | **Utility** | Featured Icon | ✅ Built |
 | **Utility** | Slider Handle | ✅ Built |
 | **Utility** | File Icon | — Planned |

@@ -20,6 +20,9 @@ Description: Final validation and synchronization after implementing a component
    - Mark component as complete
    - Ensure variant description matches implementation
 
+4. Update README.md:
+   - Mark component as complete in the Components section
+
 ---
 
 ## Constraints
