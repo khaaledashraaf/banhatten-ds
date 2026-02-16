@@ -4,6 +4,11 @@ import { useState } from "react";
 import {
   Avatar,
   Badge,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbListItem,
+  BreadcrumbSeparator,
   Button,
   ButtonGroup,
   ButtonGroupItem,
@@ -89,19 +94,30 @@ export function OrdersDashboardExample() {
           </div>
         </header>
 
-        {/* Breadcrumbs */}
-        <div className="border-b border-default bg-primary px-6 py-3">
-          <p className="text-sm text-secondary">
-            <a href="#" className="text-secondary hover:text-primary">Dashboard</a>
-            {" / "}
-            <a href="#" className="text-secondary hover:text-primary">Orders</a>
-            {" / "}
-            <span className="font-semibold text-primary">Recent orders</span>
-          </p>
-        </div>
-
         {/* Main content */}
-        <div className="flex min-w-0 flex-1 gap-6 p-6">
+        <div className="flex min-w-0 flex-1 flex-col gap-4 p-6">
+          <Breadcrumb>
+            <BreadcrumbList containerStyle="default">
+              <BreadcrumbListItem>
+                <BreadcrumbItem variant="iconText" icon="home" href="#">
+                  Dashboard
+                </BreadcrumbItem>
+                <BreadcrumbSeparator separator="chevron" />
+              </BreadcrumbListItem>
+              <BreadcrumbListItem>
+                <BreadcrumbItem variant="iconText" icon="folder" href="#">
+                  Orders
+                </BreadcrumbItem>
+                <BreadcrumbSeparator separator="chevron" />
+              </BreadcrumbListItem>
+              <BreadcrumbListItem>
+                <BreadcrumbItem variant="iconText" icon="folder" active>
+                  Recent orders
+                </BreadcrumbItem>
+              </BreadcrumbListItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+          <div className="flex min-w-0 flex-1 gap-6">
           {/* Left column */}
           <div className="min-w-0 flex-1 space-y-6">
             {/* Your orders card + summary cards */}
@@ -164,39 +180,36 @@ export function OrdersDashboardExample() {
 
             {/* Orders table */}
             <div className="overflow-hidden rounded-lg border border-default bg-primary shadow-xs">
-              <div className="border-b border-default bg-secondary px-4 py-4">
+              <div className="bg-primary px-lg pt-4 pb-4">
                 <h3 className="text-primary text-lg font-semibold">Orders</h3>
                 <p className="text-secondary mt-0.5 text-sm">Recent orders for your store</p>
               </div>
-              <div className="overflow-x-auto">
-                <div
-                  role="table"
+              <div className="overflow-x-auto px-lg">
+                <table
                   aria-label="Orders"
-                  className="min-w-[600px]"
+                  className="w-full min-w-[600px] border-collapse"
                 >
-                  <div
-                    role="rowgroup"
-                    className="grid grid-cols-[minmax(140px,1fr)_80px_100px_100px_90px] gap-4 border-b border-default bg-secondary px-4 py-3 text-xs font-semibold uppercase tracking-wider text-tertiary"
-                  >
-                    <span role="columnheader">Customer</span>
-                    <span role="columnheader">Type</span>
-                    <span role="columnheader">Status</span>
-                    <span role="columnheader">Date</span>
-                    <span role="columnheader">Amount</span>
-                  </div>
-                  {ordersTableRows.map((row, i) => (
-                    <div key={i} role="rowgroup">
-                      {i > 0 && <Divider />}
-                      <div
-                        role="row"
-                        className="grid grid-cols-[minmax(140px,1fr)_80px_100px_100px_90px] gap-4 px-4 py-3 text-sm text-primary hover:bg-secondary"
+                  <thead>
+                    <tr className="border-b border-default bg-secondary text-xs font-semibold uppercase tracking-wider text-tertiary">
+                      <th className="min-w-[140px] px-4 py-3 text-left font-semibold">Customer</th>
+                      <th className="w-20 px-4 py-3 text-left font-semibold">Type</th>
+                      <th className="w-[100px] px-4 py-3 text-left font-semibold">Status</th>
+                      <th className="w-[100px] px-4 py-3 text-left font-semibold">Date</th>
+                      <th className="w-[90px] px-4 py-3 text-left font-semibold">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {ordersTableRows.map((row, i) => (
+                      <tr
+                        key={i}
+                        className="border-b border-default text-sm text-primary hover:bg-secondary"
                       >
-                        <div role="cell" className="min-w-0">
+                        <td className="min-w-0 px-4 py-3">
                           <p className="font-medium text-primary truncate">{row.customer}</p>
                           <p className="text-secondary text-xs truncate">{row.email}</p>
-                        </div>
-                        <span role="cell" className="text-secondary">{row.type}</span>
-                        <span role="cell">
+                        </td>
+                        <td className="text-secondary px-4 py-3">{row.type}</td>
+                        <td className="px-4 py-3">
                           <Badge
                             variant="light"
                             color={row.status === "Fulfilled" ? "neutral" : "danger"}
@@ -204,13 +217,13 @@ export function OrdersDashboardExample() {
                           >
                             {row.status}
                           </Badge>
-                        </span>
-                        <span role="cell" className="text-secondary">{row.date}</span>
-                        <span role="cell">{row.amount}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                        </td>
+                        <td className="text-secondary px-4 py-3">{row.date}</td>
+                        <td className="px-4 py-3">{row.amount}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -304,6 +317,7 @@ export function OrdersDashboardExample() {
               </div>
             </div>
           </aside>
+          </div>
         </div>
       </div>
     </TooltipProvider>

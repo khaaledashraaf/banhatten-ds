@@ -74,13 +74,14 @@ export function StripeDashboardExample() {
         <div className="hidden shrink-0 md:block md:w-64">
           <Sidebar
             header={
-              <div className="flex flex-col gap-sm px-md pt-md">
+              <div className="flex flex-col gap-sm">
                 <SidebarAccountCard
                   username="Username"
                   supportingText="user@example.com"
                   initials="U"
-                  rightIcon="expand_more"
+                  rightIcon="unfold_more"
                   aria-label="Account menu"
+                  className="border border-default rounded-sm bg-secondary py-sm"
                 />
                 <Input
                   preset="search"
