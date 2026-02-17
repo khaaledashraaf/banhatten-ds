@@ -1,6 +1,6 @@
 {
   "name": "banhatten-ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Banhatten Design System - React component library with token-based theming",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
