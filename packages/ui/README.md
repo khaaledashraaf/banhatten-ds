@@ -1,11 +1,11 @@
-# banhatten-ui
+# @banhatten/ui
 
 Banhatten Design System - React component library with token-based theming.
 
 ## Installation
 
 ```bash
-npm install banhatten-ui
+npm install @banhatten/ui
 ```
 
 ## Requirements
@@ -21,13 +21,13 @@ Add the Banhatten tokens to your `tailwind.config.ts`:
 
 ```ts
 import type { Config } from "tailwindcss";
-import banhattenConfig from "banhatten-ui/tokens/tailwind.config";
+import banhattenConfig from "@banhatten/ui/tokens/tailwind.config";
 
 const config: Config = {
   presets: [banhattenConfig],
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/banhatten-ui/dist/**/*.{js,mjs}",
+    "./node_modules/@banhatten/ui/dist/**/*.{js,mjs}",
   ],
 };
 
@@ -37,7 +37,7 @@ export default config;
 ### 2. Import Components
 
 ```tsx
-import { Button, Input, Badge } from "banhatten-ui";
+import { Button, Input, Badge } from "@banhatten/ui";
 
 export function MyComponent() {
   return (
@@ -52,10 +52,10 @@ export function MyComponent() {
 
 ## Exports
 
-- **Components:** `import { Button, Input, ... } from "banhatten-ui"`
-- **Utils:** `import { cn } from "banhatten-ui/lib/utils"`
-- **Tokens JSON:** `import tokens from "banhatten-ui/tokens"`
-- **Tailwind Config:** `import config from "banhatten-ui/tokens/tailwind.config"`
+- **Components:** `import { Button, Input, ... } from "@banhatten/ui"`
+- **Utils:** `import { cn } from "@banhatten/ui/lib/utils"`
+- **Tokens JSON:** `import tokens from "@banhatten/ui/tokens"`
+- **Tailwind Config:** `import config from "@banhatten/ui/tokens/tailwind.config"`
 
 ## Documentation
 
