@@ -14,11 +14,11 @@ export function IntroductionDocumentation() {
 
       <Section
         title="Packages"
-        description="The repo is split into apps and packages. Consuming apps typically depend on @banhatten/ui and optionally @banhatten/tokens for theming."
+        description="The repo is split into apps and packages. Consuming apps typically depend on banhatten-ui and optionally @banhatten/tokens for theming."
       >
         <ul className="text-secondary list-disc space-y-2 pl-6 text-sm">
           <li>
-            <strong className="text-primary">@banhatten/ui</strong> — Component library.
+            <strong className="text-primary">banhatten-ui</strong> — Component library.
             Buttons, inputs, menus, sidebars, avatars, alerts, sliders, tooltips, and
             more. All components use design tokens and support theming. Exports named
             components and CVA variants (e.g. <code>buttonVariants</code>) for custom

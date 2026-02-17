@@ -1,4 +1,4 @@
-import { Icon } from "@banhatten/ui";
+import { Icon } from "banhatten-ui";
 import { Section } from "./section";
 
 export function IconDocumentation() {
@@ -108,7 +108,7 @@ export function IconDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { Icon } from "@banhatten/ui";
+            <code>{`import { Icon } from "banhatten-ui";
 
 <Icon name="home" />                              // Outlined, unfilled, 24px
 <Icon name="home" filled />                       // Outlined, filled
@@ -185,7 +185,7 @@ export function IconDocumentation() {
       {/* Font Loading Note */}
       <Section
         title="Font Loading (Consumers)"
-        description="Apps consuming @banhatten/ui must load the font CSS in their global styles."
+        description="Apps consuming banhatten-ui must load the font CSS in their global styles."
       >
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">

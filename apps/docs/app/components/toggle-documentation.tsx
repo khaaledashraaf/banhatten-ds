@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Toggle } from "@banhatten/ui";
+import { Toggle } from "banhatten-ui";
 import { Section } from "./section";
 
 export function ToggleDocumentation() {
@@ -201,7 +201,7 @@ export function ToggleDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-6">
           <pre className="text-primary overflow-x-auto text-sm leading-relaxed">
-            <code>{`import { Toggle } from "@banhatten/ui";
+            <code>{`import { Toggle } from "banhatten-ui";
 
 // Base toggle
 <Toggle />

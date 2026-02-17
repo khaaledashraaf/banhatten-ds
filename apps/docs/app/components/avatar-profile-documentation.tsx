@@ -1,4 +1,4 @@
-import { AvatarProfile, Icon } from "@banhatten/ui";
+import { AvatarProfile, Icon } from "banhatten-ui";
 import { Section } from "./section";
 
 const profileSizes = ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl"] as const;
@@ -103,7 +103,7 @@ export function AvatarProfileDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { AvatarProfile, Icon } from "@banhatten/ui";
+            <code>{`import { AvatarProfile, Icon } from "banhatten-ui";
 
 // Basic
 <AvatarProfile initials="AG" aria-label="User profile" />

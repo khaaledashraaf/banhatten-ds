@@ -1,6 +1,6 @@
 "use client";
 
-import { SliderHandle, TooltipProvider } from "@banhatten/ui";
+import { SliderHandle, TooltipProvider } from "banhatten-ui";
 import { Section } from "./section";
 
 export function SliderHandleDocumentation() {
@@ -107,7 +107,7 @@ export function SliderHandleDocumentation() {
         <Section title="Usage">
           <div className="bg-secondary rounded-lg p-4">
             <pre className="text-primary overflow-x-auto text-sm">
-              <code>{`import { SliderHandle } from "@banhatten/ui";
+              <code>{`import { SliderHandle } from "banhatten-ui";
 
 // Circle only (24×24px)
 <SliderHandle aria-label="Slider handle" />

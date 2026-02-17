@@ -1,4 +1,4 @@
-import { MenuHeading, MenuItem } from "@banhatten/ui";
+import { MenuHeading, MenuItem } from "banhatten-ui";
 import { Section } from "./section";
 
 export function MenuHeadingDocumentation() {
@@ -30,7 +30,7 @@ export function MenuHeadingDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { MenuHeading, MenuItem } from "@banhatten/ui";
+            <code>{`import { MenuHeading, MenuItem } from "banhatten-ui";
 
 // Standalone heading
 <MenuHeading>Section header</MenuHeading>

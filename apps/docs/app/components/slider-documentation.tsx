@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Slider, TooltipProvider } from "@banhatten/ui";
+import { Slider, TooltipProvider } from "banhatten-ui";
 import { Section } from "./section";
 
 export function SliderDocumentation() {
@@ -173,7 +173,7 @@ export function SliderDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { Slider } from "@banhatten/ui";
+            <code>{`import { Slider } from "banhatten-ui";
 
 // Basic (uncontrolled, 0–100)
 <Slider defaultValue={40} aria-label="Volume" />

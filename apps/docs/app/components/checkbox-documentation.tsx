@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Checkbox, CheckboxCard } from "@banhatten/ui";
+import { Checkbox, CheckboxCard } from "banhatten-ui";
 import { Section } from "./section";
 
 export function CheckboxDocumentation() {
@@ -205,7 +205,7 @@ export function CheckboxDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { Checkbox, CheckboxCard } from "@banhatten/ui";
+            <code>{`import { Checkbox, CheckboxCard } from "banhatten-ui";
 
 // Base checkbox
 <Checkbox />

@@ -23,7 +23,7 @@ export function HowToUseDocumentation() {
 {`// In your app's package.json (e.g. apps/my-app/package.json)
 {
   "dependencies": {
-    "@banhatten/ui": "*",
+    "banhatten-ui": "*",
     "@banhatten/tokens": "*",
     "material-symbols": "^0.40.2",
     "react": "^19.0.0",
@@ -35,14 +35,14 @@ export function HowToUseDocumentation() {
             If you consume the packages from npm (once published), use:
           </p>
           <pre className="border-default bg-secondary-subtle overflow-x-auto rounded-md border p-4 font-mono text-sm">
-{`npm install @banhatten/ui @banhatten/tokens material-symbols
+{`npm install banhatten-ui @banhatten/tokens material-symbols
 # or
-yarn add @banhatten/ui @banhatten/tokens material-symbols
+yarn add banhatten-ui @banhatten/tokens material-symbols
 # or
-pnpm add @banhatten/ui @banhatten/tokens material-symbols`}
+pnpm add banhatten-ui @banhatten/tokens material-symbols`}
           </pre>
           <p className="text-tertiary text-xs">
-            <code>@banhatten/ui</code> has peer dependencies on <code>react</code> and{" "}
+            <code>banhatten-ui</code> has peer dependencies on <code>react</code> and{" "}
             <code>react-dom</code> ^19.0.0. Icons use the Material Symbols variable font
             from the <code>material-symbols</code> package — include its CSS in your
             app (see below).
@@ -69,7 +69,7 @@ const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
-    "./node_modules/@banhatten/ui/src/**/*.{ts,tsx}",
+    "./node_modules/banhatten-ui/src/**/*.{ts,tsx}",
   ],
 };
 
@@ -110,7 +110,7 @@ import "material-symbols/outlined.css";
 
       <Section
         title="Using components"
-        description="Import named components and optional variants from @banhatten/ui."
+        description="Import named components and optional variants from banhatten-ui."
       >
         <div className="space-y-4">
           <p className="text-secondary text-sm">
@@ -126,14 +126,14 @@ import "material-symbols/outlined.css";
   Sidebar,
   SidebarMenuItem,
   SidebarSubmenuItem,
-} from "@banhatten/ui";
+} from "banhatten-ui";
 
 // Simple usage
 <Button variant="primary" size="md">Save</Button>
 <Input label="Email" placeholder="you@example.com" />
 
 // With variants for custom elements
-import { cn } from "@banhatten/ui/lib/utils";
+import { cn } from "banhatten-ui/lib/utils";
 <a href="/dashboard" className={cn(buttonVariants({ variant: "link" }))}>
   Go to dashboard
 </a>`}
@@ -153,7 +153,7 @@ import { cn } from "@banhatten/ui/lib/utils";
       >
         <div className="space-y-4">
           <pre className="border-default bg-secondary-subtle overflow-x-auto rounded-md border p-4 font-mono text-sm">
-{`import { cn } from "@banhatten/ui/lib/utils";
+{`import { cn } from "banhatten-ui/lib/utils";
 
 <div className={cn("base classes", condition && "conditional", className)} />`}
           </pre>
@@ -178,8 +178,8 @@ import { cn } from "@banhatten/ui/lib/utils";
       >
         <ul className="text-secondary list-disc space-y-2 pl-6 text-sm">
           <li>
-            <code>@banhatten/ui</code> — Main entry: all components and types.{" "}
-            <code>@banhatten/ui/lib/utils</code> — <code>cn</code> only.
+            <code>banhatten-ui</code> — Main entry: all components and types.{" "}
+            <code>banhatten-ui/lib/utils</code> — <code>cn</code> only.
           </li>
           <li>
             <code>@banhatten/tokens</code> — <code>tokens.json</code>.{" "}

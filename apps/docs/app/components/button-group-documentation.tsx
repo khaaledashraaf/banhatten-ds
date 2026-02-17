@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ButtonGroup, ButtonGroupItem } from "@banhatten/ui";
+import { ButtonGroup, ButtonGroupItem } from "banhatten-ui";
 import { Section } from "./section";
 
 const initialSelected: Record<string, number> = {
@@ -167,7 +167,7 @@ export function ButtonGroupDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { ButtonGroup, ButtonGroupItem } from "@banhatten/ui";
+            <code>{`import { ButtonGroup, ButtonGroupItem } from "banhatten-ui";
 
 // Basic group (2–5 items typical)
 <ButtonGroup aria-label="View options">

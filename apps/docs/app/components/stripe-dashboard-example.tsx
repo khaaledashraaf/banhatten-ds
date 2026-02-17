@@ -15,7 +15,7 @@ import {
   SidebarSubmenuItem,
   Tooltip,
   TooltipProvider,
-} from "@banhatten/ui";
+} from "banhatten-ui";
 
 // ============================================================================
 // Data

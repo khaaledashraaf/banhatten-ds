@@ -1,4 +1,4 @@
-import { FeaturedIcon } from "@banhatten/ui";
+import { FeaturedIcon } from "banhatten-ui";
 import { Section } from "./section";
 
 const variants = [
@@ -113,7 +113,7 @@ export function FeaturedIconDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { FeaturedIcon } from "@banhatten/ui";
+            <code>{`import { FeaturedIcon } from "banhatten-ui";
 
 // Basic (solid-circle, brand, md)
 <FeaturedIcon name="info" />

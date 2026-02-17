@@ -1,6 +1,6 @@
 "use client";
 
-import { Tooltip, TooltipProvider, Button } from "@banhatten/ui";
+import { Tooltip, TooltipProvider, Button } from "banhatten-ui";
 import { Section } from "./section";
 
 export function TooltipDocumentation() {
@@ -271,7 +271,7 @@ export function TooltipDocumentation() {
         <Section title="Usage">
           <div className="bg-secondary rounded-lg p-6">
             <pre className="text-primary overflow-x-auto text-sm leading-relaxed">
-              <code>{`import { Tooltip, TooltipProvider } from "@banhatten/ui";
+              <code>{`import { Tooltip, TooltipProvider } from "banhatten-ui";
 
 // Wrap your app (or a section) with TooltipProvider once
 <TooltipProvider>
@@ -308,7 +308,7 @@ export function TooltipDocumentation() {
 </TooltipProvider>
 
 // Advanced: Use primitives directly for more control
-import { TooltipTrigger, TooltipContent } from "@banhatten/ui";
+import { TooltipTrigger, TooltipContent } from "banhatten-ui";
 
 <TooltipProvider>
   <TooltipTrigger asChild>

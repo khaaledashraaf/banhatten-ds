@@ -1,4 +1,4 @@
-import { Badge } from "@banhatten/ui";
+import { Badge } from "banhatten-ui";
 import { Section } from "./section";
 
 export function BadgeDocumentation() {
@@ -109,7 +109,7 @@ export function BadgeDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { Badge } from "@banhatten/ui";
+            <code>{`import { Badge } from "banhatten-ui";
 
 <Badge>Default</Badge>
 <Badge variant="filled" color="success">Completed</Badge>

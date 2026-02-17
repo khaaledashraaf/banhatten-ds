@@ -1,4 +1,4 @@
-import { Menu, MenuGroup, MenuHeading, MenuItem } from "@banhatten/ui";
+import { Menu, MenuGroup, MenuHeading, MenuItem } from "banhatten-ui";
 import { Section } from "./section";
 
 export function MenuDocumentation() {
@@ -70,7 +70,7 @@ export function MenuDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { Menu, MenuGroup, MenuHeading, MenuItem } from "@banhatten/ui";
+            <code>{`import { Menu, MenuGroup, MenuHeading, MenuItem } from "banhatten-ui";
 
 // Multiple groups (dividers inserted between them)
 <Menu>

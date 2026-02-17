@@ -1,4 +1,4 @@
-import { AvatarGroup } from "@banhatten/ui";
+import { AvatarGroup } from "banhatten-ui";
 import { Section } from "./section";
 
 const sampleAvatars = [
@@ -130,7 +130,7 @@ export function AvatarGroupDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { AvatarGroup } from "@banhatten/ui";
+            <code>{`import { AvatarGroup } from "banhatten-ui";
 
 const avatars = [
   { initials: "AG", "aria-label": "Anna Green" },

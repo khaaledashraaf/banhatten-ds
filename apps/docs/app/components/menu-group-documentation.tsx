@@ -1,4 +1,4 @@
-import { MenuGroup, MenuHeading, MenuItem } from "@banhatten/ui";
+import { MenuGroup, MenuHeading, MenuItem } from "banhatten-ui";
 import { Section } from "./section";
 
 export function MenuGroupDocumentation() {
@@ -48,7 +48,7 @@ export function MenuGroupDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { MenuGroup, MenuHeading, MenuItem } from "@banhatten/ui";
+            <code>{`import { MenuGroup, MenuHeading, MenuItem } from "banhatten-ui";
 
 // With heading and aria-labelledby
 <MenuGroup

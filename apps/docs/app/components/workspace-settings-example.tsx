@@ -13,7 +13,7 @@ import {
   Tooltip,
   TooltipProvider,
   Divider,
-} from "@banhatten/ui";
+} from "banhatten-ui";
 
 const SIDEBAR_WIDTH = "280px";
 

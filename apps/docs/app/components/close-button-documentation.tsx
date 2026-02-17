@@ -1,4 +1,4 @@
-import { CloseButton } from "@banhatten/ui";
+import { CloseButton } from "banhatten-ui";
 import { Section } from "./section";
 
 export function CloseButtonDocumentation() {
@@ -82,7 +82,7 @@ export function CloseButtonDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { CloseButton } from "@banhatten/ui";
+            <code>{`import { CloseButton } from "banhatten-ui";
 
 // Default (ghost, md, aria-label="Close")
 <CloseButton onClick={onClose} />

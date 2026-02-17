@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Radio, RadioCard } from "@banhatten/ui";
+import { Radio, RadioCard } from "banhatten-ui";
 import { Section } from "./section";
 
 export function RadioDocumentation() {
@@ -261,7 +261,7 @@ export function RadioDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { Radio, RadioCard } from "@banhatten/ui";
+            <code>{`import { Radio, RadioCard } from "banhatten-ui";
 import { useState } from "react";
 
 // Base radio

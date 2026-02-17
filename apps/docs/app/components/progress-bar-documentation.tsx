@@ -1,4 +1,4 @@
-import { ProgressBar } from "@banhatten/ui";
+import { ProgressBar } from "banhatten-ui";
 import { Section } from "./section";
 
 export function ProgressBarDocumentation() {
@@ -108,7 +108,7 @@ export function ProgressBarDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { ProgressBar } from "@banhatten/ui";
+            <code>{`import { ProgressBar } from "banhatten-ui";
 
 // Basic (value 0–100)
 <ProgressBar value={40} aria-label="Progress" />

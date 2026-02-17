@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Badge } from "@banhatten/ui";
+import { Button, Badge } from "banhatten-ui";
 
 // ============================================================================
 // Product Data

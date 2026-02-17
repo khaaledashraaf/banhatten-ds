@@ -2,7 +2,7 @@
 
 import { Link } from "next-view-transitions";
 import { useState } from "react";
-import { Sidebar, SidebarAccountCard, SidebarMenuItem, SidebarSubmenuItem } from "@banhatten/ui";
+import { Sidebar, SidebarAccountCard, SidebarMenuItem, SidebarSubmenuItem } from "banhatten-ui";
 import { AccordionDocumentation } from "../components/accordion-documentation";
 import { AlertDocumentation } from "../components/alert-documentation";
 import { AvatarDocumentation } from "../components/avatar-documentation";
@@ -201,7 +201,7 @@ export default function DocsPage() {
     },
     "how-to-use": {
       title: "How to Use",
-      description: "Installation, Tailwind setup, Material Symbols, and usage guide for @banhatten/ui and @banhatten/tokens.",
+      description: "Installation, Tailwind setup, Material Symbols, and usage guide for banhatten-ui and @banhatten/tokens.",
     },
     tokens: {
       title: "Design Tokens",

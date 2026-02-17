@@ -1,4 +1,4 @@
-import { Avatar } from "@banhatten/ui";
+import { Avatar } from "banhatten-ui";
 import { Section } from "./section";
 
 const avatarSizes = ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl"] as const;
@@ -159,7 +159,7 @@ export function AvatarDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { Avatar } from "@banhatten/ui";
+            <code>{`import { Avatar } from "banhatten-ui";
 
 // With initials (recommend aria-label when meaningful)
 <Avatar initials="AG" aria-label="Anna Green" />

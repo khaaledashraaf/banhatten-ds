@@ -7,7 +7,7 @@ import {
   SidebarSubmenuItem,
   SidebarAccountCard,
   Icon,
-} from "@banhatten/ui";
+} from "banhatten-ui";
 import { Section } from "./section";
 
 export function SidebarDocumentation() {
@@ -160,7 +160,7 @@ export function SidebarDocumentation() {
   SidebarSubmenuItem,
   SidebarAccountCard,
   Icon,
-} from "@banhatten/ui";
+} from "banhatten-ui";
 
 <Sidebar
   header={<><Icon name="star" /> <span>Banhaten</span></>}

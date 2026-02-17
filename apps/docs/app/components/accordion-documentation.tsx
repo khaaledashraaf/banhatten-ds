@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
   Icon,
-} from "@banhatten/ui";
+} from "banhatten-ui";
 import { Section } from "./section";
 
 export function AccordionDocumentation() {
@@ -149,7 +149,7 @@ export function AccordionDocumentation() {
   AccordionTrigger,
   AccordionContent,
   Icon,
-} from "@banhatten/ui";
+} from "banhatten-ui";
 
 <Accordion defaultValue="a">
   <AccordionItem value="a" showDivider>

@@ -1,4 +1,4 @@
-import { Divider } from "@banhatten/ui";
+import { Divider } from "banhatten-ui";
 import { Section } from "./section";
 
 export function DividerDocumentation() {
@@ -116,7 +116,7 @@ export function DividerDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { Divider } from "@banhatten/ui";
+            <code>{`import { Divider } from "banhatten-ui";
 
 // Horizontal divider (default)
 <Divider />

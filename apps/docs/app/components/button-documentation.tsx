@@ -1,4 +1,4 @@
-import { Button } from "@banhatten/ui";
+import { Button } from "banhatten-ui";
 import { Section } from "./section";
 
 export function ButtonDocumentation() {
@@ -158,7 +158,7 @@ export function ButtonDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { Button } from "@banhatten/ui";
+            <code>{`import { Button } from "banhatten-ui";
 
 <Button>Primary Action</Button>
 <Button variant="secondary">Secondary</Button>

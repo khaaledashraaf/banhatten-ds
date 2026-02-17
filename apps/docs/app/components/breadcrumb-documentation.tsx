@@ -4,7 +4,7 @@ import {
   BreadcrumbList,
   BreadcrumbListItem,
   BreadcrumbSeparator,
-} from "@banhatten/ui";
+} from "banhatten-ui";
 import { Section } from "./section";
 
 export function BreadcrumbDocumentation() {
@@ -237,7 +237,7 @@ export function BreadcrumbDocumentation() {
   BreadcrumbListItem,
   BreadcrumbItem,
   BreadcrumbSeparator,
-} from "@banhatten/ui";
+} from "banhatten-ui";
 
 <Breadcrumb>
   <BreadcrumbList containerStyle="withBackground">

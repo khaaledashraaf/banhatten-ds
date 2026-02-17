@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Alert, type AlertAction } from "@banhatten/ui";
+import { Alert, type AlertAction } from "banhatten-ui";
 import { Section } from "./section";
 
 export function AlertDocumentation() {
@@ -247,7 +247,7 @@ export function AlertDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { Alert } from "@banhatten/ui";
+            <code>{`import { Alert } from "banhatten-ui";
 
 // Basic alert
 <Alert title="Alert Title" />

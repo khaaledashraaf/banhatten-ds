@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Tag } from "@banhatten/ui";
+import { Tag } from "banhatten-ui";
 import { Section } from "./section";
 
 export function TagDocumentation() {
@@ -228,7 +228,7 @@ export function TagDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { Tag } from "@banhatten/ui";
+            <code>{`import { Tag } from "banhatten-ui";
 
 // Basic usage
 <Tag>Label</Tag>

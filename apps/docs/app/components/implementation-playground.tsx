@@ -1,4 +1,4 @@
-import { Button, Badge } from "@banhatten/ui";
+import { Button, Badge } from "banhatten-ui";
 
 // ============================================================================
 // Pricing Card Component

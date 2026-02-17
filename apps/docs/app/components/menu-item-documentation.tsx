@@ -6,7 +6,7 @@ import {
   Avatar,
   Badge,
   Button,
-} from "@banhatten/ui";
+} from "banhatten-ui";
 import { Section } from "./section";
 
 export function MenuItemDocumentation() {
@@ -129,7 +129,7 @@ export function MenuItemDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { MenuItem, Avatar, Badge, Button } from "@banhatten/ui";
+            <code>{`import { MenuItem, Avatar, Badge, Button } from "banhatten-ui";
 
 // Basic
 <MenuItem onClick={handleClick}>Text item</MenuItem>
@@ -157,7 +157,7 @@ export function MenuItemDocumentation() {
 // Progress (label + bar + value)
 <MenuItem type="progress" progressLabel="Storage" progressValue={40} />
 
-// With avatar, badge, switch (use Avatar/Badge from @banhatten/ui)
+// With avatar, badge, switch (use Avatar/Badge from banhatten-ui)
 <MenuItem
   leftIcon="add"
   avatar={<Avatar size="sm" initials="AG" aria-label="User" />}

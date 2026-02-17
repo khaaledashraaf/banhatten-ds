@@ -31,7 +31,7 @@ import {
   Toggle,
   Tooltip,
   TooltipProvider,
-} from "@banhatten/ui";
+} from "banhatten-ui";
 
 const TEAM_AVATARS = [
   { initials: "JK", "aria-label": "Jane Kim" },

@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useState } from "react";
-import { TextArea } from "@banhatten/ui";
+import { TextArea } from "banhatten-ui";
 import { Section } from "./section";
 
 export function TextAreaDocumentation() {
@@ -214,7 +214,7 @@ export function TextAreaDocumentation() {
       <Section title="Usage">
         <div className="bg-secondary rounded-lg p-4">
           <pre className="text-primary overflow-x-auto text-sm">
-            <code>{`import { TextArea } from "@banhatten/ui";
+            <code>{`import { TextArea } from "banhatten-ui";
 
 // Basic textarea
 <TextArea label="Description" placeholder="Enter your description" />

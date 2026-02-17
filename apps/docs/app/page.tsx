@@ -17,7 +17,7 @@ import {
   Slider,
   Tag,
   Toggle,
-} from "@banhatten/ui";
+} from "banhatten-ui";
 import { OrdersDashboardExample } from "./components/orders-dashboard-example";
 import { StripeDashboardExample } from "./components/stripe-dashboard-example";
 
