@@ -46,6 +46,79 @@ Then open [http://localhost:3000](http://localhost:3000).
 
 ---
 
+## Installation
+
+Install the package in your React project:
+
+```bash
+npm install banhatten-ui
+```
+
+**Requirements:**
+- React 19+ (`react@^19.0.0` and `react-dom@^19.0.0`)
+- Tailwind CSS v4
+
+## Using the Package
+
+### 1. Configure Tailwind CSS
+
+The package includes design tokens. Configure your `tailwind.config.ts` to use them:
+
+```ts
+import type { Config } from "tailwindcss";
+import banhattenConfig from "banhatten-ui/tokens/tailwind.config";
+
+const config: Config = {
+  presets: [banhattenConfig],
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/banhatten-ui/dist/**/*.{js,mjs}",
+  ],
+};
+
+export default config;
+```
+
+### 2. Import Components
+
+```tsx
+import { Button, Input, Badge } from "banhatten-ui";
+
+export function Example() {
+  return (
+    <>
+      <Button variant="primary" size="md">Submit</Button>
+      <Input label="Email" preset="email" />
+      <Badge variant="filled" color="brand">New</Badge>
+    </>
+  );
+}
+```
+
+### 3. Use Utility Function (Optional)
+
+```tsx
+import { cn } from "banhatten-ui/lib/utils";
+
+// Use cn() to merge Tailwind classes
+<div className={cn("base-class", condition && "conditional-class")} />
+```
+
+### 4. Access Tokens (Optional)
+
+```tsx
+import tokens from "banhatten-ui/tokens";
+
+// Access token values programmatically
+console.log(tokens.brand["primary-600"]); // "#2563eb"
+```
+
+---
+
+## Development (Monorepo)
+
+For local development within this monorepo:
+
 ## Using the Packages
 
 ### Design tokens (`@banhatten/tokens`)

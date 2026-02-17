@@ -1,12 +1,55 @@
 {
-  "name": "@banhatten/ui",
-  "version": "0.0.0",
+  "name": "banhatten-ui",
+  "version": "0.1.0",
+  "description": "Banhatten Design System - React component library with token-based theming",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./lib/utils": "./src/lib/utils.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./lib/utils": {
+      "types": "./dist/lib/utils.d.ts",
+      "import": "./dist/lib/utils.mjs",
+      "require": "./dist/lib/utils.js"
+    },
+    "./tokens": "./dist/tokens/tokens.json",
+    "./tokens/tailwind.config": {
+      "types": "./dist/tokens/tailwind.config.d.ts",
+      "import": "./dist/tokens/tailwind.config.mjs",
+      "require": "./dist/tokens/tailwind.config.js"
+    }
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "design-system",
+    "tailwind",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khaaledashraaf/banhatten-ds.git",
+    "directory": "packages/ui"
+  },
+  "bugs": {
+    "url": "https://github.com/khaaledashraaf/banhatten-ds/issues"
+  },
+  "homepage": "https://github.com/khaaledashraaf/banhatten-ds#readme",
   "dependencies": {
-    "@banhatten/tokens": "*",
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tooltip": "^1.2.4",
     "class-variance-authority": "^0.7.1",
@@ -21,6 +64,7 @@
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.2.3",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.0.0"
   }
