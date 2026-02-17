@@ -28,3 +28,8 @@ coverage/
 
 # Backup directories
 .typography-backup/
+
+# Figma component exports
+local-components-list.txt
+local-components-with-keys.json
+local-components.md
