@@ -28,6 +28,7 @@ coverage/
 
 # Backup directories
 .typography-backup/
+code to design/
 
 # Figma component exports
 local-components-list.txt
