@@ -5,35 +5,40 @@ export function IntroductionDocumentation() {
     <div className="space-y-12">
       <div>
         <p className="text-secondary text-sm leading-relaxed">
-          Banhatten Design System is an npm workspaces monorepo that provides a shared
-          component library and design tokens for building consistent, accessible UIs.
-          It is built for React 19+ (Server Components compatible), TypeScript (strict
-          mode), and Tailwind CSS v4.
+          Banhatten Design System is a React component library and design tokens
+          published on npm as{" "}
+          <a
+            href="https://www.npmjs.com/package/banhatten-ui"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline hover:no-underline"
+          >
+            banhatten-ui
+          </a>
+          . The source lives in an npm workspaces monorepo. It is built for React 19+
+          (Server Components compatible), TypeScript (strict mode), and Tailwind CSS v4.
         </p>
       </div>
 
       <Section
         title="Packages"
-        description="The repo is split into apps and packages. Consuming apps typically depend on banhatten-ui and optionally @banhatten/tokens for theming."
+        description="Install from npm: banhatten-ui. The monorepo contains the package source and this docs app."
       >
         <ul className="text-secondary list-disc space-y-2 pl-6 text-sm">
           <li>
-            <strong className="text-primary">banhatten-ui</strong> — Component library.
-            Buttons, inputs, menus, sidebars, avatars, alerts, sliders, tooltips, and
-            more. All components use design tokens and support theming. Exports named
-            components and CVA variants (e.g. <code>buttonVariants</code>) for custom
-            composition.
+            <strong className="text-primary">banhatten-ui</strong> (npm) — The
+            published package. Component library (buttons, inputs, menus, sidebars,
+            avatars, alerts, sliders, tooltips, and more), design tokens (JSON +
+            Tailwind preset), and <code>cn</code> utility. Exports named components and
+            CVA variants (e.g. <code>buttonVariants</code>). Tokens and Tailwind config
+            are included: <code>banhatten-ui/tokens</code>,{" "}
+            <code>banhatten-ui/tokens/tailwind.config</code>.
           </li>
           <li>
-            <strong className="text-primary">@banhatten/tokens</strong> — Design tokens
-            (colors, spacing, radius, shadow) as JSON and a Tailwind preset. Used by
-            the UI package and by apps for consistent styling. Exports{" "}
-            <code>@banhatten/tokens</code> (tokens.json) and{" "}
-            <code>@banhatten/tokens/tailwind.config</code> for Tailwind theme extension.
-          </li>
-          <li>
-            <strong className="text-primary">apps/docs</strong> — This documentation
-            site (Next.js). Demonstrates all components, tokens, and usage patterns.
+            <strong className="text-primary">Monorepo</strong> —{" "}
+            <code>packages/ui</code> (banhatten-ui source), <code>packages/tokens</code>{" "}
+            (@banhatten/tokens, used in development), <code>apps/docs</code> (this
+            documentation site).
           </li>
         </ul>
       </Section>

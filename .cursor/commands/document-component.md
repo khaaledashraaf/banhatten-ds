@@ -25,7 +25,7 @@ Description: Generates and registers documentation for the most recently created
    - Variant showcase (if applicable)
    - Size showcase (if applicable)
    - ImplementationPlayground integration (if present in project)
-   - Proper imports from @banhatten/ui
+   - Imports from **banhatten-ui** (the published npm package; see https://www.npmjs.com/package/banhatten-ui)
 
 5. Update:
    apps/docs/app/page.tsx
@@ -44,3 +44,4 @@ Description: Generates and registers documentation for the most recently created
 - Do NOT refactor layout.tsx or global styles.
 - If documentation pattern cannot be inferred, abort and request clarification.
 - Keep examples clean and minimal.
+- Use package name **banhatten-ui** for all import examples (not workspace paths).

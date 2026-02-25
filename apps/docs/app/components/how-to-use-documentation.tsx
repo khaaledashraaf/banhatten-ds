@@ -12,64 +12,64 @@ export function HowToUseDocumentation() {
 
       <Section
         title="Installation"
-        description="Add the design system packages to your project. React 19 and Tailwind v4 are required."
+        description="Install from npm. React 19 and Tailwind v4 are required."
       >
         <div className="space-y-4">
           <p className="text-secondary text-sm">
-            In an npm workspaces monorepo (like this repo), add the packages as
+            Install the design system and the Material Symbols font (for icon
+            components):
+          </p>
+          <pre className="border-default bg-secondary-subtle overflow-x-auto rounded-md border p-4 font-mono text-sm">
+{`npm install banhatten-ui material-symbols
+# or
+yarn add banhatten-ui material-symbols
+# or
+pnpm add banhatten-ui material-symbols`}
+          </pre>
+          <p className="text-tertiary text-xs">
+            <code>banhatten-ui</code> has peer dependencies on <code>react</code> and{" "}
+            <code>react-dom</code> ^19.0.0. It includes design tokens and a Tailwind
+            preset. Icons use the Material Symbols variable font — include its CSS in
+            your app (see below).
+          </p>
+          <p className="text-secondary text-sm">
+            In an npm workspaces monorepo (e.g. contributing to this repo), add
             workspace dependencies:
           </p>
           <pre className="border-default bg-secondary-subtle overflow-x-auto rounded-md border p-4 font-mono text-sm">
-{`// In your app's package.json (e.g. apps/my-app/package.json)
+{`// In your app's package.json
 {
   "dependencies": {
     "banhatten-ui": "*",
-    "@banhatten/tokens": "*",
     "material-symbols": "^0.40.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }
 }`}
           </pre>
-          <p className="text-secondary text-sm">
-            If you consume the packages from npm (once published), use:
-          </p>
-          <pre className="border-default bg-secondary-subtle overflow-x-auto rounded-md border p-4 font-mono text-sm">
-{`npm install banhatten-ui @banhatten/tokens material-symbols
-# or
-yarn add banhatten-ui @banhatten/tokens material-symbols
-# or
-pnpm add banhatten-ui @banhatten/tokens material-symbols`}
-          </pre>
-          <p className="text-tertiary text-xs">
-            <code>banhatten-ui</code> has peer dependencies on <code>react</code> and{" "}
-            <code>react-dom</code> ^19.0.0. Icons use the Material Symbols variable font
-            from the <code>material-symbols</code> package — include its CSS in your
-            app (see below).
-          </p>
         </div>
       </Section>
 
       <Section
         title="Tailwind configuration"
-        description="Use the tokens package as a Tailwind preset so your app gets the same colors, spacing, radius, and shadows as the components."
+        description="Use the preset from banhatten-ui so your app gets the same colors, spacing, radius, and shadows as the components."
       >
         <div className="space-y-4">
           <p className="text-secondary text-sm">
-            In your app&apos;s Tailwind config, preset the tokens and include content
-            from the UI package so component classes are generated:
+            In your app&apos;s Tailwind config, preset the tokens and include the UI
+            package in <code>content</code> so component classes are generated:
           </p>
           <pre className="border-default bg-secondary-subtle overflow-x-auto rounded-md border p-4 font-mono text-sm">
 {`// tailwind.config.ts
 import type { Config } from "tailwindcss";
-import sharedConfig from "@banhatten/tokens/tailwind.config";
+import banhattenConfig from "banhatten-ui/tokens/tailwind.config";
 
 const config: Config = {
-  presets: [sharedConfig],
+  presets: [banhattenConfig],
   content: [
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
-    "./node_modules/banhatten-ui/src/**/*.{ts,tsx}",
+    "./node_modules/banhatten-ui/dist/**/*.{js,mjs}",
   ],
 };
 
@@ -162,11 +162,11 @@ import { cn } from "banhatten-ui/lib/utils";
 
       <Section
         title="Using tokens only"
-        description="If you only need design tokens (no components), depend on @banhatten/tokens and use the Tailwind preset. Optionally import the raw tokens JSON."
+        description="If you only need design tokens (no components), use the Tailwind preset and optionally import the raw tokens JSON from banhatten-ui."
       >
         <div className="space-y-4">
           <pre className="border-default bg-secondary-subtle overflow-x-auto rounded-md border p-4 font-mono text-sm">
-{`import tokens from "@banhatten/tokens";
+{`import tokens from "banhatten-ui/tokens";
 // tokens.brand, tokens.alias, tokens.spacing, tokens.radius, tokens.shadow, etc.`}
           </pre>
         </div>
@@ -174,7 +174,7 @@ import { cn } from "banhatten-ui/lib/utils";
 
       <Section
         title="Quick reference"
-        description="Summary of package exports and entry points."
+        description="Summary of banhatten-ui (npm) exports and entry points."
       >
         <ul className="text-secondary list-disc space-y-2 pl-6 text-sm">
           <li>
@@ -182,14 +182,13 @@ import { cn } from "banhatten-ui/lib/utils";
             <code>banhatten-ui/lib/utils</code> — <code>cn</code> only.
           </li>
           <li>
-            <code>@banhatten/tokens</code> — <code>tokens.json</code>.{" "}
-            <code>@banhatten/tokens/tailwind.config</code> — Tailwind preset (default
-            export).
+            <code>banhatten-ui/tokens</code> — Tokens JSON.{" "}
+            <code>banhatten-ui/tokens/tailwind.config</code> — Tailwind preset.
           </li>
           <li>
             Components use semantic token classes (e.g. <code>text-primary</code>,{" "}
-            <code>bg-primary</code>, <code>border-default</code>). Ensure your app
-            uses the same preset so these resolve correctly.
+            <code>bg-primary</code>, <code>border-default</code>). Use the preset in
+            your app so these resolve correctly.
           </li>
         </ul>
       </Section>
