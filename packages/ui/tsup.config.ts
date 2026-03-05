@@ -13,13 +13,27 @@ export default defineConfig({
     options.jsx = "automatic";
   },
   onSuccess: async () => {
-    // Copy tokens.json to dist
-    const { copyFileSync, mkdirSync } = await import("fs");
+    const { copyFileSync, mkdirSync, readdirSync } = await import("fs");
     const { join } = await import("path");
+
     mkdirSync(join(process.cwd(), "dist", "tokens"), { recursive: true });
     copyFileSync(
       join(process.cwd(), "src", "tokens", "tokens.json"),
       join(process.cwd(), "dist", "tokens", "tokens.json")
+    );
+
+    const specsDir = join(process.cwd(), "src", "specs");
+    const distSpecs = join(process.cwd(), "dist", "specs");
+    mkdirSync(distSpecs, { recursive: true });
+    for (const file of readdirSync(specsDir)) {
+      if (file.endsWith(".json")) {
+        copyFileSync(join(specsDir, file), join(distSpecs, file));
+      }
+    }
+
+    copyFileSync(
+      join(process.cwd(), "CURSOR_RULE.md"),
+      join(process.cwd(), "dist", "CURSOR_RULE.md")
     );
   },
 });

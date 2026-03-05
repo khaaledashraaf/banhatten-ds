@@ -1,6 +1,6 @@
 {
   "name": "banhatten-ui",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Banhatten Design System - React component library with token-based theming",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -21,7 +21,9 @@
       "types": "./dist/tokens/tailwind.config.d.ts",
       "import": "./dist/tokens/tailwind.config.mjs",
       "require": "./dist/tokens/tailwind.config.js"
-    }
+    },
+    "./specs/*": "./dist/specs/*.json",
+    "./CURSOR_RULE.md": "./dist/CURSOR_RULE.md"
   },
   "files": [
     "dist",
