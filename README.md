@@ -170,7 +170,7 @@ export function Example() {
 | **Core** | Menu Item | ✅ Built |
 | **Core** | Menu Heading | ✅ Built |
 | **Core** | Menu Group | ✅ Built |
-| **Core** | Dropdown Input | — Planned |
+| **Core** | Dropdown Input | ✅ Built |
 | **Core** | Text Input | ✅ Built |
 | **Core** | Text Area | ✅ Built |
 | **Core** | Pagination | — Planned |

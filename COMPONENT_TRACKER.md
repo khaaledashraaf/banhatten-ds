@@ -26,7 +26,8 @@
 - [x] **Menu Item** — `menu-item.tsx` · Types: default, multiline, callToAction, progress · States: default, hover, disabled, active (bg-brand-tertiary, text-brand, aria-current="page") · Slots: leftIcon, rightIcon, avatar, badge, switch (showSwitch/switchChecked/onSwitchChange), textRight, cta, progress (progressLabel/progressValue) · Token-only · forwardRef, button root, focus-visible ring, aria-disabled
 - [x] **Menu Heading** — `menu-heading.tsx` · Non-interactive section label for menu groups · px-md py-xs, text-sm font-medium text-tertiary · Token-only · forwardRef, div root
 - [x] **Menu Group** — `menu-group.tsx` · One optional MenuHeading (max), one or more MenuItem · Spacing: mb-sm between heading and items (token) · role="group", optional headingId for aria-labelledby · Token-only · forwardRef, div root
-- [ ] **Dropdown Input**
+- [x] **Dropdown Input** — `dropdown-input.tsx` · Sizes: sm (36px), md (40px), lg (44px) · States: placeholder, filled, focus, disabled, error · Props: label, optional, helperText, errorMessage, placeholder, value, displayValue, open, onOpenChange, showIndicator, indicatorCount, leftIcon, leftElement · Selection badge indicator · Token-only · forwardRef · aria-haspopup="listbox", aria-expanded, aria-invalid, aria-describedby
+- [x] **Dropdown** — `dropdown.tsx` · Complete dropdown with trigger, popover, and menu · Single/multi-select via `multiple` prop · Options array or custom children (DropdownItem, DropdownGroup) · Uses Radix Popover for positioning · Composes DropdownInput (trigger), Menu, MenuGroup, MenuItem · Props: options, value, onValueChange, multiple, menuWidth, maxHeight, align, sideOffset · All DropdownInput props supported · role="listbox", aria-multiselectable
 - [x] **Text Input** — `input.tsx` · Sizes: sm, md, lg · States: default, focused, error, disabled · Supports label, optional indicator, helperText with icon, errorMessage · Left/right icons (Material Symbols) · Character counter (maxLength) · Focus ring with Figma-matched inset border · Presets: user, email, password (with toggle), date, amount (clearable), description, search (clearable) · shadow-xs
 - [x] **Text Area** — `textarea.tsx` · States: default, focused, error, disabled · Supports label, optional indicator with info icon, helperText with icon, errorMessage · Character counter (maxLength) · Focus ring with Figma-matched inset border · Multi-line text input with configurable rows · shadow-xs
 - [ ] **Pagination**
@@ -76,4 +77,4 @@
 
 ### Progress
 
-**Built:** 30 / 55
+**Built:** 31 / 55

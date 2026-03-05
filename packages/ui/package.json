@@ -51,6 +51,7 @@
   },
   "homepage": "https://github.com/khaaledashraaf/banhatten-ds#readme",
   "dependencies": {
+    "@radix-ui/react-popover": "^1.1.15",
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tooltip": "^1.2.4",
     "class-variance-authority": "^0.7.1",

@@ -140,3 +140,18 @@ export {
   type TooltipProps,
   type TooltipContentProps,
 } from "./components/tooltip";
+export {
+  DropdownInput,
+  dropdownTriggerVariants,
+  dropdownFocusRingVariants,
+  type DropdownInputProps,
+} from "./components/dropdown-input";
+export {
+  Dropdown,
+  DropdownItem,
+  DropdownGroup,
+  type DropdownProps,
+  type DropdownOption,
+  type DropdownItemProps,
+  type DropdownGroupProps,
+} from "./components/dropdown";

@@ -14,6 +14,8 @@ import { BreadcrumbDocumentation } from "../components/breadcrumb-documentation"
 import { ButtonGroupDocumentation } from "../components/button-group-documentation";
 import { CloseButtonDocumentation } from "../components/close-button-documentation";
 import { DividerDocumentation } from "../components/divider-documentation";
+import { DropdownInputDocumentation } from "../components/dropdown-input-documentation";
+import { DropdownDocumentation } from "../components/dropdown-documentation";
 import { FeaturedIconDocumentation } from "../components/featured-icon-documentation";
 import { ProgressBarDocumentation } from "../components/progress-bar-documentation";
 import { SliderDocumentation } from "../components/slider-documentation";
@@ -72,6 +74,8 @@ const navigation = [
       { name: "Button Group", href: "button-group" },
       { name: "Close Button", href: "close-button" },
       { name: "Divider", href: "divider" },
+      { name: "Dropdown", href: "dropdown" },
+      { name: "Dropdown Input", href: "dropdown-input" },
       { name: "Featured Icon", href: "featured-icon" },
       { name: "Progress Bar", href: "progress-bar" },
       { name: "Slider", href: "slider" },
@@ -255,6 +259,14 @@ export default function DocsPage() {
       title: "Divider",
       description: "Visual separator for organizing content into distinct sections.",
     },
+    dropdown: {
+      title: "Dropdown",
+      description: "Complete selection component with trigger, positioned menu, and selection handling. Supports single and multi-select modes, custom options, and grouped items.",
+    },
+    "dropdown-input": {
+      title: "Dropdown Input",
+      description: "Trigger-only component for selection interfaces. Use Dropdown for the complete component with menu.",
+    },
     "featured-icon": {
       title: "Featured Icon",
       description: "Icon in a colored container for emphasis and hierarchy. Variants: circle light, square light, circle pulse, solid circle, solid square. Types: brand, success, danger, warning, info, neutral. Sizes: sm, md, lg. Material Symbol filled only.",
@@ -386,6 +398,8 @@ export default function DocsPage() {
             {activeSection === "button-group" && <ButtonGroupDocumentation />}
             {activeSection === "close-button" && <CloseButtonDocumentation />}
             {activeSection === "divider" && <DividerDocumentation />}
+            {activeSection === "dropdown" && <DropdownDocumentation />}
+            {activeSection === "dropdown-input" && <DropdownInputDocumentation />}
             {activeSection === "featured-icon" && <FeaturedIconDocumentation />}
             {activeSection === "progress-bar" && <ProgressBarDocumentation />}
             {activeSection === "slider" && <SliderDocumentation />}
