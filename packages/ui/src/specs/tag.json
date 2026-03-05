@@ -1,0 +1,104 @@
+{
+  "name": "Tag",
+  "description": "Interactive label chip supporting simple text, dot indicator, and icon variants. Selectable with optional close action.",
+
+  "base": {
+    "display": "inline-flex",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "borderRadius": "{radius.sm}",
+    "fontWeight": 400,
+    "flexShrink": 0,
+    "gap": "4px",
+    "border": { "width": "1px" },
+    "transition": "background-color, border-color, color"
+  },
+
+  "variants": {
+    "simple": {},
+    "with-dot": {},
+    "with-icon": {}
+  },
+
+  "sizes": {
+    "small": { "height": "24px", "paddingX": "{spacing.sm}", "fontSize": "12px", "lineHeight": "16px" },
+    "large": { "height": "28px", "paddingX": "{spacing.md}", "fontSize": "14px", "lineHeight": "20px" }
+  },
+
+  "states": {
+    "default": {
+      "bg": "{alias.bg-primary}",
+      "border": { "color": "{alias.border-strong}" },
+      "text": "{alias.text-primary}",
+      "hover": { "bg": "{alias.highlight-hover}" }
+    },
+    "focus": {
+      "bg": "{alias.bg-primary}",
+      "border": { "color": "{alias.border-brand}" },
+      "text": "{alias.text-brand}"
+    },
+    "active": {
+      "bg": "{alias.bg-brand-tertiary}",
+      "border": { "color": "{alias.border-brand}" },
+      "text": "{alias.text-primary}",
+      "hover": { "bg": "{alias.bg-brand-tertiary}" }
+    },
+    "disabled": {
+      "bg": "{alias.bg-secondary}",
+      "border": { "color": "{alias.border-inactive-subtle}" },
+      "text": "{alias.text-inactive}",
+      "pointerEvents": "none"
+    }
+  },
+
+  "props": {
+    "type": { "type": "enum", "values": ["simple", "with-dot", "with-icon"], "default": "simple" },
+    "state": { "type": "enum", "values": ["default", "focus", "active", "disabled"], "default": "default" },
+    "size": { "type": "enum", "values": ["small", "large"], "default": "small" },
+    "leftIcon": { "type": "string", "default": "calendar_month", "description": "Material Symbol name for leading icon (type='with-icon')." },
+    "iconVariant": { "type": "enum", "values": ["outlined", "rounded", "sharp"], "default": "outlined" },
+    "iconFilled": { "type": "boolean", "default": false },
+    "close": { "type": "boolean", "default": false, "description": "Whether to show a close button on the right." },
+    "onClose": { "type": "function", "description": "Callback fired when the close button is clicked." }
+  },
+
+  "slots": {
+    "dot": {
+      "position": "start",
+      "size": "6px",
+      "borderRadius": "{radius.full}",
+      "defaultColor": "{alias.bg-success}",
+      "disabledColor": "currentColor"
+    },
+    "leftIcon": {
+      "position": "start",
+      "element": "Icon",
+      "iconSizeByTagSize": { "small": "xs", "large": "sm" },
+      "colorByState": {
+        "default": "{alias.text-primary}",
+        "focus": "{alias.text-brand}",
+        "active": "{alias.text-brand}",
+        "disabled": "{alias.text-inactive}"
+      }
+    },
+    "closeButton": {
+      "position": "end",
+      "element": "CloseButton",
+      "variant": "ghost",
+      "size": "sm",
+      "colorByState": {
+        "default": "{alias.text-primary}",
+        "focus": "{alias.text-brand}",
+        "active": "{alias.text-brand}",
+        "disabled": "{alias.text-inactive}"
+      }
+    }
+  },
+
+  "defaults": { "type": "simple", "state": "default", "size": "small" },
+
+  "accessibility": {
+    "role": "status",
+    "notes": "Rendered as a <span>. Dot and icon are aria-hidden. Close button has aria-label='Remove tag'."
+  }
+}

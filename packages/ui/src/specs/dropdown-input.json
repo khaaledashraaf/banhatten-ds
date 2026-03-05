@@ -1,0 +1,87 @@
+{
+  "name": "DropdownInput",
+  "description": "Select trigger button with label, helper text, error state, and selection indicator. Used as the trigger for Dropdown/Select components.",
+
+  "base": {
+    "display": "flex",
+    "width": "100%",
+    "alignItems": "center",
+    "bg": "{alias.component-input-bg}",
+    "borderRadius": "{radius.sm}",
+    "transition": "border-color",
+    "cursor": "pointer"
+  },
+
+  "sizes": {
+    "sm": { "height": "36px", "paddingX": "{spacing.sm}", "fontSize": "14px" },
+    "md": { "height": "40px", "paddingX": "{spacing.sm}", "fontSize": "14px" },
+    "lg": { "height": "44px", "paddingX": "{spacing.sm}", "fontSize": "14px" }
+  },
+
+  "states": {
+    "default": {
+      "border": { "width": "1px", "color": "{alias.border-strong}" },
+      "shadow": "{shadow.xs}"
+    },
+    "disabled": {
+      "bg": "{alias.bg-secondary}",
+      "border": { "color": "{alias.border-inactive}" },
+      "shadow": "none",
+      "cursor": "default",
+      "pointerEvents": "none",
+      "text": "{alias.text-inactive}"
+    },
+    "error": {
+      "border": { "color": "{alias.border-danger-secondary}" }
+    },
+    "focused": {
+      "border": { "color": "{alias.border-brand}" },
+      "focusRing": { "width": "4px", "color": "{alias.border-focused}", "inset": "-1px", "borderRadius": "{radius.sm}" }
+    },
+    "focused+error": {
+      "border": { "color": "{alias.border-danger}" },
+      "focusRing": { "width": "4px", "color": "{alias.border-focused-danger}", "inset": "-1px", "borderRadius": "{radius.sm}" }
+    }
+  },
+
+  "props": {
+    "size": { "type": "enum", "values": ["sm", "md", "lg"], "default": "md" },
+    "label": { "type": "string", "description": "Label text above the trigger." },
+    "optional": { "type": "boolean", "default": false },
+    "helperText": { "type": "string" },
+    "errorMessage": { "type": "string", "description": "Error message. Overrides helperText." },
+    "placeholder": { "type": "string", "default": "Select an option" },
+    "value": { "type": "string | string[]" },
+    "displayValue": { "type": "string", "description": "Custom display text for the selected value." },
+    "open": { "type": "boolean", "default": false },
+    "showIndicator": { "type": "boolean", "default": false, "description": "Show selection count badge." },
+    "indicatorCount": { "type": "number" },
+    "leftIcon": { "type": "string", "description": "Material Symbol name for leading icon." },
+    "leftElement": { "type": "ReactNode", "description": "Custom left element. Overrides leftIcon." },
+    "disabled": { "type": "boolean", "default": false }
+  },
+
+  "slots": {
+    "leftIcon": { "position": "start", "element": "Icon", "size": "md", "color": "{alias.text-tertiary}", "disabledColor": "{alias.icon-inactive-subtle}" },
+    "chevron": { "position": "end", "element": "Icon", "openIcon": "expand_less", "closedIcon": "expand_more", "size": "md", "color": "{alias.text-tertiary}" },
+    "indicator": {
+      "position": "before-chevron",
+      "height": "24px",
+      "borderRadius": "{radius.full}",
+      "paddingX": "{spacing.xs}",
+      "fontSize": "12px",
+      "fontWeight": 500,
+      "bg": "{alias.bg-brand}",
+      "text": "{alias.text-on-color}"
+    },
+    "label": { "position": "above", "fontSize": "14px", "fontWeight": 500, "color": "{alias.text-primary}", "marginBottom": "{spacing.sm}" },
+    "helperText": { "position": "below", "fontSize": "14px", "color": "{alias.text-secondary}", "errorColor": "{alias.text-error}", "marginTop": "{spacing.sm}" }
+  },
+
+  "defaults": { "size": "md" },
+
+  "accessibility": {
+    "role": "button",
+    "notes": "aria-haspopup='listbox', aria-expanded reflects open state, aria-invalid when error, aria-describedby links to helperText/errorMessage."
+  }
+}

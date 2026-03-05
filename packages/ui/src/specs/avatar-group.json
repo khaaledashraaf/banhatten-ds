@@ -1,0 +1,91 @@
+{
+  "name": "AvatarGroup",
+  "description": "Displays a row of overlapping avatars with optional overflow badge and add-member button.",
+
+  "base": {
+    "display": "inline-flex",
+    "alignItems": "center"
+  },
+
+  "sizes": {
+    "24": {
+      "avatarSize": "24px",
+      "avatarProfileSize": "xs",
+      "badgeSize": "24px",
+      "badgeFontSize": "12px",
+      "iconSize": "xs"
+    },
+    "32": {
+      "avatarSize": "32px",
+      "avatarProfileSize": "md",
+      "badgeSize": "32px",
+      "badgeFontSize": "14px",
+      "iconSize": "sm"
+    },
+    "40": {
+      "avatarSize": "40px",
+      "avatarProfileSize": "xl",
+      "badgeSize": "40px",
+      "badgeFontSize": "16px",
+      "iconSize": "md"
+    }
+  },
+
+  "overlap": {
+    "marginLeft": "-{spacing.sm}",
+    "note": "Every avatar after the first is offset by -ml-sm. Z-index stacking controlled by lastOnTop prop."
+  },
+
+  "zIndex": {
+    "lastOnTop": "First avatar gets highest z-index; decreasing toward last.",
+    "firstOnTop": "First avatar gets lowest z-index; increasing toward last."
+  },
+
+  "slots": {
+    "overflowBadge": {
+      "description": "+N indicator shown when avatars exceed maxVisible.",
+      "display": "inline-flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "borderRadius": "{radius.full}",
+      "border": { "width": "2px", "color": "{alias.border-subtract}" },
+      "bg": "{alias.bg-tertiary}",
+      "text": "{alias.text-secondary}",
+      "fontWeight": 500,
+      "zIndex": 0
+    },
+    "addButton": {
+      "description": "Dashed circular button to add a new member.",
+      "display": "inline-flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "borderRadius": "{radius.full}",
+      "border": { "width": "2px", "style": "dashed", "color": "{alias.border-strong}" },
+      "bg": "transparent",
+      "iconColor": "{alias.icon-tertiary}",
+      "hover": { "bg": "{alias.bg-tertiary}", "borderColor": "{alias.border-strong}" },
+      "focus": { "ring": "2px", "ringColor": "{alias.border-brand}", "ringOffset": "2px" }
+    }
+  },
+
+  "composition": {
+    "avatar": "AvatarProfile (shape: circle)"
+  },
+
+  "props": {
+    "size": { "type": "enum", "values": ["24", "32", "40"], "default": "32" },
+    "lastOnTop": { "type": "boolean", "default": true, "description": "When true, leftmost avatar is drawn on top." },
+    "moreAvatars": { "type": "boolean", "default": false, "description": "Show +N overflow badge after visible avatars." },
+    "addMore": { "type": "boolean", "default": false, "description": "Show an Add More button at the end." },
+    "avatars": { "type": "AvatarGroupItem[]", "description": "List of avatar items (initials, aria-label)." },
+    "maxVisible": { "type": "number", "default": 4, "description": "Max visible avatars before +N overflow." },
+    "onAddMore": { "type": "function", "description": "Called when Add More button is clicked." }
+  },
+
+  "defaults": { "size": "32", "lastOnTop": true, "maxVisible": 4 },
+
+  "accessibility": {
+    "role": "group",
+    "notes": "aria-label set to '{count} member(s)'. Add button has aria-label 'Add member'. Overflow badge is aria-hidden."
+  }
+}

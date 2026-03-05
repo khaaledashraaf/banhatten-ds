@@ -1,0 +1,71 @@
+{
+  "name": "Dropdown",
+  "description": "Complete select/dropdown component combining a trigger (DropdownInput), popover positioning, and menu with options. Supports single and multi-select.",
+
+  "composition": {
+    "trigger": "DropdownInput",
+    "popover": "Positioned overlay anchored to trigger",
+    "menu": "Menu with MenuGroup and MenuItem/DropdownItem children"
+  },
+
+  "props": {
+    "options": { "type": "DropdownOption[]", "description": "Array of { value, label, leftIcon?, disabled? } for simple usage." },
+    "value": { "type": "string | string[]", "description": "Selected value(s)." },
+    "onValueChange": { "type": "function", "description": "(value: string | string[]) => void" },
+    "multiple": { "type": "boolean", "default": false, "description": "Enable multi-select mode." },
+    "displayValue": { "type": "string", "description": "Custom display text override." },
+    "menuWidth": { "type": "enum", "values": ["trigger", "auto"], "default": "trigger", "description": "Menu width behavior. 'trigger' matches trigger width." },
+    "maxHeight": { "type": "number", "default": 300, "description": "Max menu height before scrolling." },
+    "align": { "type": "enum", "values": ["start", "center", "end"], "default": "start" },
+    "sideOffset": { "type": "number", "default": 4 },
+    "placeholder": { "type": "string", "default": "Select an option" },
+    "disabled": { "type": "boolean", "default": false }
+  },
+
+  "behavior": {
+    "singleSelect": "Selecting an option closes the dropdown and sets the value.",
+    "multiSelect": "Selecting an option toggles it. Dropdown stays open. Trigger shows count badge.",
+    "keyboard": "Escape closes the dropdown and returns focus to trigger."
+  },
+
+  "subComponents": {
+    "DropdownItem": {
+      "description": "Individual selectable option within the dropdown menu.",
+      "props": {
+        "value": { "type": "string", "required": true },
+        "selected": { "type": "boolean", "default": false },
+        "leftIcon": { "type": "string" },
+        "disabled": { "type": "boolean", "default": false },
+        "multiple": { "type": "boolean", "default": false }
+      },
+      "singleSelectIndicator": {
+        "selected": { "icon": "check", "size": "sm", "color": "{alias.text-brand}", "position": "end" },
+        "active": { "uses": "MenuItem active state" }
+      },
+      "multiSelectIndicator": {
+        "position": "start",
+        "size": "16px",
+        "borderRadius": "{radius.xs}",
+        "unchecked": { "bg": "{alias.component-input-bg}", "border": "{alias.border-strong}" },
+        "checked": { "bg": "{alias.bg-brand}", "border": "{alias.border-brand}", "icon": "check", "iconColor": "{alias.text-on-color}" }
+      }
+    },
+    "DropdownGroup": {
+      "description": "Groups options with an optional heading. Wraps MenuGroup.",
+      "props": {
+        "heading": { "type": "ReactNode" },
+        "headingId": { "type": "string" }
+      }
+    }
+  },
+
+  "popover": {
+    "animation": "fade-in + zoom-in-95 on open, reverse on close",
+    "slideDirection": "from-top when below trigger, from-bottom when above"
+  },
+
+  "accessibility": {
+    "role": "listbox",
+    "notes": "Menu has role='listbox'. DropdownItem has role='option' with aria-selected. Multi-select sets aria-multiselectable on the listbox."
+  }
+}

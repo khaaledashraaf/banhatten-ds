@@ -1,0 +1,48 @@
+{
+  "name": "Icon",
+  "description": "Material Symbols icon rendered via variable font. Supports outlined, rounded, and sharp styles with configurable optical size, weight, fill, and grade.",
+
+  "base": {
+    "display": "inline",
+    "flexShrink": 0,
+    "userSelect": "none",
+    "fontFamily": "Material Symbols (variable font)"
+  },
+
+  "variants": {
+    "outlined": { "fontFamily": "Material Symbols Outlined" },
+    "rounded":  { "fontFamily": "Material Symbols Rounded" },
+    "sharp":    { "fontFamily": "Material Symbols Sharp" }
+  },
+
+  "sizes": {
+    "xs": { "fontSize": "12px" },
+    "sm": { "fontSize": "16px" },
+    "md": { "fontSize": "20px" },
+    "lg": { "fontSize": "24px" },
+    "xl": { "fontSize": "32px" }
+  },
+
+  "props": {
+    "name": { "type": "string", "description": "Material Symbol name in snake_case (e.g. 'home', 'arrow_forward', 'settings')." },
+    "variant": { "type": "enum", "values": ["outlined", "rounded", "sharp"], "default": "outlined" },
+    "size": { "type": "enum", "values": ["xs", "sm", "md", "lg", "xl"], "default": "md" },
+    "filled": { "type": "boolean", "default": false, "description": "Render the filled variant of the icon." },
+    "weight": { "type": "number", "default": 400, "description": "Font weight: 100–700." },
+    "grade": { "type": "number", "default": 0, "description": "Grade: -25 to 200." },
+    "label": { "type": "string", "description": "Accessible label. If omitted, the icon is treated as decorative (aria-hidden)." }
+  },
+
+  "fontVariationSettings": {
+    "FILL": { "off": 0, "on": 1 },
+    "wght": { "default": 400, "min": 100, "max": 700 },
+    "GRAD": { "default": 0, "min": -25, "max": 200 }
+  },
+
+  "defaults": { "variant": "outlined", "size": "md", "filled": false, "weight": 400, "grade": 0 },
+
+  "accessibility": {
+    "role": "img",
+    "notes": "When label is provided, renders with role='img' and aria-label. When omitted, aria-hidden='true' treats the icon as decorative."
+  }
+}

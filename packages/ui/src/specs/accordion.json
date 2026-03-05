@@ -1,0 +1,115 @@
+{
+  "name": "Accordion",
+  "description": "Expandable/collapsible content sections. Supports single (one open) or multiple (many open) modes. Chevron icon rotates on expand/collapse.",
+
+  "base": {
+    "display": "flex",
+    "flexDirection": "column"
+  },
+
+  "variants": {
+    "type": {
+      "single": { "description": "Only one item open at a time. Value is string." },
+      "multiple": { "description": "Many items can be open. Value is string[]." }
+    }
+  },
+
+  "props": {
+    "type": { "type": "enum", "values": ["single", "multiple"], "default": "single" },
+    "value": { "type": "string | string[]", "description": "Controlled open value(s). Single uses string; multiple uses string[]." },
+    "defaultValue": { "type": "string | string[]", "description": "Default open value(s) when uncontrolled." },
+    "onValueChange": { "type": "function", "description": "(value: string | string[]) => void. Called when open state changes." }
+  },
+
+  "subComponents": {
+    "AccordionItem": {
+      "description": "Wrapper for a single accordion section. Provides value, disabled, and showDivider context.",
+      "element": "div",
+      "base": {
+        "display": "flex",
+        "flexDirection": "column"
+      },
+      "props": {
+        "value": { "type": "string", "description": "Unique value for this item (used for open state and accessibility)." },
+        "disabled": { "type": "boolean", "default": false, "description": "When true, trigger and content use disabled styling and are not expandable." },
+        "showDivider": { "type": "boolean", "default": false, "description": "When true, a Divider is shown between trigger and content when expanded." }
+      }
+    },
+
+    "AccordionTrigger": {
+      "description": "Button that toggles expand/collapse. Optional iconLeft. Chevron rotates: expand_more (collapsed) → expand_less (expanded).",
+      "element": "button",
+      "base": {
+        "display": "flex",
+        "width": "100%",
+        "alignItems": "center",
+        "gap": "{spacing.md}",
+        "paddingY": "{spacing.md}",
+        "paddingX": "{spacing.md}",
+        "textAlign": "left",
+        "color": "{alias.text-primary}",
+        "transition": "background-color",
+        "focusRing": { "width": "2px", "color": "{alias.border-brand}", "offset": "2px" }
+      },
+      "states": {
+        "default": {
+          "cursor": "pointer",
+          "hover": { "bg": "{alias.bg-tertiary}" },
+          "expandIconColor": "{alias.icon-primary}",
+          "iconLeftColor": "{alias.icon-secondary}"
+        },
+        "disabled": {
+          "cursor": "default",
+          "color": "{alias.text-inactive}",
+          "pointerEvents": "none",
+          "expandIconColor": "{alias.icon-inactive}",
+          "iconLeftColor": "{alias.icon-inactive}"
+        }
+      },
+      "props": {
+        "iconLeft": { "type": "ReactNode", "description": "Optional icon or element shown to the left of the heading (e.g. info icon)." },
+        "disabled": { "type": "boolean", "description": "Overrides item-level disabled. When undefined, inherits from AccordionItem." }
+      },
+      "slots": {
+        "iconLeft": {
+          "position": "start",
+          "className": "accordion-icon-left",
+          "shrink": 0
+        },
+        "expandIcon": {
+          "element": "Icon",
+          "name": "expand_more | expand_less",
+          "size": "sm",
+          "className": "accordion-expand-icon",
+          "position": "end",
+          "shrink": 0,
+          "rotation": { "collapsed": "0deg", "expanded": "180deg" }
+        }
+      },
+      "accessibility": {
+        "ariaExpanded": "boolean",
+        "ariaControls": "contentId",
+        "ariaDisabled": "boolean when disabled"
+      }
+    },
+
+    "AccordionContent": {
+      "description": "Collapsible content panel. Renders only when item is expanded. When AccordionItem.showDivider is true, Divider renders above content.",
+      "element": "div",
+      "base": {
+        "paddingY": "{spacing.md}",
+        "paddingX": "{spacing.md}",
+        "color": "{alias.text-secondary}",
+        "fontSize": "14px"
+      },
+      "accessibility": {
+        "role": "region",
+        "ariaLabelledby": "triggerId"
+      }
+    }
+  },
+
+  "accessibility": {
+    "notes": "AccordionItem provides triggerId and contentId for aria-controls/aria-labelledby. AccordionTrigger uses aria-expanded and aria-controls."
+  }
+}

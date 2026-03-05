@@ -1,0 +1,91 @@
+{
+  "name": "ButtonGroup",
+  "description": "Horizontal container grouping ButtonGroupItem components. Items share size and have position-based rounding and dividers.",
+
+  "base": {
+    "display": "inline-flex",
+    "flexDirection": "row",
+    "alignItems": "stretch",
+    "borderRadius": "{radius.sm}",
+    "border": { "width": "1px", "color": "{alias.border-strong}" },
+    "bg": "{alias.bg-primary}",
+    "overflow": "hidden"
+  },
+
+  "props": {
+    "size": { "type": "enum", "values": ["small", "medium"], "default": "medium", "description": "Passed to each ButtonGroupItem. All items share the same size." },
+    "children": { "type": "ReactNode", "description": "ButtonGroupItem components." }
+  },
+
+  "subComponents": {
+    "ButtonGroupItem": {
+      "description": "Individual selectable item within the button group. Supports text, text+icon, or icon-only.",
+      "base": {
+        "display": "inline-flex",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "flexShrink": 0,
+        "transition": "background-color, color",
+        "focusVisible": { "outline": "none", "ring": "2px", "ringColor": "{alias.border-brand}", "ringOffset": "2px" },
+        "disabled": { "pointerEvents": "none" }
+      },
+      "sizes": {
+        "small": { "height": "36px", "paddingX": "{spacing.md}", "gap": "2px", "fontSize": "14px" },
+        "medium": { "height": "40px", "paddingX": "{spacing.lg}", "gap": "4px", "fontSize": "14px" }
+      },
+      "types": {
+        "textAndIcon": {},
+        "textOnly": {},
+        "iconOnly": {}
+      },
+      "states": {
+        "selected": {
+          "true": { "bg": "{alias.bg-brand-tertiary}", "text": "{alias.text-brand}", "fontWeight": 500 },
+          "false": {
+            "bg": "transparent",
+            "text": "{alias.text-primary}",
+            "hover": { "bg": "{alias.bg-tertiary}" },
+            "disabled": { "text": "{alias.text-inactive}", "bg": "{alias.bg-inactive}" }
+          }
+        }
+      },
+      "positions": {
+        "first": { "borderRadius": "{radius.sm} 0 0 {radius.sm}", "borderRight": "none" },
+        "middle": { "borderRadius": "0", "borderLeft": { "width": "1px", "color": "{alias.border-strong}" } },
+        "last": { "borderRadius": "0 {radius.sm} {radius.sm} 0", "borderLeft": { "width": "1px", "color": "{alias.border-strong}" } },
+        "only": { "borderRadius": "{radius.sm}" }
+      },
+      "compoundVariants": [
+        { "when": { "type": "iconOnly", "size": "small" }, "apply": { "width": "36px", "paddingX": "0" } },
+        { "when": { "type": "iconOnly", "size": "medium" }, "apply": { "width": "40px", "paddingX": "0" } }
+      ],
+      "props": {
+        "size": { "type": "enum", "values": ["small", "medium"], "default": "medium" },
+        "type": { "type": "enum", "values": ["textAndIcon", "textOnly", "iconOnly"], "default": "textAndIcon" },
+        "selected": { "type": "boolean", "default": false, "description": "Shows selected state. Sets aria-current='true'." },
+        "position": { "type": "enum", "values": ["first", "middle", "last", "only"], "description": "Set by ButtonGroup automatically." },
+        "leftIcon": { "type": "string", "description": "Material Symbol name. Used when type is textAndIcon." },
+        "rightIcon": { "type": "string", "description": "Material Symbol name. Used when type is textAndIcon." },
+        "icon": { "type": "string", "description": "Material Symbol name for icon-only. Requires aria-label." },
+        "disabled": { "type": "boolean", "default": false }
+      },
+      "slots": {
+        "leftIcon": { "element": "Icon", "iconSizeBySize": { "small": "sm", "medium": "md" } },
+        "rightIcon": { "element": "Icon", "iconSizeBySize": { "small": "sm", "medium": "md" } },
+        "icon": { "element": "Icon", "iconSizeBySize": { "small": "sm", "medium": "md" } }
+      },
+      "iconColorByState": {
+        "selected": "{alias.icon-brand}",
+        "disabled": "{alias.icon-inactive}",
+        "default": "{alias.icon-primary}"
+      }
+    }
+  },
+
+  "defaults": { "size": "medium" },
+
+  "accessibility": {
+    "role": "group",
+    "notes": "ButtonGroupItem icon-only mode requires aria-label."
+  }
+}

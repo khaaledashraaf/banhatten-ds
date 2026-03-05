@@ -1,0 +1,91 @@
+{
+  "name": "Slider",
+  "description": "Range slider supporting single-handle and double-handle (range) modes. Uses ProgressBar track styling and SliderHandle for thumb.",
+
+  "base": {
+    "display": "flex",
+    "flexDirection": "column",
+    "width": "100%"
+  },
+
+  "track": {
+    "height": "8px",
+    "borderRadius": "{radius.full}",
+    "bg": "{alias.bg-tertiary}"
+  },
+
+  "fill": {
+    "bg": "{alias.bg-brand}",
+    "borderRadius": "{radius.full}"
+  },
+
+  "variants": {
+    "single": {
+      "description": "One handle. Fill from 0 to value."
+    },
+    "double": {
+      "description": "Two handles. Fill between start and end values."
+    }
+  },
+
+  "states": {
+    "disabled": {
+      "pointerEvents": "none",
+      "cursor": "default"
+    }
+  },
+
+  "props": {
+    "variant": { "type": "enum", "values": ["single", "double"], "default": "single" },
+    "value": { "type": "number | [number, number]", "description": "Current value. Number for single, tuple for double." },
+    "min": { "type": "number", "default": 0 },
+    "max": { "type": "number", "default": 100 },
+    "step": { "type": "number", "default": 1 },
+    "label": { "type": "ReactNode", "description": "Label text above the slider." },
+    "showLabelInfoIcon": { "type": "boolean", "default": false },
+    "helperText": { "type": "ReactNode", "description": "Helper text below the slider." },
+    "valueLabelVariant": { "type": "enum", "values": ["tooltip", "label"], "description": "How to display the value on the handle." },
+    "valueLabelPosition": { "type": "enum", "values": ["above", "below"], "default": "below" },
+    "formatValue": { "type": "function", "description": "(value: number) => string. Formats the displayed value." },
+    "disabled": { "type": "boolean", "default": false }
+  },
+
+  "slots": {
+    "label": { "position": "above", "fontSize": "14px", "fontWeight": 500, "color": "{alias.text-primary}", "marginBottom": "{spacing.sm}" },
+    "helperText": { "position": "below", "fontSize": "14px", "color": "{alias.text-secondary}", "marginTop": "{spacing.sm}" },
+    "infoIcon": { "element": "Icon", "name": "info", "size": "xs", "color": "{alias.icon-tertiary}" }
+  },
+
+  "subComponents": {
+    "SliderHandle": {
+      "description": "Draggable handle positioned on the track. Fixed 24x24px circle.",
+      "base": {
+        "size": "24px",
+        "borderRadius": "{radius.full}",
+        "border": { "width": "1px", "color": "{alias.border-brand}" },
+        "bg": "{alias.bg-primary}",
+        "shadow": "{shadow.sm}",
+        "cursor": "grab",
+        "transition": "background-color"
+      },
+      "states": {
+        "hover": { "bg": "{alias.bg-brand-tertiary}" },
+        "active": { "bg": "{alias.bg-brand-secondary}", "cursor": "grabbing" }
+      },
+      "props": {
+        "valueLabel": { "type": "ReactNode", "description": "Value to display as tooltip or label." },
+        "labelVariant": { "type": "enum", "values": ["tooltip", "label"] },
+        "labelPosition": { "type": "enum", "values": ["above", "below"], "default": "below" }
+      },
+      "valueLabelStyles": {
+        "tooltip": { "uses": "Tooltip component", "variant": "light", "offset": "8px" },
+        "label": { "fontSize": "12px", "color": "{alias.text-primary}", "offset": "8px" }
+      }
+    }
+  },
+
+  "accessibility": {
+    "role": "group",
+    "notes": "Hidden range input(s) for keyboard navigation. aria-valuenow, aria-valuemin, aria-valuemax, aria-valuetext on inputs. Double variant labels inputs as 'start' and 'end'."
+  }
+}

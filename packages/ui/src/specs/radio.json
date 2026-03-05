@@ -1,0 +1,64 @@
+{
+  "name": "Radio",
+  "description": "Radio input with optional label and support text. Used within a group for single selection.",
+
+  "base": {
+    "display": "inline-flex",
+    "gap": "{spacing.md}",
+    "cursor": "pointer"
+  },
+
+  "indicator": {
+    "size": "16px",
+    "outerSize": "20px",
+    "borderRadius": "{radius.full}",
+    "unchecked": {
+      "bg": "{alias.bg-primary}",
+      "border": { "width": "1px", "color": "{alias.border-strong}" }
+    },
+    "checked": {
+      "bg": "{alias.bg-brand}",
+      "hover": { "bg": "{alias.bg-brand-hover}" },
+      "dotColor": "{alias.icon-primary-inverse}",
+      "dotRadius": "3px"
+    }
+  },
+
+  "states": {
+    "disabled": {
+      "cursor": "default",
+      "indicator": {
+        "bg": "{alias.bg-inactive-subtle}",
+        "border": { "color": "{alias.border-inactive}" },
+        "dotColor": "{alias.icon-inactive-subtle}"
+      },
+      "labelColor": "{alias.text-inactive}"
+    },
+    "focused": {
+      "indicator": {
+        "ring": { "width": "2px", "color": "{alias.border-focused}" },
+        "border": { "color": "{alias.border-brand}" }
+      }
+    }
+  },
+
+  "props": {
+    "label": { "type": "string", "description": "Label text next to the radio." },
+    "supportText": { "type": "string", "description": "Support text below the label." },
+    "radioPosition": { "type": "enum", "values": ["leading", "trailing"], "default": "leading" },
+    "checked": { "type": "boolean" },
+    "disabled": { "type": "boolean", "default": false },
+    "name": { "type": "string", "description": "Radio group name." },
+    "value": { "type": "string", "description": "Radio value within the group." }
+  },
+
+  "slots": {
+    "label": { "fontSize": "14px", "fontWeight": 500, "lineHeight": "16px", "color": "{alias.text-primary}" },
+    "supportText": { "fontSize": "14px", "lineHeight": "20px", "color": "{alias.text-secondary}", "gap": "{spacing.xxs}" }
+  },
+
+  "accessibility": {
+    "role": "radio",
+    "notes": "Native input is visually hidden (sr-only). Use within a fieldset/radiogroup for grouping."
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "name": "Sidebar",
+  "description": "Vertical navigation sidebar with header, scrollable content, and footer sections. Supports collapsed (icon-only) and expanded states via SidebarContext.",
+
+  "base": {
+    "display": "flex",
+    "flexDirection": "column",
+    "height": "100%",
+    "bg": "{alias.bg-primary}",
+    "shadow": "{shadow.sm}",
+    "borderRadius": "{radius.sm}",
+    "transition": "width 200ms ease-out"
+  },
+
+  "variants": {
+    "expanded": { "width": "256px", "minWidth": "256px" },
+    "collapsed": { "width": "64px", "minWidth": "64px" }
+  },
+
+  "sections": {
+    "header": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "{spacing.sm}",
+      "paddingX": "{spacing.2xl}",
+      "paddingY": "{spacing.2xl}",
+      "flexShrink": 0,
+      "collapseToggle": {
+        "size": "32px",
+        "borderRadius": "{radius.full}",
+        "iconColor": "{alias.icon-secondary}",
+        "hover": { "bg": "{alias.bg-tertiary}", "iconColor": "{alias.icon-primary}" },
+        "focus": { "ring": "2px", "ringColor": "{alias.border-brand}", "ringOffset": "2px" },
+        "icons": { "expanded": "chevron_left", "collapsed": "chevron_right" },
+        "iconSize": "sm"
+      }
+    },
+    "divider": {
+      "element": "Divider",
+      "orientation": "horizontal"
+    },
+    "content": {
+      "display": "flex",
+      "flexDirection": "column",
+      "flex": 1,
+      "minHeight": 0,
+      "overflow": "auto (y), hidden (x)",
+      "paddingX": "{spacing.xl}",
+      "paddingY": "{spacing.xl}",
+      "scrollbar": "hidden"
+    },
+    "footer": {
+      "display": "flex",
+      "flexDirection": "column",
+      "gap": "{spacing.xxs}",
+      "flexShrink": 0,
+      "borderTop": { "width": "1px", "color": "{alias.border-secondary}" },
+      "paddingX": "{spacing.md}",
+      "paddingY": "{spacing.md}",
+      "paddingTop": "{spacing.lg}"
+    }
+  },
+
+  "props": {
+    "header": { "type": "ReactNode", "description": "Header content (e.g. logo)." },
+    "children": { "type": "ReactNode", "description": "Main scrollable content (SidebarMenuItems)." },
+    "footer": { "type": "ReactNode", "description": "Footer content (e.g. settings, account card)." },
+    "collapsible": { "type": "boolean", "default": false, "description": "When true, shows collapse toggle in header." },
+    "collapsed": { "type": "boolean", "default": false, "description": "Controlled collapsed state." },
+    "onCollapsedChange": { "type": "function", "description": "Called when collapse toggle is clicked." },
+    "defaultCollapsed": { "type": "boolean", "default": false, "description": "Default collapsed state (uncontrolled)." }
+  },
+
+  "defaults": { "collapsible": false, "collapsed": false },
+
+  "subComponents": {
+    "SidebarMenuItem": {
+      "description": "Navigation item supporting expanded (icon + label) and collapsed (icon-only) layout. Optional submenu with expand/collapse.",
+      "base": {
+        "display": "flex",
+        "alignItems": "center",
+        "width": "100%",
+        "gap": "{spacing.md}",
+        "borderRadius": "{radius.sm}",
+        "paddingX": "{spacing.md}",
+        "paddingY": "{spacing.sm}",
+        "fontSize": "14px",
+        "fontWeight": 500,
+        "lineHeight": "20px",
+        "transition": "background-color"
+      },
+      "states": {
+        "default": {
+          "bg": "transparent",
+          "text": "{alias.text-primary}",
+          "iconColor": "{alias.icon-secondary}",
+          "hover": { "bg": "{alias.bg-tertiary}" },
+          "cursor": "pointer"
+        },
+        "active": {
+          "bg": "{alias.bg-brand-tertiary}",
+          "text": "{alias.text-brand}",
+          "iconColor": "{alias.icon-brand}"
+        },
+        "disabled": {
+          "opacity": 0.5,
+          "pointerEvents": "none",
+          "cursor": "default",
+          "iconColor": "{alias.icon-inactive-subtle}",
+          "text": "{alias.text-inactive}"
+        },
+        "collapsed": {
+          "justifyContent": "center",
+          "paddingX": "{spacing.sm}",
+          "note": "Label hidden; aria-label used for accessibility."
+        },
+        "focused": {
+          "ring": "2px",
+          "ringColor": "{alias.border-brand}",
+          "ringOffset": "2px"
+        }
+      },
+      "slots": {
+        "leftIcon": { "element": "Icon", "size": "sm" },
+        "label": { "truncate": true },
+        "chevron": {
+          "element": "Icon",
+          "size": "sm",
+          "expandedIcon": "expand_less",
+          "collapsedIcon": "expand_more"
+        }
+      },
+      "submenu": {
+        "display": "flex",
+        "flexDirection": "column",
+        "overflow": "hidden",
+        "transition": "height 200ms ease-out",
+        "collapsed": "hidden",
+        "expanded": "visible"
+      },
+      "props": {
+        "active": { "type": "boolean", "default": false },
+        "collapsed": { "type": "boolean", "default": false, "description": "Inherits from SidebarContext when inside Sidebar." },
+        "children": { "type": "ReactNode", "description": "Label text." },
+        "leftIcon": { "type": "string", "description": "Material Symbol name for leading icon." },
+        "submenu": { "type": "ReactNode", "description": "SidebarSubmenuItem children." },
+        "expanded": { "type": "boolean", "description": "Controlled expanded state for submenu." },
+        "onExpandedChange": { "type": "function", "description": "Called when submenu expand/collapse is toggled." },
+        "defaultExpanded": { "type": "boolean", "default": false },
+        "disabled": { "type": "boolean", "default": false }
+      },
+      "accessibility": {
+        "role": "button",
+        "notes": "aria-current='page' when active. aria-expanded on submenu trigger. aria-controls references submenu region. aria-label set from children when collapsed."
+      }
+    },
+
+    "SidebarSubmenuItem": {
+      "description": "Nested navigation item under SidebarMenuItem. Visually indented, no leading icon.",
+      "base": {
+        "display": "flex",
+        "alignItems": "center",
+        "width": "100%",
+        "borderRadius": "{radius.sm}",
+        "paddingLeft": "{spacing.xl}",
+        "paddingRight": "{spacing.md}",
+        "paddingY": "{spacing.sm}",
+        "fontSize": "14px",
+        "fontWeight": 400,
+        "lineHeight": "20px",
+        "text": "{alias.text-secondary}",
+        "transition": "background-color"
+      },
+      "states": {
+        "default": {
+          "cursor": "pointer",
+          "hover": { "bg": "{alias.bg-tertiary}", "text": "{alias.text-primary}" }
+        },
+        "active": {
+          "bg": "{alias.bg-brand-tertiary}",
+          "text": "{alias.text-brand}",
+          "fontWeight": 500
+        },
+        "disabled": {
+          "opacity": 0.5,
+          "pointerEvents": "none",
+          "cursor": "default",
+          "text": "{alias.text-inactive}"
+        },
+        "focused": {
+          "ring": "2px",
+          "ringColor": "{alias.border-brand}",
+          "ringOffset": "2px"
+        }
+      },
+      "props": {
+        "active": { "type": "boolean", "default": false },
+        "children": { "type": "ReactNode", "description": "Label text." },
+        "disabled": { "type": "boolean", "default": false }
+      },
+      "accessibility": {
+        "role": "button",
+        "notes": "aria-current='page' when active. aria-disabled when disabled."
+      }
+    },
+
+    "SidebarAccountCard": {
+      "description": "User account display card with Avatar, username, supporting text, and optional right icon. Collapses to avatar-only in collapsed sidebar.",
+      "base": {
+        "display": "flex",
+        "alignItems": "center",
+        "width": "100%",
+        "gap": "{spacing.md}",
+        "borderRadius": "{radius.sm}",
+        "paddingX": "{spacing.md}",
+        "paddingY": "{spacing.md}"
+      },
+      "states": {
+        "default": { "bg": "transparent" },
+        "selected": { "bg": "{alias.bg-tertiary}" },
+        "collapsed": {
+          "justifyContent": "center",
+          "paddingX": "0",
+          "paddingY": "{spacing.sm}",
+          "note": "Avatar only; username, supportingText, and rightIcon are hidden."
+        }
+      },
+      "composition": {
+        "avatar": "Avatar (size: md)"
+      },
+      "slots": {
+        "rightIcon": {
+          "element": "Icon",
+          "size": "sm",
+          "color": "{alias.icon-secondary}"
+        }
+      },
+      "props": {
+        "username": { "type": "string", "description": "User display name passed to Avatar." },
+        "supportingText": { "type": "string", "description": "Supporting line below name passed to Avatar." },
+        "initials": { "type": "string", "description": "Initials for Avatar fallback." },
+        "rightIcon": { "type": "string", "description": "Material Symbol name for trailing icon." },
+        "selected": { "type": "boolean", "default": false },
+        "collapsed": { "type": "boolean", "default": false, "description": "Inherits from SidebarContext when inside Sidebar." }
+      },
+      "defaults": { "selected": false }
+    }
+  },
+
+  "accessibility": {
+    "role": "complementary (aside)",
+    "notes": "aria-label='Sidebar'. SidebarContext provides collapsed state to children. Collapse toggle has aria-label 'Expand/Collapse sidebar'. Submenu regions have role='group' with aria-label."
+  }
+}

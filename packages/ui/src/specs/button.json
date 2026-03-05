@@ -1,0 +1,110 @@
+{
+  "name": "Button",
+  "description": "Primary interactive element for actions. Supports text, text with icons, and icon-only modes.",
+
+  "base": {
+    "display": "inline-flex",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "fontWeight": 500,
+    "flexShrink": 0,
+    "transition": "background-color, color"
+  },
+
+  "variants": {
+    "primary": {
+      "bg": "{alias.component-button-brand-bg}",
+      "text": "{alias.text-on-color}",
+      "hover": { "bg": "{alias.component-button-brand-bg-hover}" },
+      "active": { "bg": "{alias.bg-brand-strong}" }
+    },
+    "secondary": {
+      "bg": "{alias.component-button-secondary-bg}",
+      "text": "{alias.component-button-secondary-fg}",
+      "border": { "width": "1px", "color": "{alias.border-strong}" },
+      "shadow": "{shadow.xs}",
+      "hover": { "bg": "{alias.component-button-secondary-bg-hover}" },
+      "active": { "bg": "{alias.bg-quarterary}" }
+    },
+    "tertiary": {
+      "bg": "transparent",
+      "text": "{alias.component-button-tertiary-color-fg}",
+      "hover": { "bg": "{alias.component-button-tertiary-bg-hover}" },
+      "active": { "bg": "{alias.bg-quarterary}" }
+    },
+    "danger": {
+      "bg": "{alias.component-button-danger-bg}",
+      "text": "{alias.text-on-color}",
+      "hover": { "bg": "{alias.component-button-danger-bg-hover}" },
+      "active": { "bg": "{alias.bg-danger-strong}" }
+    },
+    "link": {
+      "bg": "transparent",
+      "text": "{alias.component-button-tertiary-color-fg}",
+      "textDecoration": { "underlineOffset": "4px" },
+      "hover": { "textDecoration": "underline" }
+    },
+    "link-brand": {
+      "bg": "transparent",
+      "text": "{alias.component-button-link-color-fg}",
+      "textDecoration": { "underlineOffset": "4px" },
+      "hover": { "text": "{alias.component-button-link-color-fg-hover}" }
+    }
+  },
+
+  "sizes": {
+    "xs": { "height": "36px", "paddingX": "{spacing.md}", "gap": "2px", "fontSize": "14px", "borderRadius": "{radius.sm}" },
+    "md": { "height": "40px", "paddingX": "{spacing.lg}", "gap": "4px", "fontSize": "14px", "borderRadius": "{radius.sm}" },
+    "lg": { "height": "44px", "paddingX": "{spacing.xl}", "gap": "4px", "fontSize": "16px", "borderRadius": "{radius.sm}" },
+    "xl": { "height": "48px", "paddingX": "{spacing.2xl}", "gap": "4px", "fontSize": "16px", "borderRadius": "{radius.sm}" },
+    "2xl": { "height": "56px", "paddingX": "{spacing.2xl}", "gap": "8px", "fontSize": "16px", "borderRadius": "{radius.md}" }
+  },
+
+  "states": {
+    "disabled": { "opacity": 0.5, "pointerEvents": "none" },
+    "focus": { "outline": "none", "ring": "2px", "ringColor": "{alias.border-brand}", "ringOffset": "2px" }
+  },
+
+  "compoundVariants": [
+    {
+      "when": { "variant": ["link", "link-brand"] },
+      "apply": { "height": "auto", "paddingX": "0", "paddingY": "0", "borderRadius": "6px" }
+    },
+    {
+      "when": { "iconOnly": true },
+      "apply": { "width": "=height", "paddingX": "0" }
+    }
+  ],
+
+  "props": {
+    "variant": { "type": "enum", "values": ["primary", "secondary", "tertiary", "danger", "link", "link-brand"], "default": "primary" },
+    "size": { "type": "enum", "values": ["xs", "md", "lg", "xl", "2xl"], "default": "md" },
+    "icon": { "type": "string", "description": "Material Symbol name for icon-only mode. Renders a square button." },
+    "leftIcon": { "type": "string", "description": "Material Symbol name for leading icon." },
+    "rightIcon": { "type": "string", "description": "Material Symbol name for trailing icon." },
+    "iconVariant": { "type": "enum", "values": ["outlined", "rounded", "sharp"], "default": "outlined" },
+    "iconFilled": { "type": "boolean", "default": false },
+    "asChild": { "type": "boolean", "default": false, "description": "Render as child element (polymorphic). Useful for links styled as buttons." },
+    "disabled": { "type": "boolean", "default": false }
+  },
+
+  "slots": {
+    "leftIcon": {
+      "position": "start",
+      "element": "Icon",
+      "iconSizeByButtonSize": { "xs": "md", "md": "md", "lg": "md", "xl": "lg", "2xl": "lg" }
+    },
+    "rightIcon": {
+      "position": "end",
+      "element": "Icon",
+      "iconSizeByButtonSize": { "xs": "md", "md": "md", "lg": "md", "xl": "lg", "2xl": "lg" }
+    }
+  },
+
+  "defaults": { "variant": "primary", "size": "md" },
+
+  "accessibility": {
+    "role": "button",
+    "notes": "Icon-only mode (icon prop or single icon without children) requires aria-label."
+  }
+}

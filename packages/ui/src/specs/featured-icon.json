@@ -1,0 +1,80 @@
+{
+  "name": "FeaturedIcon",
+  "description": "Decorative icon container with 5 visual variants, 5 semantic types, and 3 sizes. Used to emphasize icon meaning in cards, empty states, and alerts.",
+
+  "base": {
+    "display": "inline-flex",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "flexShrink": 0
+  },
+
+  "variants": {
+    "circle-light": { "borderRadius": "{radius.full}" },
+    "square-light": { "borderRadius": "{radius.lg}" },
+    "circle-pulse": { "borderRadius": "{radius.full}", "border": { "width": "8px" } },
+    "solid-circle": { "borderRadius": "{radius.full}" },
+    "solid-square": { "borderRadius": "{radius.lg}" }
+  },
+
+  "sizes": {
+    "sm": { "padding": "{spacing.sm}", "iconSize": "md" },
+    "md": { "padding": "{spacing.md}", "iconSize": "lg" },
+    "lg": { "padding": "{spacing.lg}", "iconSize": "xl" }
+  },
+
+  "compoundVariants": [
+    { "when": { "variant": "circle-light", "type": "brand" },    "apply": { "bg": "{alias.bg-brand-tertiary}",   "text": "{alias.text-brand}" } },
+    { "when": { "variant": "circle-light", "type": "success" },  "apply": { "bg": "{alias.bg-success-tertiary}", "text": "{alias.text-success}" } },
+    { "when": { "variant": "circle-light", "type": "danger" },   "apply": { "bg": "{alias.bg-danger-tertiary}",  "text": "{alias.text-danger}" } },
+    { "when": { "variant": "circle-light", "type": "warning" },  "apply": { "bg": "{alias.bg-warning-tertiary}", "text": "{alias.text-warning}" } },
+    { "when": { "variant": "circle-light", "type": "neutral" },  "apply": { "bg": "{alias.bg-tertiary}",         "text": "{alias.text-secondary}" } },
+
+    { "when": { "variant": "square-light", "type": "brand" },    "apply": { "bg": "{alias.bg-brand-tertiary}",   "text": "{alias.text-brand}" } },
+    { "when": { "variant": "square-light", "type": "success" },  "apply": { "bg": "{alias.bg-success-tertiary}", "text": "{alias.text-success}" } },
+    { "when": { "variant": "square-light", "type": "danger" },   "apply": { "bg": "{alias.bg-danger-tertiary}",  "text": "{alias.text-danger}" } },
+    { "when": { "variant": "square-light", "type": "warning" },  "apply": { "bg": "{alias.bg-warning-tertiary}", "text": "{alias.text-warning}" } },
+    { "when": { "variant": "square-light", "type": "neutral" },  "apply": { "bg": "{alias.bg-tertiary}",         "text": "{alias.text-secondary}" } },
+
+    { "when": { "variant": "circle-pulse", "type": "brand" },    "apply": { "borderColor": "{alias.border-brand-tertiary}",   "bg": "{alias.bg-brand-secondary}",   "text": "{alias.text-brand}" } },
+    { "when": { "variant": "circle-pulse", "type": "success" },  "apply": { "borderColor": "{alias.border-success-tertiary}", "bg": "{alias.bg-success-secondary}", "text": "{alias.text-success}" } },
+    { "when": { "variant": "circle-pulse", "type": "danger" },   "apply": { "borderColor": "{alias.border-danger-tertiary}",  "bg": "{alias.bg-danger-secondary}",  "text": "{alias.text-danger}" } },
+    { "when": { "variant": "circle-pulse", "type": "warning" },  "apply": { "borderColor": "{alias.border-warning-tertiary}", "bg": "{alias.bg-warning-secondary}", "text": "{alias.text-warning}" } },
+    { "when": { "variant": "circle-pulse", "type": "neutral" },  "apply": { "borderColor": "{alias.border-secondary}",        "bg": "{alias.bg-quarterary}",        "text": "{alias.text-secondary}" } },
+
+    { "when": { "variant": "solid-circle", "type": "brand" },    "apply": { "bg": "{alias.bg-brand}",            "text": "{alias.text-on-color}" } },
+    { "when": { "variant": "solid-circle", "type": "success" },  "apply": { "bg": "{alias.bg-success}",          "text": "{alias.text-on-color}" } },
+    { "when": { "variant": "solid-circle", "type": "danger" },   "apply": { "bg": "{alias.bg-danger}",           "text": "{alias.text-on-color}" } },
+    { "when": { "variant": "solid-circle", "type": "warning" },  "apply": { "bg": "{alias.bg-warning}",          "text": "{alias.text-on-color}" } },
+    { "when": { "variant": "solid-circle", "type": "neutral" },  "apply": { "bg": "{alias.bg-primary-inverse}",  "text": "{alias.text-on-color}" } },
+
+    { "when": { "variant": "solid-square", "type": "brand" },    "apply": { "bg": "{alias.bg-brand}",            "text": "{alias.text-on-color}" } },
+    { "when": { "variant": "solid-square", "type": "success" },  "apply": { "bg": "{alias.bg-success}",          "text": "{alias.text-on-color}" } },
+    { "when": { "variant": "solid-square", "type": "danger" },   "apply": { "bg": "{alias.bg-danger}",           "text": "{alias.text-on-color}" } },
+    { "when": { "variant": "solid-square", "type": "warning" },  "apply": { "bg": "{alias.bg-warning}",          "text": "{alias.text-on-color}" } },
+    { "when": { "variant": "solid-square", "type": "neutral" },  "apply": { "bg": "{alias.bg-primary-inverse}",  "text": "{alias.text-on-color}" } }
+  ],
+
+  "props": {
+    "variant": { "type": "enum", "values": ["circle-light", "square-light", "circle-pulse", "solid-circle", "solid-square"], "default": "solid-circle" },
+    "type": { "type": "enum", "values": ["brand", "success", "danger", "warning", "neutral"], "default": "brand" },
+    "size": { "type": "enum", "values": ["sm", "md", "lg"], "default": "md" },
+    "name": { "type": "string", "description": "Material Symbol name in snake_case." },
+    "label": { "type": "string", "description": "Accessible label. If omitted, icon is decorative (aria-hidden)." }
+  },
+
+  "slots": {
+    "icon": {
+      "element": "Icon",
+      "filled": true,
+      "sizeByFeaturedSize": { "sm": "md", "md": "lg", "lg": "xl" }
+    }
+  },
+
+  "defaults": { "variant": "solid-circle", "type": "brand", "size": "md" },
+
+  "accessibility": {
+    "role": "img (when label is provided)",
+    "notes": "aria-label from label prop. aria-hidden when no label (decorative)."
+  }
+}

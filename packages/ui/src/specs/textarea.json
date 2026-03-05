@@ -1,0 +1,63 @@
+{
+  "name": "TextArea",
+  "description": "Multi-line text input with label, helper text, error state, and character counter.",
+
+  "base": {
+    "display": "flex",
+    "width": "100%",
+    "alignItems": "flex-start",
+    "bg": "{alias.component-input-bg}",
+    "border": { "width": "1px", "color": "{alias.border-strong}" },
+    "borderRadius": "{radius.sm}",
+    "shadow": "{shadow.xs}",
+    "transition": "border-color",
+    "minHeight": "88px",
+    "paddingX": "{spacing.sm}",
+    "paddingY": "{spacing.sm}",
+    "fontSize": "14px",
+    "lineHeight": "20px"
+  },
+
+  "states": {
+    "disabled": {
+      "bg": "{alias.bg-secondary}",
+      "border": { "color": "{alias.border-inactive}" },
+      "shadow": "none",
+      "pointerEvents": "none",
+      "text": "{alias.text-inactive}"
+    },
+    "error": {
+      "border": { "color": "{alias.border-danger-secondary}" }
+    },
+    "focused": {
+      "border": { "color": "{alias.border-brand}" },
+      "focusRing": { "width": "4px", "color": "{alias.border-focused}", "inset": "-1px", "borderRadius": "{radius.sm}" }
+    },
+    "focused+error": {
+      "border": { "color": "{alias.border-danger}" },
+      "focusRing": { "width": "4px", "color": "{alias.border-focused-danger}", "inset": "-1px", "borderRadius": "{radius.sm}" }
+    }
+  },
+
+  "props": {
+    "label": { "type": "string", "description": "Label text above the textarea." },
+    "optional": { "type": "boolean", "default": false, "description": "Displays (Optional) + info icon next to label." },
+    "helperText": { "type": "string", "description": "Helper text below the textarea." },
+    "helperTextIcon": { "type": "string", "description": "Material Symbol name for helper text icon." },
+    "errorMessage": { "type": "string", "description": "Error message below the textarea. Overrides helperText." },
+    "maxLength": { "type": "number", "description": "Shows character counter beside the textarea." },
+    "rows": { "type": "number", "default": 4 },
+    "disabled": { "type": "boolean", "default": false }
+  },
+
+  "slots": {
+    "label": { "position": "above", "fontSize": "14px", "fontWeight": 500, "color": "{alias.text-primary}", "marginBottom": "{spacing.sm}" },
+    "helperText": { "position": "below", "fontSize": "14px", "color": "{alias.text-secondary}", "errorColor": "{alias.text-error}", "marginTop": "{spacing.sm}" },
+    "characterCounter": { "position": "end-outside", "fontSize": "14px", "color": "{alias.text-tertiary}", "errorColor": "{alias.text-error}" }
+  },
+
+  "accessibility": {
+    "role": "textbox",
+    "notes": "aria-invalid set when error. aria-describedby links to helperText or errorMessage."
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "name": "Menu",
+  "description": "Container for menu groups and items. Inserts dividers between MenuGroup children. Used in dropdowns, popovers, and context menus.",
+
+  "base": {
+    "display": "flex",
+    "flexDirection": "column",
+    "borderRadius": "{radius.sm}",
+    "bg": "{alias.bg-primary}",
+    "paddingY": "{spacing.md}",
+    "paddingX": "{spacing.sm}",
+    "shadow": "{shadow.sm}"
+  },
+
+  "behavior": {
+    "dividers": "Divider with my-sm inserted between each MenuGroup child"
+  },
+
+  "props": {
+    "children": { "type": "ReactNode", "description": "One or more MenuGroup components." }
+  },
+
+  "subComponents": {
+    "MenuGroup": {
+      "description": "Groups one optional MenuHeading and one or more MenuItem children.",
+      "base": {
+        "display": "flex",
+        "flexDirection": "column"
+      },
+      "props": {
+        "heading": { "type": "ReactNode", "description": "Optional section label. At most one." },
+        "headingId": { "type": "string", "description": "ID for heading wrapper. Used for role='group' aria-labelledby." },
+        "children": { "type": "ReactNode", "description": "MenuHeading (optional) and MenuItem components." }
+      },
+      "spacing": {
+        "headingToItems": "{spacing.sm}"
+      },
+      "accessibility": {
+        "role": "group",
+        "ariaLabelledby": "When heading and headingId provided"
+      }
+    },
+    "MenuHeading": {
+      "description": "Non-interactive section label for menu groups.",
+      "base": {
+        "paddingX": "{spacing.md}",
+        "paddingY": "{spacing.xs}",
+        "fontSize": "14px",
+        "fontWeight": 500,
+        "text": "{alias.text-tertiary}"
+      },
+      "props": {
+        "children": { "type": "ReactNode", "description": "Heading content (e.g. 'Section header')." }
+      }
+    },
+    "MenuItem": {
+      "description": "Individual menu item. Supports multiple types and slots.",
+      "base": {
+        "display": "flex",
+        "alignItems": "center",
+        "width": "100%",
+        "gap": "{spacing.md}",
+        "borderRadius": "{radius.sm}",
+        "paddingX": "{spacing.md}",
+        "paddingY": "{spacing.sm}",
+        "textAlign": "left",
+        "transition": "background-color, color",
+        "focusVisible": { "outline": "none", "ring": "2px", "ringColor": "{alias.border-brand}", "ringOffset": "2px" }
+      },
+      "types": {
+        "default": { "layout": "single-line" },
+        "multiline": { "layout": "primary + supportingText below", "gap": "{spacing.xxs}" },
+        "callToAction": { "layout": "primary + supportingText below + cta slot" },
+        "progress": { "layout": "ProgressBar with label and value" }
+      },
+      "states": {
+        "active": {
+          "true": { "bg": "{alias.bg-brand-tertiary}", "text": "{alias.text-brand}", "fontWeight": 500 },
+          "false": {}
+        },
+        "disabled": {
+          "true": { "opacity": 0.5, "cursor": "default", "pointerEvents": "none" },
+          "false": { "cursor": "pointer", "hover": { "bg": "{alias.bg-tertiary}" } }
+        }
+      },
+      "typography": {
+        "primary": { "fontSize": "14px", "fontWeight": 500, "lineHeight": "20px" },
+        "supportingText": { "fontSize": "14px", "lineHeight": "20px" },
+        "textRight": { "fontSize": "14px" }
+      },
+      "textColorByState": {
+        "primary": { "default": "{alias.text-primary}", "disabled": "{alias.text-inactive}" },
+        "supportingText": { "default": "{alias.text-secondary}", "disabled": "{alias.text-inactive}" },
+        "textRight": { "default": "{alias.text-secondary}", "disabled": "{alias.text-inactive}" }
+      },
+      "iconColorByState": {
+        "default": "{alias.icon-secondary}",
+        "disabled": "{alias.icon-inactive-subtle}"
+      },
+      "slots": {
+        "leftIcon": { "element": "Icon", "size": "sm", "position": "start" },
+        "rightIcon": { "element": "Icon", "size": "sm", "position": "end" },
+        "avatar": { "position": "start", "description": "Use Avatar component" },
+        "badge": { "position": "end", "description": "Use Badge component" },
+        "switch": { "element": "Toggle", "size": "sm", "togglePosition": "trailing", "position": "end", "description": "Use showSwitch, switchChecked, onSwitchChange props" },
+        "textRight": { "position": "end" },
+        "cta": { "element": "Button", "position": "end", "description": "For type='callToAction'" },
+        "progress": { "element": "ProgressBar", "size": "sm", "showValue": true, "description": "For type='progress'. Uses progressLabel, progressValue props." }
+      },
+      "props": {
+        "type": { "type": "enum", "values": ["default", "multiline", "callToAction", "progress"], "default": "default" },
+        "active": { "type": "boolean", "default": false, "description": "Selected/current state. Sets aria-current='page'." },
+        "disabled": { "type": "boolean", "default": false },
+        "children": { "type": "ReactNode", "description": "Primary content." },
+        "supportingText": { "type": "ReactNode", "description": "Supporting text below primary (multiline / callToAction)." },
+        "leftIcon": { "type": "string", "description": "Material Symbol name." },
+        "rightIcon": { "type": "string", "description": "Material Symbol name." },
+        "avatar": { "type": "ReactNode" },
+        "badge": { "type": "ReactNode" },
+        "showSwitch": { "type": "boolean", "default": false },
+        "switchChecked": { "type": "boolean" },
+        "onSwitchChange": { "type": "function" },
+        "textRight": { "type": "ReactNode" },
+        "cta": { "type": "ReactNode" },
+        "progressLabel": { "type": "ReactNode" },
+        "progressValue": { "type": "number", "description": "0-100" }
+      },
+      "defaults": { "type": "default", "active": false, "disabled": false }
+    }
+  },
+
+  "accessibility": {
+    "notes": "MenuItem sets aria-current='page' when active. Switch interactions stop propagation to prevent triggering parent button."
+  }
+}

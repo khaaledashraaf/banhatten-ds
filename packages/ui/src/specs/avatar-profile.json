@@ -1,0 +1,65 @@
+{
+  "name": "AvatarProfile",
+  "description": "Wraps Avatar with a border ring and drop shadow. Supports circle and rounded shapes with optional badge slots at top-right and bottom-right.",
+
+  "base": {
+    "display": "inline-flex",
+    "position": "relative",
+    "flexShrink": 0,
+    "border": { "width": "2px", "color": "{alias.border-subtract}" },
+    "shadow": "{shadow.sm}"
+  },
+
+  "variants": {
+    "circle": { "borderRadius": "{radius.full}" },
+    "rounded": { "borderRadius": "{radius.md}" }
+  },
+
+  "composition": {
+    "avatar": "Avatar (shape and size passed through)"
+  },
+
+  "props": {
+    "shape": { "type": "enum", "values": ["circle", "rounded"], "default": "circle" },
+    "size": { "type": "enum", "values": ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl"], "default": "md", "description": "Passed through to the inner Avatar." },
+    "initials": { "type": "string", "description": "Initials for the inner Avatar." },
+    "topRight": { "type": "ReactNode", "description": "Badge content at top-right (e.g. edit icon). Icon is forced to filled." },
+    "bottomRight": { "type": "ReactNode", "description": "Badge content at bottom-right (e.g. status icon). Icon is forced to filled." }
+  },
+
+  "slots": {
+    "badgeSlot": {
+      "description": "Shared styling for topRight and bottomRight badge positions.",
+      "position": "absolute",
+      "display": "flex",
+      "alignItems": "center",
+      "justifyContent": "center",
+      "borderRadius": "{radius.full}",
+      "overflow": "hidden",
+      "zIndex": 10,
+      "size": "{spacing.xl}",
+      "minSize": "{spacing.xl}",
+      "border": { "width": "2px", "color": "{alias.border-subtract}" },
+      "bg": "{alias.bg-brand}",
+      "text": "{alias.text-on-color}"
+    },
+    "topRight": {
+      "top": "0",
+      "right": "0",
+      "translateX": "50%",
+      "translateY": "-50%"
+    },
+    "bottomRight": {
+      "bottom": "0",
+      "right": "0",
+      "translateX": "50%",
+      "translateY": "50%"
+    }
+  },
+
+  "defaults": { "shape": "circle", "size": "md" },
+
+  "accessibility": {
+    "notes": "Badge slots are aria-hidden. Icons inside badges are forced to filled variant via cloneElement."
+  }
+}

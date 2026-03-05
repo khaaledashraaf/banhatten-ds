@@ -1,0 +1,178 @@
+{
+  "name": "Alert",
+  "description": "Contextual feedback banner with status icon, title, optional description, action buttons, and close control. Supports 5 semantic types across 4 emphasis levels.",
+
+  "base": {
+    "display": "flex",
+    "gap": "{spacing.md}",
+    "borderRadius": "{radius.sm}",
+    "paddingX": "{spacing.md}",
+    "paddingY": "{spacing.md}",
+    "transition": "background-color, border-color, color",
+    "fontSize": "14px",
+    "lineHeight": "20px"
+  },
+
+  "variants": {
+    "low": {
+      "bg": "{alias.bg-primary}",
+      "border": { "width": "1px", "color": "{alias.border-strong}" },
+      "text": "{alias.text-primary}"
+    },
+    "medium": {},
+    "moderate": {},
+    "high": {}
+  },
+
+  "sizes": {},
+
+  "states": {
+    "expanded": {
+      "alignItems": "flex-start",
+      "title": { "fontWeight": 500 },
+      "description": { "marginTop": "{spacing.xs}" },
+      "actions": { "marginTop": "{spacing.sm}", "gap": "{spacing.md}" }
+    },
+    "collapsed": {
+      "alignItems": "center",
+      "title": { "fontWeight": 400 }
+    }
+  },
+
+  "compoundVariants": [
+    {
+      "when": { "emphasis": "medium", "type": "info" },
+      "apply": { "bg": "{alias.bg-info-tertiary}", "border": { "width": "1px", "color": "{alias.border-info-subtle}" }, "text": "{alias.text-info}" }
+    },
+    {
+      "when": { "emphasis": "medium", "type": "success" },
+      "apply": { "bg": "{alias.bg-success-tertiary}", "border": { "width": "1px", "color": "{alias.border-success-secondary}" }, "text": "{alias.text-success}" }
+    },
+    {
+      "when": { "emphasis": "medium", "type": "warning" },
+      "apply": { "bg": "{alias.bg-warning-tertiary}", "border": { "width": "1px", "color": "{alias.border-warning-secondary}" }, "text": "{alias.text-warning-strong}" }
+    },
+    {
+      "when": { "emphasis": "medium", "type": "danger" },
+      "apply": { "bg": "{alias.bg-danger-tertiary}", "border": { "width": "1px", "color": "{alias.border-danger-secondary}" }, "text": "{alias.text-danger}" }
+    },
+    {
+      "when": { "emphasis": "medium", "type": "neutral" },
+      "apply": { "bg": "{alias.bg-secondary}", "border": { "width": "1px", "color": "{alias.border-strong}" }, "text": "{alias.text-primary}" }
+    },
+    {
+      "when": { "emphasis": "moderate", "type": "info" },
+      "apply": { "bg": "{alias.bg-info-secondary}", "border": { "width": "1px", "color": "{alias.border-info-subtle}" }, "text": "{alias.text-info}" }
+    },
+    {
+      "when": { "emphasis": "moderate", "type": "success" },
+      "apply": { "bg": "{alias.bg-success-secondary}", "border": { "width": "1px", "color": "{alias.border-success-secondary}" }, "text": "{alias.text-success}" }
+    },
+    {
+      "when": { "emphasis": "moderate", "type": "warning" },
+      "apply": { "bg": "{alias.bg-warning-secondary}", "border": { "width": "1px", "color": "{alias.border-warning-secondary}" }, "text": "{alias.text-warning-strong}" }
+    },
+    {
+      "when": { "emphasis": "moderate", "type": "danger" },
+      "apply": { "bg": "{alias.bg-danger-secondary}", "border": { "width": "1px", "color": "{alias.border-danger-secondary}" }, "text": "{alias.text-danger}" }
+    },
+    {
+      "when": { "emphasis": "moderate", "type": "neutral" },
+      "apply": { "bg": "{alias.bg-tertiary}", "border": { "width": "1px", "color": "{alias.border-strong}" }, "text": "{alias.text-primary}" }
+    },
+    {
+      "when": { "emphasis": "high", "type": "info" },
+      "apply": { "bg": "{alias.bg-info}", "text": "{alias.text-on-color}" }
+    },
+    {
+      "when": { "emphasis": "high", "type": "success" },
+      "apply": { "bg": "{alias.bg-success}", "text": "{alias.text-on-color}" }
+    },
+    {
+      "when": { "emphasis": "high", "type": "warning" },
+      "apply": { "bg": "{alias.bg-warning}", "text": "{alias.text-on-color}" }
+    },
+    {
+      "when": { "emphasis": "high", "type": "danger" },
+      "apply": { "bg": "{alias.bg-danger}", "text": "{alias.text-on-color}" }
+    },
+    {
+      "when": { "emphasis": "high", "type": "neutral" },
+      "apply": { "bg": "{alias.bg-quarterary}", "text": "{alias.text-primary}" }
+    },
+    {
+      "when": { "emphasis": "low" },
+      "apply": { "iconSize": "sm" }
+    },
+    {
+      "when": { "emphasis": ["medium", "moderate", "high"] },
+      "apply": { "iconSize": "md" }
+    }
+  ],
+
+  "props": {
+    "title": { "type": "string", "description": "Main title text displayed in the alert." },
+    "description": { "type": "string", "description": "Optional subtitle/description text (shown when expand=true)." },
+    "actions": { "type": "AlertAction[]", "description": "Action buttons rendered as link-style buttons (shown when expand=true)." },
+    "onClose": { "type": "function", "description": "Callback fired when the close button is clicked." },
+    "expand": { "type": "boolean", "default": false, "description": "Expand to show description and action buttons." },
+    "type": { "type": "enum", "values": ["info", "success", "warning", "danger", "neutral"], "default": "info" },
+    "emphasis": { "type": "enum", "values": ["low", "medium", "moderate", "high"], "default": "medium" },
+    "iconVariant": { "type": "enum", "values": ["outlined", "rounded", "sharp"], "default": "outlined" },
+    "iconFilled": { "type": "boolean", "default": false }
+  },
+
+  "slots": {
+    "icon": {
+      "position": "start",
+      "element": "Icon",
+      "iconByType": {
+        "info": "info",
+        "success": "check_circle",
+        "warning": "warning",
+        "danger": "error",
+        "neutral": "notifications"
+      },
+      "iconColorByType": {
+        "info": "{alias.text-info}",
+        "success": "{alias.text-success}",
+        "warning": "{alias.text-warning-strong}",
+        "danger": "{alias.text-danger}",
+        "neutral": "{alias.icon-primary}"
+      },
+      "highEmphasisIconColor": "{alias.text-on-color}",
+      "highNeutralIconColor": "{alias.icon-primary}"
+    },
+    "title": {
+      "fontSize": "14px",
+      "lineHeight": "20px"
+    },
+    "description": {
+      "fontSize": "14px",
+      "lineHeight": "20px",
+      "marginTop": "{spacing.xs}"
+    },
+    "actions": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "{spacing.md}",
+      "marginTop": "{spacing.sm}",
+      "element": "Button",
+      "buttonVariant": "link-brand",
+      "buttonSize": "xs"
+    },
+    "closeButton": {
+      "position": "end",
+      "element": "CloseButton",
+      "variant": "ghost",
+      "size": "sm"
+    }
+  },
+
+  "defaults": { "type": "info", "emphasis": "medium", "expand": false },
+
+  "accessibility": {
+    "role": "alert | status",
+    "notes": "role='alert' and aria-live='assertive' for danger/warning types; role='status' and aria-live='polite' for info/success/neutral."
+  }
+}

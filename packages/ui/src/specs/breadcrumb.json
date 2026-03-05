@@ -1,0 +1,160 @@
+{
+  "name": "Breadcrumb",
+  "description": "Navigation component showing hierarchical path. Composed of Breadcrumb (nav), BreadcrumbList, BreadcrumbItem, and BreadcrumbSeparator.",
+
+  "base": {
+    "display": "block"
+  },
+
+  "props": {
+    "aria-label": { "type": "string", "default": "Breadcrumb", "description": "Accessible label for nav." }
+  },
+
+  "subComponents": {
+    "BreadcrumbList": {
+      "description": "Ordered list container for breadcrumb items. Wraps items with optional background.",
+      "element": "ol",
+      "base": {
+        "display": "flex",
+        "flexWrap": "wrap",
+        "alignItems": "center",
+        "gap": "{spacing.xs}"
+      },
+      "variants": {
+        "containerStyle": {
+          "default": {},
+          "withBackground": {
+            "borderRadius": "{radius.sm}",
+            "border": { "width": "1px", "color": "{alias.border-default}" },
+            "bg": "{alias.bg-primary}",
+            "padding": "{spacing.md}"
+          }
+        }
+      },
+      "props": {
+        "containerStyle": { "type": "enum", "values": ["default", "withBackground"], "default": "default" }
+      }
+    },
+
+    "BreadcrumbListItem": {
+      "description": "List item wrapper for a single breadcrumb item and optional separator.",
+      "element": "li",
+      "base": {
+        "display": "inline-flex",
+        "alignItems": "center",
+        "gap": "{spacing.xs}"
+      }
+    },
+
+    "BreadcrumbSeparator": {
+      "description": "Visual separator between items. Slash character or chevron icon.",
+      "element": "span",
+      "base": {
+        "display": "flex",
+        "alignItems": "center",
+        "flexShrink": 0,
+        "color": "{alias.text-inactive}"
+      },
+      "variants": {
+        "separator": {
+          "slash": {
+            "paddingX": "{spacing.xs}",
+            "fontSize": "14px",
+            "fontWeight": 400
+          },
+          "chevron": {
+            "iconColor": "{alias.icon-inactive}",
+            "icon": "chevron_right",
+            "iconSize": "sm"
+          }
+        }
+      },
+      "props": {
+        "separator": { "type": "enum", "values": ["slash", "chevron"], "default": "chevron" }
+      },
+      "accessibility": {
+        "role": "presentation",
+        "ariaHidden": true
+      }
+    },
+
+    "BreadcrumbItem": {
+      "description": "Individual breadcrumb link or span. Renders <a> when href provided, else <span>. Supports icon+text, icon-only, or overflow (ellipsis) variants.",
+      "element": "a | span",
+      "base": {
+        "display": "inline-flex",
+        "alignItems": "center",
+        "fontSize": "14px",
+        "gap": "{spacing.xs}",
+        "borderRadius": "{radius.sm}",
+        "transition": "color",
+        "focusRing": { "width": "2px", "color": "{alias.border-brand}", "offset": "2px" }
+      },
+      "variants": {
+        "variant": {
+          "iconText": { "minWidth": 0 },
+          "iconOnly": {},
+          "overflow": { "minWidth": 0 }
+        },
+        "state": {
+          "default": {
+            "text": "{alias.text-secondary}",
+            "iconColor": "{alias.icon-secondary}",
+            "hover": { "text": "{alias.text-tertiary-hover}", "iconColor": "{alias.icon-tertiary-hover}" }
+          },
+          "active": {
+            "text": "{alias.text-primary}",
+            "fontWeight": 500,
+            "iconColor": "{alias.icon-primary}"
+          },
+          "disabled": {
+            "text": "{alias.text-inactive}",
+            "iconColor": "{alias.icon-inactive-subtle}",
+            "cursor": "default",
+            "pointerEvents": "none"
+          }
+        },
+        "overflowHover": {
+          "true": { "hover": { "bg": "{alias.bg-tertiary}" } },
+          "false": {}
+        }
+      },
+      "compoundVariants": [
+        {
+          "when": { "variant": "overflow", "overflowHover": true, "state": "default" },
+          "apply": {
+            "hover": {
+              "bg": "{alias.bg-tertiary}",
+              "text": "{alias.text-secondary-hover}",
+              "iconColor": "{alias.icon-secondary-hover}"
+            }
+          }
+        }
+      ],
+      "props": {
+        "variant": { "type": "enum", "values": ["iconText", "iconOnly", "overflow"], "default": "iconText" },
+        "active": { "type": "boolean", "default": false, "description": "Current page. Renders span with aria-current=\"page\"." },
+        "disabled": { "type": "boolean", "default": false, "description": "Disabled state. Renders span with aria-disabled=\"true\"." },
+        "icon": { "type": "string", "description": "Material Symbol name (e.g. home, folder). Ignored when variant=overflow; overflow uses more_horiz." },
+        "href": { "type": "string", "description": "When provided, renders <a>. Omit for current page or overflow trigger." },
+        "overflowHover": { "type": "boolean", "description": "Show hover bg for overflow variant. Defaults to true when variant=overflow and state=default." }
+      },
+      "slots": {
+        "icon": {
+          "element": "Icon",
+          "size": "sm",
+          "className": "breadcrumb-icon",
+          "shrink": 0
+        }
+      },
+      "accessibility": {
+        "notes": "active sets aria-current=\"page\"; disabled sets aria-disabled=\"true\". Icon-only and overflow require sr-only label for screen readers."
+      }
+    }
+  },
+
+  "accessibility": {
+    "role": "navigation",
+    "ariaLabel": "Breadcrumb"
+  }
+}

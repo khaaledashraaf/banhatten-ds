@@ -1,0 +1,111 @@
+{
+  "name": "RadioCard",
+  "description": "Card-style radio with optional icon, label, and description. Supports checked, unchecked, disabled, and focused states.",
+
+  "base": {
+    "display": "flex",
+    "position": "relative",
+    "borderRadius": "{radius.md}",
+    "padding": "{spacing.lg}",
+    "border": { "width": "1px" },
+    "transition": "background-color, border-color"
+  },
+
+  "states": {
+    "unchecked": {
+      "bg": "{alias.bg-primary}",
+      "borderColor": "{alias.border-default}",
+      "cursor": "pointer",
+      "hover": { "bg": "{alias.highlight-hover}" }
+    },
+    "checked": {
+      "bg": "{alias.bg-primary}",
+      "borderColor": "{alias.border-brand}",
+      "cursor": "pointer"
+    },
+    "disabled": {
+      "bg": "{alias.bg-inactive-subtle}",
+      "borderColor": "{alias.border-inactive-subtle}",
+      "cursor": "default"
+    },
+    "focused": {
+      "overlay": {
+        "position": "absolute",
+        "inset": "-1px",
+        "borderRadius": "{radius.md}",
+        "border": { "width": "2px", "color": "{alias.border-focused}" }
+      }
+    }
+  },
+
+  "layout": {
+    "leading": { "gap": "{spacing.md}", "alignItems": "center (no description) / start (with description)" },
+    "trailing": { "gap": "{spacing.lg}", "alignItems": "start" }
+  },
+
+  "subComponents": {
+    "RadioIndicator": {
+      "description": "16×16 radio circle inside a 20×20 hit area.",
+      "outerSize": "20px",
+      "innerSize": "16px",
+      "borderRadius": "{radius.full}",
+      "unchecked": {
+        "bg": "{alias.bg-primary}",
+        "border": { "width": "1px", "color": "{alias.border-strong}" }
+      },
+      "checked": {
+        "bg": "{alias.bg-brand}",
+        "dotColor": "{alias.icon-primary-inverse}",
+        "dot": "6px circle (SVG)"
+      },
+      "disabled": {
+        "bg": "{alias.bg-inactive-subtle}",
+        "border": { "width": "1px", "color": "{alias.border-inactive}" },
+        "dotColor": "{alias.icon-inactive-subtle}"
+      }
+    }
+  },
+
+  "slots": {
+    "icon": {
+      "element": "Icon",
+      "size": "lg",
+      "color": "{alias.icon-secondary}",
+      "disabledColor": "{alias.icon-inactive}"
+    },
+    "label": {
+      "fontWeight": 500,
+      "withDescription": { "fontSize": "14px", "lineHeight": "16px" },
+      "withoutDescription": { "fontSize": "16px", "lineHeight": "20px" },
+      "color": "{alias.text-primary}",
+      "disabledColor": "{alias.text-inactive}"
+    },
+    "description": {
+      "fontSize": "14px",
+      "lineHeight": "20px",
+      "color": "{alias.text-secondary}",
+      "disabledColor": "{alias.text-inactive}",
+      "gap": "{spacing.xs}"
+    }
+  },
+
+  "props": {
+    "label": { "type": "string", "description": "Label text displayed in the card." },
+    "description": { "type": "string", "description": "Description text below the label." },
+    "icon": { "type": "string", "description": "Material Symbol name for the card icon." },
+    "iconVariant": { "type": "enum", "values": ["outlined", "rounded", "sharp"], "default": "outlined" },
+    "iconFilled": { "type": "boolean", "default": false },
+    "radioPosition": { "type": "enum", "values": ["leading", "trailing"], "default": "trailing" },
+    "checked": { "type": "boolean" },
+    "disabled": { "type": "boolean", "default": false },
+    "name": { "type": "string", "description": "Radio group name for native grouping." },
+    "value": { "type": "string", "description": "Radio value." }
+  },
+
+  "defaults": { "radioPosition": "trailing" },
+
+  "accessibility": {
+    "role": "radio",
+    "notes": "Hidden native radio input (sr-only) inside a <label>. Focus/selection ring overlay shown when checked or focused (not disabled)."
+  }
+}

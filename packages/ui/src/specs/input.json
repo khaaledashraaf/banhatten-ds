@@ -1,0 +1,81 @@
+{
+  "name": "Input",
+  "description": "Single-line text input with label, helper text, error state, character counter, and icon slots. Supports presets for common input types.",
+
+  "base": {
+    "display": "flex",
+    "width": "100%",
+    "alignItems": "center",
+    "bg": "{alias.component-input-bg}",
+    "border": { "width": "1px", "color": "{alias.border-strong}" },
+    "borderRadius": "{radius.sm}",
+    "shadow": "{shadow.xs}",
+    "transition": "border-color"
+  },
+
+  "sizes": {
+    "sm": { "height": "36px", "paddingX": "{spacing.sm}", "fontSize": "14px" },
+    "md": { "height": "40px", "paddingX": "{spacing.sm}", "fontSize": "14px" },
+    "lg": { "height": "44px", "paddingX": "{spacing.sm}", "fontSize": "14px" }
+  },
+
+  "states": {
+    "disabled": {
+      "bg": "{alias.bg-secondary}",
+      "border": { "color": "{alias.border-inactive}" },
+      "shadow": "none",
+      "pointerEvents": "none",
+      "text": "{alias.text-inactive}"
+    },
+    "error": {
+      "border": { "color": "{alias.border-danger-secondary}" }
+    },
+    "focused": {
+      "border": { "color": "{alias.border-brand}" },
+      "focusRing": { "width": "4px", "color": "{alias.border-focused}", "inset": "-1px", "borderRadius": "{radius.sm}" }
+    },
+    "focused+error": {
+      "border": { "color": "{alias.border-danger}" },
+      "focusRing": { "width": "4px", "color": "{alias.border-focused-danger}", "inset": "-1px", "borderRadius": "{radius.sm}" }
+    }
+  },
+
+  "props": {
+    "size": { "type": "enum", "values": ["sm", "md", "lg"], "default": "md" },
+    "label": { "type": "string", "description": "Label text above the input." },
+    "optional": { "type": "boolean", "default": false, "description": "Displays (Optional) next to label." },
+    "helperText": { "type": "string", "description": "Helper text below the input." },
+    "helperTextIcon": { "type": "string", "description": "Material Symbol name for helper text icon." },
+    "errorMessage": { "type": "string", "description": "Error message below the input. Overrides helperText." },
+    "maxLength": { "type": "number", "description": "Shows character counter beside the input." },
+    "leftIcon": { "type": "string", "description": "Material Symbol name for leading icon." },
+    "rightIcon": { "type": "string", "description": "Material Symbol name for trailing icon." },
+    "preset": { "type": "enum", "values": ["user", "email", "password", "date", "amount", "description", "search"], "description": "Preset that auto-configures icons, type, and behaviors." },
+    "disabled": { "type": "boolean", "default": false }
+  },
+
+  "presets": {
+    "user": { "leftIcon": "account_circle" },
+    "email": { "leftIcon": "email", "inputType": "email" },
+    "password": { "leftIcon": "lock", "rightIcon": "visibility", "inputType": "password", "hasPasswordToggle": true },
+    "date": { "leftIcon": "calendar_month", "inputType": "date" },
+    "amount": { "leftIcon": "attach_money", "rightIcon": "close", "inputType": "number", "hasClearBehavior": true },
+    "description": { "leftIcon": "description", "optional": true },
+    "search": { "leftIcon": "search", "rightIcon": "close", "optional": true, "hasClearBehavior": true }
+  },
+
+  "slots": {
+    "leftIcon": { "position": "start", "element": "Icon", "size": "md", "color": "{alias.text-tertiary}", "disabledColor": "{alias.icon-inactive-subtle}" },
+    "rightIcon": { "position": "end", "element": "Icon", "size": "md", "color": "{alias.text-tertiary}", "disabledColor": "{alias.icon-inactive-subtle}" },
+    "label": { "position": "above", "fontSize": "14px", "fontWeight": 500, "color": "{alias.text-primary}", "marginBottom": "{spacing.sm}" },
+    "helperText": { "position": "below", "fontSize": "14px", "color": "{alias.text-secondary}", "errorColor": "{alias.text-error}", "marginTop": "{spacing.sm}" },
+    "characterCounter": { "position": "end-outside", "fontSize": "14px", "color": "{alias.text-tertiary}", "errorColor": "{alias.text-error}" }
+  },
+
+  "defaults": { "size": "md" },
+
+  "accessibility": {
+    "role": "textbox",
+    "notes": "aria-invalid set when error. aria-describedby links to helperText or errorMessage. Label uses htmlFor."
+  }
+}

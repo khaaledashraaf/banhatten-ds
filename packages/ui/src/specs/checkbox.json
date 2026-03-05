@@ -1,0 +1,69 @@
+{
+  "name": "Checkbox",
+  "description": "Checkbox input with optional label and support text. Supports checked, unchecked, and indeterminate states.",
+
+  "base": {
+    "display": "inline-flex",
+    "gap": "{spacing.md}",
+    "cursor": "pointer"
+  },
+
+  "indicator": {
+    "size": "16px",
+    "outerSize": "20px",
+    "borderRadius": "{radius.xs}",
+    "unchecked": {
+      "bg": "{alias.bg-primary}",
+      "border": { "width": "1px", "color": "{alias.border-strong}" }
+    },
+    "checked": {
+      "bg": "{alias.bg-brand}",
+      "hover": { "bg": "{alias.bg-brand-hover}" },
+      "iconColor": "{alias.icon-primary-inverse}",
+      "icon": "check"
+    },
+    "indeterminate": {
+      "bg": "{alias.bg-brand}",
+      "hover": { "bg": "{alias.bg-brand-hover}" },
+      "iconColor": "{alias.icon-primary-inverse}",
+      "icon": "remove"
+    }
+  },
+
+  "states": {
+    "disabled": {
+      "cursor": "default",
+      "indicator": {
+        "bg": "{alias.bg-inactive-subtle}",
+        "border": { "color": "{alias.border-inactive}" },
+        "iconColor": "{alias.icon-inactive-subtle}"
+      },
+      "labelColor": "{alias.text-inactive}"
+    },
+    "focused": {
+      "indicator": {
+        "ring": { "width": "2px", "color": "{alias.border-focused}" },
+        "border": { "color": "{alias.border-brand}" }
+      }
+    }
+  },
+
+  "props": {
+    "label": { "type": "string", "description": "Label text next to the checkbox." },
+    "supportText": { "type": "string", "description": "Support text below the label." },
+    "checkboxPosition": { "type": "enum", "values": ["leading", "trailing"], "default": "leading" },
+    "indeterminate": { "type": "boolean", "default": false },
+    "checked": { "type": "boolean" },
+    "disabled": { "type": "boolean", "default": false }
+  },
+
+  "slots": {
+    "label": { "fontSize": "14px", "fontWeight": 500, "lineHeight": "16px", "color": "{alias.text-primary}" },
+    "supportText": { "fontSize": "14px", "lineHeight": "20px", "color": "{alias.text-secondary}", "gap": "{spacing.xxs}" }
+  },
+
+  "accessibility": {
+    "role": "checkbox",
+    "notes": "aria-checked set to 'mixed' when indeterminate. Native input is visually hidden (sr-only)."
+  }
+}

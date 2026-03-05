@@ -1,0 +1,64 @@
+{
+  "name": "CloseButton",
+  "description": "Icon-only circular button for close/dismiss actions. Uses Icon component with 'close' icon.",
+
+  "base": {
+    "display": "inline-flex",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "flexShrink": 0,
+    "borderRadius": "{radius.full}",
+    "transition": "background-color, color",
+    "focusVisible": { "outline": "none", "ring": "2px", "ringColor": "{alias.border-brand}", "ringOffset": "2px" },
+    "disabled": { "opacity": 0.5, "pointerEvents": "none" }
+  },
+
+  "variants": {
+    "ghost": {
+      "bg": "transparent",
+      "text": "{alias.icon-primary}",
+      "hover": { "bg": "{alias.bg-tertiary}" },
+      "active": { "bg": "{alias.bg-quarterary}" },
+      "disabled": { "text": "{alias.text-inactive}" }
+    },
+    "outlined": {
+      "bg": "transparent",
+      "border": { "width": "1px", "color": "{alias.border-strong}" },
+      "text": "{alias.icon-primary}",
+      "hover": { "borderColor": "{alias.border-strong}", "bg": "{alias.bg-secondary}" },
+      "active": { "bg": "{alias.bg-tertiary}" },
+      "disabled": { "borderColor": "{alias.border-inactive-subtle}", "bg": "{alias.bg-secondary}", "text": "{alias.text-inactive}" }
+    }
+  },
+
+  "sizes": {
+    "sm": { "width": "24px", "height": "24px", "iconSize": "sm" },
+    "md": { "width": "32px", "height": "32px", "iconSize": "md" },
+    "lg": { "width": "40px", "height": "40px", "iconSize": "md" },
+    "xl": { "width": "48px", "height": "48px", "iconSize": "lg" }
+  },
+
+  "slots": {
+    "icon": {
+      "element": "Icon",
+      "name": "close",
+      "iconSizeByButtonSize": { "sm": "sm", "md": "md", "lg": "md", "xl": "lg" }
+    }
+  },
+
+  "props": {
+    "variant": { "type": "enum", "values": ["ghost", "outlined"], "default": "ghost" },
+    "size": { "type": "enum", "values": ["sm", "md", "lg", "xl"], "default": "md" },
+    "iconVariant": { "type": "enum", "values": ["outlined", "rounded", "sharp"], "default": "outlined" },
+    "iconFilled": { "type": "boolean", "default": false },
+    "aria-label": { "type": "string", "default": "Close", "description": "Accessible name for the close action." },
+    "disabled": { "type": "boolean", "default": false }
+  },
+
+  "defaults": { "variant": "ghost", "size": "md" },
+
+  "accessibility": {
+    "role": "button",
+    "notes": "Requires aria-label for accessible name. Default: 'Close'."
+  }
+}

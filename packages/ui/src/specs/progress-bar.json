@@ -1,0 +1,104 @@
+{
+  "name": "ProgressBar",
+  "description": "Horizontal bar indicating task completion or loading state. Supports determinate (0–100%) and indeterminate (animated pulse) modes.",
+
+  "base": {
+    "display": "flex",
+    "flexDirection": "column",
+    "minWidth": 0
+  },
+
+  "track": {
+    "width": "100%",
+    "overflow": "hidden",
+    "borderRadius": "{radius.sm}",
+    "bg": "{alias.bg-tertiary}"
+  },
+
+  "fill": {
+    "height": "100%",
+    "borderRadius": "{radius.sm}",
+    "flexShrink": 0
+  },
+
+  "sizes": {
+    "sm": { "trackHeight": "4px" },
+    "lg": { "trackHeight": "8px" }
+  },
+
+  "variants": {
+    "brand":   { "fillBg": "{alias.bg-brand}" },
+    "success": { "fillBg": "{alias.bg-success}" },
+    "danger":  { "fillBg": "{alias.bg-danger}" },
+    "info":    { "fillBg": "{alias.bg-info}" },
+    "neutral": { "fillBg": "{alias.bg-quarterary}" }
+  },
+
+  "states": {
+    "indeterminate": {
+      "fillWidth": "40%",
+      "animation": "pulse"
+    }
+  },
+
+  "props": {
+    "value": { "type": "number", "description": "Progress value 0–100. Omit for indeterminate (animated) state." },
+    "size": { "type": "enum", "values": ["sm", "lg"], "default": "sm" },
+    "color": { "type": "enum", "values": ["brand", "success", "danger", "info", "neutral"], "default": "brand" },
+    "label": { "type": "ReactNode", "description": "Optional label above the bar." },
+    "showLabelInfoIcon": { "type": "boolean", "default": false, "description": "Optional info icon shown next to the label." },
+    "helperText": { "type": "ReactNode", "description": "Optional helper text below the bar." },
+    "showValue": { "type": "boolean", "default": false, "description": "Whether to show the numeric value (e.g. '40%') beside the bar." },
+    "onRefresh": { "type": "function", "description": "Callback for the optional refresh icon button. When set, a refresh icon is shown next to the value." }
+  },
+
+  "slots": {
+    "label": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "{spacing.xs}",
+      "fontSize": "14px",
+      "fontWeight": 500,
+      "color": "{alias.text-primary}",
+      "marginBottom": "{spacing.sm}"
+    },
+    "labelInfoIcon": {
+      "element": "Icon",
+      "name": "info",
+      "size": "xs",
+      "color": "{alias.icon-tertiary}"
+    },
+    "barContainer": {
+      "display": "flex",
+      "alignItems": "center",
+      "gap": "{spacing.md}",
+      "minWidth": 0
+    },
+    "valueText": {
+      "fontSize": "14px",
+      "color": "{alias.text-secondary}",
+      "flexShrink": 0
+    },
+    "refreshButton": {
+      "element": "button",
+      "borderRadius": "{radius.sm}",
+      "padding": "{spacing.xxs}",
+      "color": "{alias.icon-secondary}",
+      "hover": { "color": "{alias.icon-primary}", "bg": "{alias.bg-tertiary}" },
+      "focus": { "ring": "2px", "ringColor": "{alias.border-brand}", "ringOffset": "1px" },
+      "icon": { "name": "refresh", "size": "xs" }
+    },
+    "helperText": {
+      "fontSize": "14px",
+      "color": "{alias.text-secondary}",
+      "marginTop": "{spacing.sm}"
+    }
+  },
+
+  "defaults": { "size": "sm", "color": "brand", "showValue": false },
+
+  "accessibility": {
+    "role": "progressbar",
+    "notes": "Determinate: aria-valuenow, aria-valuemin=0, aria-valuemax=100, aria-valuetext='N%'. Indeterminate: no value attributes, aria-valuetext='Loading'. Refresh button has aria-label='Refresh'. Helper text linked via aria-describedby."
+  }
+}

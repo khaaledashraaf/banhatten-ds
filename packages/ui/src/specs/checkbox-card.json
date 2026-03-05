@@ -1,0 +1,120 @@
+{
+  "name": "CheckboxCard",
+  "description": "Card-style checkbox with optional icon, label, and description. Supports checked, unchecked, indeterminate, disabled, and focused states.",
+
+  "base": {
+    "display": "flex",
+    "position": "relative",
+    "borderRadius": "{radius.md}",
+    "padding": "{spacing.lg}",
+    "border": { "width": "1px" },
+    "transition": "background-color, border-color"
+  },
+
+  "states": {
+    "unchecked": {
+      "bg": "{alias.bg-primary}",
+      "borderColor": "{alias.border-default}",
+      "cursor": "pointer",
+      "hover": { "bg": "{alias.highlight-hover}" }
+    },
+    "checked": {
+      "bg": "{alias.bg-primary}",
+      "borderColor": "{alias.border-brand}",
+      "cursor": "pointer"
+    },
+    "indeterminate": {
+      "bg": "{alias.bg-primary}",
+      "borderColor": "{alias.border-brand}",
+      "cursor": "pointer"
+    },
+    "disabled": {
+      "bg": "{alias.bg-inactive-subtle}",
+      "borderColor": "{alias.border-inactive-subtle}",
+      "cursor": "default"
+    },
+    "focused": {
+      "overlay": {
+        "position": "absolute",
+        "inset": "-1px",
+        "borderRadius": "{radius.md}",
+        "border": { "width": "2px", "color": "{alias.border-focused}" }
+      }
+    }
+  },
+
+  "layout": {
+    "leading": { "gap": "{spacing.md}", "alignItems": "center (no description) / start (with description)" },
+    "trailing": { "gap": "{spacing.lg}", "alignItems": "start" }
+  },
+
+  "subComponents": {
+    "CheckboxIndicator": {
+      "description": "16×16 checkbox square inside a 20×20 hit area.",
+      "outerSize": "20px",
+      "innerSize": "16px",
+      "borderRadius": "{radius.xs}",
+      "unchecked": {
+        "bg": "{alias.bg-primary}",
+        "border": { "width": "1px", "color": "{alias.border-strong}" }
+      },
+      "checked": {
+        "bg": "{alias.bg-brand}",
+        "iconColor": "{alias.icon-primary-inverse}",
+        "icon": "check (12×12 SVG)"
+      },
+      "indeterminate": {
+        "bg": "{alias.bg-brand}",
+        "iconColor": "{alias.icon-primary-inverse}",
+        "icon": "minus (12×12 SVG)"
+      },
+      "disabled": {
+        "bg": "{alias.bg-inactive-subtle}",
+        "border": { "width": "1px", "color": "{alias.border-inactive}" },
+        "iconColor": "{alias.icon-inactive-subtle}"
+      }
+    }
+  },
+
+  "slots": {
+    "icon": {
+      "element": "Icon",
+      "size": "lg",
+      "color": "{alias.icon-secondary}",
+      "disabledColor": "{alias.icon-inactive}"
+    },
+    "label": {
+      "fontWeight": 500,
+      "withDescription": { "fontSize": "14px", "lineHeight": "16px" },
+      "withoutDescription": { "fontSize": "16px", "lineHeight": "20px" },
+      "color": "{alias.text-primary}",
+      "disabledColor": "{alias.text-inactive}"
+    },
+    "description": {
+      "fontSize": "14px",
+      "lineHeight": "20px",
+      "color": "{alias.text-secondary}",
+      "disabledColor": "{alias.text-inactive}",
+      "gap": "{spacing.xs}"
+    }
+  },
+
+  "props": {
+    "label": { "type": "string", "description": "Label text displayed in the card." },
+    "description": { "type": "string", "description": "Description text below the label." },
+    "icon": { "type": "string", "description": "Material Symbol name for the card icon." },
+    "iconVariant": { "type": "enum", "values": ["outlined", "rounded", "sharp"], "default": "outlined" },
+    "iconFilled": { "type": "boolean", "default": false },
+    "checkboxPosition": { "type": "enum", "values": ["leading", "trailing"], "default": "trailing" },
+    "indeterminate": { "type": "boolean", "default": false },
+    "checked": { "type": "boolean" },
+    "disabled": { "type": "boolean", "default": false }
+  },
+
+  "defaults": { "checkboxPosition": "trailing", "indeterminate": false },
+
+  "accessibility": {
+    "role": "checkbox",
+    "notes": "Hidden native input (sr-only) inside a <label>. aria-checked set to 'mixed' when indeterminate. Focus/selection ring overlay shown when checked, indeterminate, or focused (not disabled)."
+  }
+}

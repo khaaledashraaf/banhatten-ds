@@ -1,0 +1,32 @@
+{
+  "name": "Divider",
+  "description": "Visual separator line for sectioning content. Supports horizontal and vertical orientation with solid or dashed styles.",
+
+  "base": {
+    "borderColor": "{alias.border-default}"
+  },
+
+  "variants": {
+    "solid": { "borderStyle": "solid" },
+    "dashed": { "borderStyle": "dashed" }
+  },
+
+  "sizes": {},
+
+  "orientations": {
+    "horizontal": { "width": "100%", "borderTop": "1px" },
+    "vertical": { "height": "100%", "borderLeft": "1px" }
+  },
+
+  "props": {
+    "orientation": { "type": "enum", "values": ["horizontal", "vertical"], "default": "horizontal" },
+    "variant": { "type": "enum", "values": ["solid", "dashed"], "default": "solid" }
+  },
+
+  "defaults": { "orientation": "horizontal", "variant": "solid" },
+
+  "accessibility": {
+    "role": "separator",
+    "notes": "Renders as <hr> for horizontal, <div> for vertical. aria-orientation reflects the orientation prop."
+  }
+}

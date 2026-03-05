@@ -1,0 +1,78 @@
+{
+  "name": "Tooltip",
+  "description": "Floating overlay that surfaces contextual information on hover/focus. Supports single-line (small) and title+subtitle (large) layouts with dark and light color schemes.",
+
+  "base": {
+    "borderRadius": "{radius.sm}",
+    "fontSize": "12px",
+    "lineHeight": "20px",
+    "maxWidth": "var(--radix-tooltip-content-available-width)",
+    "zIndex": 50,
+    "transition": "opacity 150ms ease-out"
+  },
+
+  "variants": {
+    "dark": {
+      "bg": "{alias.bg-always-dark}",
+      "text": "{alias.text-on-color}",
+      "subtitleColor": "{alias.text-on-color}",
+      "arrowFill": "{alias.bg-primary-inverse}"
+    },
+    "light": {
+      "bg": "{alias.bg-primary}",
+      "text": "{alias.text-primary}",
+      "subtitleColor": "{alias.text-on-color-inverse}",
+      "border": { "width": "1px", "color": "{alias.border-default}" },
+      "shadow": "{shadow.lg}",
+      "arrowFill": "#ffffff"
+    }
+  },
+
+  "sizes": {
+    "small": { "paddingX": "{spacing.md}", "paddingY": "{spacing.sm}" },
+    "large": { "paddingX": "{spacing.md}", "paddingY": "{spacing.md}", "display": "flex", "flexDirection": "column", "gap": "{spacing.xs}" }
+  },
+
+  "states": {
+    "open": { "opacity": 1 },
+    "closed": { "opacity": 0 }
+  },
+
+  "props": {
+    "content": { "type": "ReactNode", "description": "Single-line content (size='small')." },
+    "title": { "type": "string", "description": "Title text (size='large'). Auto-infers size='large' when provided." },
+    "subtitle": { "type": "string", "description": "Subtitle text (size='large'). Auto-infers size='large' when provided." },
+    "size": { "type": "enum", "values": ["small", "large"], "default": "small", "description": "Small: single text line. Large: title + subtitle. Auto-inferred from title/subtitle when omitted." },
+    "variant": { "type": "enum", "values": ["dark", "light"], "default": "dark" },
+    "side": { "type": "enum", "values": ["top", "bottom", "left", "right"], "default": "bottom" },
+    "sideOffset": { "type": "number", "default": 8, "description": "Distance in px between the tooltip and the trigger." },
+    "delayDuration": { "type": "number", "default": 200, "description": "Delay in ms before showing." },
+    "showArrow": { "type": "boolean", "default": true, "description": "When false, the arrow/pointer is not rendered." }
+  },
+
+  "slots": {
+    "title": {
+      "fontWeight": 500
+    },
+    "subtitle": {
+      "fontWeight": 400
+    },
+    "arrow": {
+      "width": "12px",
+      "height": "6px"
+    }
+  },
+
+  "subComponents": {
+    "TooltipProvider": { "description": "Context provider for shared tooltip delay configuration." },
+    "TooltipTrigger": { "description": "Wraps the trigger element. Uses asChild pattern." },
+    "TooltipContent": { "description": "The tooltip popup content. Accepts size, variant, title, subtitle, showArrow props." }
+  },
+
+  "defaults": { "variant": "dark", "size": "small", "side": "bottom", "sideOffset": 8, "delayDuration": 200, "showArrow": true },
+
+  "accessibility": {
+    "role": "tooltip",
+    "notes": "Built on Radix UI Tooltip primitives. Trigger uses asChild. Content is portaled. Keyboard accessible via focus."
+  }
+}

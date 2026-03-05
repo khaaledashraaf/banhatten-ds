@@ -1,0 +1,79 @@
+{
+  "name": "Toggle",
+  "description": "Switch/toggle control with optional label and support text. Supports icon mode showing check/close on the thumb.",
+
+  "base": {
+    "display": "inline-flex",
+    "gap": "{spacing.md}",
+    "cursor": "pointer"
+  },
+
+  "track": {
+    "borderRadius": "{radius.full}",
+    "padding": "2px",
+    "transition": "background-color",
+    "off": {
+      "bg": "{alias.bg-quarterary}",
+      "hover": { "bg": "rgba(from {alias.bg-quarterary} r g b / 0.8)" }
+    },
+    "on": {
+      "bg": "{alias.component-toggle-brand-bg}",
+      "hover": { "bg": "{alias.component-toggle-brand-bg-hover}" }
+    }
+  },
+
+  "thumb": {
+    "borderRadius": "{radius.full}",
+    "bg": "{alias.bg-primary}",
+    "shadow": "{shadow.md}",
+    "transition": "transform"
+  },
+
+  "sizes": {
+    "sm": {
+      "track": { "height": "20px", "width": "32px" },
+      "thumb": { "size": "14px", "translateX": "12px" }
+    },
+    "md": {
+      "track": { "height": "24px", "width": "40px" },
+      "thumb": { "size": "20px", "translateX": "16px" }
+    }
+  },
+
+  "states": {
+    "disabled": {
+      "cursor": "default",
+      "track": { "bg": "{alias.bg-inactive-subtle}" },
+      "thumb": { "bg": "{alias.bg-quarterary}", "shadow": "none" },
+      "labelColor": "{alias.text-inactive}"
+    },
+    "focus": {
+      "ring": "2px",
+      "ringColor": "{alias.border-brand}",
+      "ringOffset": "2px"
+    }
+  },
+
+  "props": {
+    "size": { "type": "enum", "values": ["sm", "md"], "default": "md" },
+    "label": { "type": "string", "description": "Label text next to the toggle." },
+    "supportText": { "type": "string", "description": "Support text below the label." },
+    "togglePosition": { "type": "enum", "values": ["leading", "trailing"], "default": "trailing" },
+    "withIcon": { "type": "boolean", "default": false, "description": "Show check icon when on, close icon when off." },
+    "checked": { "type": "boolean" },
+    "disabled": { "type": "boolean", "default": false }
+  },
+
+  "slots": {
+    "label": { "fontSize": "14px", "fontWeight": 500, "lineHeight": "16px", "color": "{alias.text-primary}" },
+    "supportText": { "fontSize": "14px", "lineHeight": "20px", "color": "{alias.text-secondary}", "gap": "{spacing.xxs}" },
+    "thumbIcon": { "element": "Icon", "size": "xs", "onIcon": "check", "offIcon": "close" }
+  },
+
+  "defaults": { "size": "md" },
+
+  "accessibility": {
+    "role": "switch",
+    "notes": "aria-checked reflects on/off state. Native checkbox input is visually hidden."
+  }
+}

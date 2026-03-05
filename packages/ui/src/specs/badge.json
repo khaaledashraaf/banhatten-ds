@@ -1,0 +1,142 @@
+{
+  "name": "Badge",
+  "description": "Compact label for status, category, or count. Supports filled, light, and outlined styles across 6 semantic colors.",
+
+  "base": {
+    "display": "inline-flex",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "borderRadius": "{radius.full}",
+    "fontWeight": 500,
+    "flexShrink": 0,
+    "gap": "4px"
+  },
+
+  "variants": {
+    "filled": {},
+    "light": {
+      "border": { "width": "1px" }
+    },
+    "outlined": {
+      "bg": "transparent",
+      "border": { "width": "1px" }
+    }
+  },
+
+  "sizes": {
+    "sm": { "height": "24px", "paddingX": "{spacing.sm}", "fontSize": "12px", "lineHeight": "16px" },
+    "lg": { "height": "28px", "paddingX": "{spacing.md}", "fontSize": "14px", "lineHeight": "20px" }
+  },
+
+  "compoundVariants": [
+    {
+      "when": { "variant": "filled", "color": "brand" },
+      "apply": { "bg": "{alias.bg-brand}", "text": "{alias.text-on-color}" }
+    },
+    {
+      "when": { "variant": "filled", "color": "neutral" },
+      "apply": { "bg": "{brand.neutral-700}", "text": "{alias.text-on-color}" }
+    },
+    {
+      "when": { "variant": "filled", "color": "success" },
+      "apply": { "bg": "{alias.bg-success}", "text": "{alias.text-on-color}" }
+    },
+    {
+      "when": { "variant": "filled", "color": "warning" },
+      "apply": { "bg": "{alias.bg-warning}", "text": "{alias.text-on-color}" }
+    },
+    {
+      "when": { "variant": "filled", "color": "danger" },
+      "apply": { "bg": "{alias.bg-danger}", "text": "{alias.text-on-color}" }
+    },
+    {
+      "when": { "variant": "filled", "color": "info" },
+      "apply": { "bg": "{alias.bg-info}", "text": "{alias.text-on-color}" }
+    },
+    {
+      "when": { "variant": "light", "color": "brand" },
+      "apply": { "bg": "{alias.bg-brand-tertiary}", "border": { "color": "{alias.border-brand-secondary}" }, "text": "{alias.text-brand}" }
+    },
+    {
+      "when": { "variant": "light", "color": "neutral" },
+      "apply": { "bg": "{alias.bg-secondary}", "border": { "color": "{alias.border-strong}" }, "text": "{alias.text-primary}" }
+    },
+    {
+      "when": { "variant": "light", "color": "success" },
+      "apply": { "bg": "{alias.bg-success-tertiary}", "border": { "color": "{alias.border-success-secondary}" }, "text": "{alias.text-success-strong}" }
+    },
+    {
+      "when": { "variant": "light", "color": "warning" },
+      "apply": { "bg": "{alias.bg-warning-tertiary}", "border": { "color": "{alias.border-warning-secondary}" }, "text": "{alias.text-warning-strong}" }
+    },
+    {
+      "when": { "variant": "light", "color": "danger" },
+      "apply": { "bg": "{alias.bg-danger-tertiary}", "border": { "color": "{alias.border-danger-secondary}" }, "text": "{alias.text-danger-strong}" }
+    },
+    {
+      "when": { "variant": "light", "color": "info" },
+      "apply": { "bg": "{alias.bg-info-tertiary}", "border": { "color": "{alias.border-info-subtle}" }, "text": "{alias.text-info-strong}" }
+    },
+    {
+      "when": { "variant": "outlined", "color": "brand" },
+      "apply": { "border": { "color": "{alias.border-brand}" }, "text": "{alias.text-brand}" }
+    },
+    {
+      "when": { "variant": "outlined", "color": "neutral" },
+      "apply": { "border": { "color": "{alias.border-strong}" }, "text": "{alias.text-primary}" }
+    },
+    {
+      "when": { "variant": "outlined", "color": "success" },
+      "apply": { "border": { "color": "{alias.border-success}" }, "text": "{alias.text-success}" }
+    },
+    {
+      "when": { "variant": "outlined", "color": "warning" },
+      "apply": { "border": { "color": "{alias.border-warning}" }, "text": "{alias.text-warning-strong}" }
+    },
+    {
+      "when": { "variant": "outlined", "color": "danger" },
+      "apply": { "border": { "color": "{alias.border-danger}" }, "text": "{alias.text-danger}" }
+    },
+    {
+      "when": { "variant": "outlined", "color": "info" },
+      "apply": { "border": { "color": "{alias.border-info}" }, "text": "{alias.text-info}" }
+    }
+  ],
+
+  "props": {
+    "variant": { "type": "enum", "values": ["filled", "light", "outlined"], "default": "light" },
+    "color": { "type": "enum", "values": ["brand", "neutral", "success", "warning", "danger", "info"], "default": "brand" },
+    "size": { "type": "enum", "values": ["sm", "lg"], "default": "sm" },
+    "withDot": { "type": "boolean", "default": false, "description": "Render a small status dot before the badge content." },
+    "leftIcon": { "type": "string", "description": "Material Symbol name for leading icon." },
+    "rightIcon": { "type": "string", "description": "Material Symbol name for trailing icon." },
+    "iconVariant": { "type": "enum", "values": ["outlined", "rounded", "sharp"], "default": "outlined" },
+    "iconFilled": { "type": "boolean", "default": false }
+  },
+
+  "slots": {
+    "dot": {
+      "position": "start",
+      "size": "6px",
+      "borderRadius": "{radius.full}",
+      "bg": "currentColor"
+    },
+    "leftIcon": {
+      "position": "start",
+      "element": "Icon",
+      "iconSizeByBadgeSize": { "sm": "xs", "lg": "sm" }
+    },
+    "rightIcon": {
+      "position": "end",
+      "element": "Icon",
+      "iconSizeByBadgeSize": { "sm": "xs", "lg": "sm" }
+    }
+  },
+
+  "defaults": { "variant": "light", "color": "brand", "size": "sm" },
+
+  "accessibility": {
+    "role": "status",
+    "notes": "Rendered as a <span>. Dot element is aria-hidden. Icon elements are aria-hidden."
+  }
+}
