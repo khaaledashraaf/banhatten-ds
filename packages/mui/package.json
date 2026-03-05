@@ -1,6 +1,6 @@
 {
   "name": "banhatten-ui-mui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Banhatten Design System theme for Material UI — plug and play",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -49,8 +49,12 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "peerDependenciesMeta": {
-    "@emotion/react": { "optional": false },
-    "@emotion/styled": { "optional": false }
+    "@emotion/react": {
+      "optional": false
+    },
+    "@emotion/styled": {
+      "optional": false
+    }
   },
   "devDependencies": {
     "@mui/material": "^5.17.1",
