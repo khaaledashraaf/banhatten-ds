@@ -36,6 +36,7 @@ import { TooltipDocumentation } from "../components/tooltip-documentation";
 import { TokensDocumentation } from "../components/tokens-documentation";
 import { IntroductionDocumentation } from "../components/introduction-documentation";
 import { HowToUseDocumentation } from "../components/how-to-use-documentation";
+import { CustomizedLibrariesDocumentation } from "../components/customized-libraries-documentation";
 import { ImplementationPlayground } from "../components/implementation-playground";
 import { EcommerceLanding } from "../components/ecommerce-landing";
 import { DashboardExample } from "../components/dashboard-example";
@@ -51,6 +52,7 @@ const navigation = [
     items: [
       { name: "Introduction", href: "introduction" },
       { name: "How to Use", href: "how-to-use" },
+      { name: "Customized Libraries", href: "customized-libraries" },
     ],
   },
   {
@@ -206,6 +208,10 @@ export default function DocsPage() {
     "how-to-use": {
       title: "How to Use",
       description: "Installation, Tailwind setup, Material Symbols, and usage guide for banhatten-ui and @banhatten/tokens.",
+    },
+    "customized-libraries": {
+      title: "Customized Libraries",
+      description: "Banhatten-themed component libraries built on MUI and Joy UI for different project needs.",
     },
     tokens: {
       title: "Design Tokens",
@@ -385,6 +391,7 @@ export default function DocsPage() {
             {/* Content */}
             {activeSection === "introduction" && <IntroductionDocumentation />}
             {activeSection === "how-to-use" && <HowToUseDocumentation />}
+            {activeSection === "customized-libraries" && <CustomizedLibrariesDocumentation />}
             {activeSection === "tokens" && <TokensDocumentation />}
             {activeSection === "icons" && <IconDocumentation />}
             {activeSection === "alert" && <AlertDocumentation />}

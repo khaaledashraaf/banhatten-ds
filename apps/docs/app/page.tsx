@@ -1,6 +1,7 @@
 "use client";
 
 import { type CSSProperties, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "next-view-transitions";
 import {
   Alert,
@@ -13,6 +14,9 @@ import {
   FeaturedIcon,
   Icon,
   Input,
+  Menu,
+  MenuGroup,
+  MenuItem,
   ProgressBar,
   Slider,
   Tag,
@@ -141,6 +145,102 @@ type StreamAlert = {
 const FLOATING_CARD_CLASS =
   "floating-card transition-[box-shadow] duration-500 ease-in-out hover:shadow-lg";
 
+const npmPackages = [
+  { name: "banhatten-ui", href: "https://www.npmjs.com/package/banhatten-ui" },
+  { name: "banhatten-ui-mui", href: "https://www.npmjs.com/package/banhatten-ui-mui" },
+  { name: "banhatten-ui-joyui", href: "https://www.npmjs.com/package/banhatten-ui-joyui" },
+];
+
+function NpmDropdown() {
+  const [open, setOpen] = useState(false);
+  const [menuPos, setMenuPos] = useState({ top: 0, left: 0 });
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        buttonRef.current &&
+        !buttonRef.current.contains(e.target as Node) &&
+        menuRef.current &&
+        !menuRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
+
+  useEffect(() => {
+    if (open && buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setMenuPos({
+        top: rect.bottom + 4,
+        left: rect.left + rect.width / 2,
+      });
+    }
+  }, [open]);
+
+  return (
+    <>
+      <Button
+        ref={buttonRef}
+        variant="link-brand"
+        size="xs"
+        className="inline-flex items-center gap-1"
+        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-haspopup="menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden
+        >
+          <path d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.334v5.332h-2.669v-.001zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331zM10.665 10H12v2.667h-1.335V10z" />
+        </svg>
+        npm
+        <Icon
+          name="expand_more"
+          size="xs"
+          className={`transition-transform ${open ? "rotate-180" : ""}`}
+          aria-hidden
+        />
+      </Button>
+      {open &&
+        createPortal(
+          <div
+            ref={menuRef}
+            className="fixed z-[9999]"
+            style={{ top: menuPos.top, left: menuPos.left, transform: "translateX(-50%)" }}
+          >
+            <Menu>
+              <MenuGroup>
+                {npmPackages.map((pkg) => (
+                  <MenuItem
+                    key={pkg.name}
+                    onClick={() => {
+                      window.open(pkg.href, "_blank", "noopener,noreferrer");
+                      setOpen(false);
+                    }}
+                  >
+                    {pkg.name}
+                  </MenuItem>
+                ))}
+              </MenuGroup>
+            </Menu>
+          </div>,
+          document.body
+        )}
+    </>
+  );
+}
+
 export default function LandingPage() {
   const [ready, setReady] = useState(false);
   const [loaderExiting, setLoaderExiting] = useState(false);
@@ -258,26 +358,7 @@ export default function LandingPage() {
             <Link href="/docs">Open Documentation</Link>
           </Button>
           <div className="flex flex-wrap items-center justify-center gap-0 mt-2">
-            <Button asChild variant="link-brand" size="xs" className="inline-flex items-center gap-2">
-              <a
-                href="https://www.npmjs.com/package/banhatten-ui"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden
-                >
-                  <path d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.334v5.332h-2.669v-.001zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331zM10.665 10H12v2.667h-1.335V10z" />
-                </svg>
-                npm
-              </a>
-            </Button>
+            <NpmDropdown />
             <Divider orientation="vertical" className="h-4" />
             <Button asChild variant="link-brand" size="xs" className="inline-flex items-center gap-2">
               <a
