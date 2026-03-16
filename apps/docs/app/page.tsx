@@ -351,7 +351,7 @@ export default function LandingPage() {
           className={`text-primary text-center text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl ${ready ? "animate-fade-in" : ""}`}
           style={ready ? { animationDelay: `${80 + ENTRANCE_BASE_DELAY_MS}ms` } : undefined}
         >
-          Welcome to the official documentation of<br />Banhaten Design System
+          Banhaten Design System Documentation
         </h1>
         <div className={`mt-8 flex flex-col items-center gap-2 ${ready ? "animate-fade-in" : ""}`} style={ready ? { animationDelay: `${160 + ENTRANCE_BASE_DELAY_MS}ms` } : undefined}>
           <Button asChild variant="primary" size="lg" rightIcon="arrow_forward">
